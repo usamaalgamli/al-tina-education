@@ -217,6 +217,14 @@ textarea { resize: vertical; min-height: 96px; }
 .svcpick .seg label { padding: 14px 22px; font-size: 1rem; }
 .consent { display: flex; gap: 12px; align-items: flex-start; font-size: .97rem; }
 .consent input { margin-block-start: .4em; accent-color: var(--forest); width: 18px; height: 18px; flex: none; }
+input[type="file"] { font: inherit; font-size: .9rem; width: 100%; padding: 8px; border: 1px dashed var(--line); border-radius: 10px; background: var(--paper); color: var(--muted); }
+input[type="file"]::file-selector-button { font: inherit; font-weight: 600; font-size: .85rem; border: 0; border-radius: 999px; padding: 8px 16px; margin-inline-end: 12px; background: var(--forest); color: var(--on-forest); cursor: pointer; }
+input[type="file"]:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+.hint { color: var(--muted); font-size: .92rem; margin: -6px 0 0; }
+.total { font-size: .88rem; color: var(--muted); margin: 0; }
+.total.over { color: var(--danger); font-weight: 600; }
+.sent { display: grid; gap: 16px; margin-block-end: 24px; }
+.sent h2 { font-size: 2rem; color: var(--forest); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-block-start: 34px; }
 .summary-err { color: var(--danger); font-weight: 600; margin-block-start: 14px; }
 .summary-err:empty { display: none; }
@@ -372,7 +380,23 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
 
-      <form class="card" id="reg-form" novalidate>
+      <div class="card sent" id="sent" hidden tabindex="-1">
+        <h2 data-i18n="sent_title"></h2>
+        <p data-i18n="sent_body"></p>
+        <p><span data-i18n="res_ref"></span> <span class="ref" id="sent-ref"></span></p>
+        <div class="actions" style="margin:0">
+          <a class="btn btn-brass" id="sent-wa" href="https://wa.me/15879669624" target="_blank" rel="noopener" data-i18n="c_wa"></a>
+          <button class="btn btn-line" type="button" id="sent-new" data-i18n="btn_new"></button>
+        </div>
+      </div>
+
+      <form class="card" id="reg-form" method="post" enctype="multipart/form-data" action="https://formsubmit.co/contact@al-tina.ca" novalidate>
+        <input type="hidden" name="_subject" id="f-subject" value="Al-Tina registration">
+        <input type="hidden" name="_next" id="f-next" value="">
+        <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <textarea name="Application summary" id="f-summary" hidden></textarea>
         <div class="svcpick">
           <span class="lbl" id="l-service" data-i18n="l_service"></span>
           <div class="seg" role="radiogroup" aria-labelledby="l-service">
@@ -515,6 +539,48 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           </div>
         </fieldset>
 
+        <fieldset id="fs-docs">
+          <legend data-i18n="sec_docs"></legend>
+          <p class="field full hint" data-i18n="docs_hint"></p>
+          <div class="field">
+            <label for="f-doc-passport"><span data-i18n="d_passport"></span></label>
+            <input type="file" id="f-doc-passport" name="Passport" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx" data-req="1">
+            <p class="err" id="e-doc-passport"></p>
+          </div>
+          <div class="field">
+            <label for="f-doc-certificate"><span data-i18n="d_certificate"></span></label>
+            <input type="file" id="f-doc-certificate" name="Graduation certificate" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx" data-req="1">
+            <p class="err" id="e-doc-certificate"></p>
+          </div>
+          <div class="field">
+            <label for="f-doc-transcript"><span data-i18n="d_transcript"></span></label>
+            <input type="file" id="f-doc-transcript" name="Transcript" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx" data-req="1">
+            <p class="err" id="e-doc-transcript"></p>
+          </div>
+          <div class="field">
+            <label for="f-doc-cv"><span data-i18n="d_cv"></span> <span class="opt" data-i18n="optional"></span></label>
+            <input type="file" id="f-doc-cv" name="CV" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx">
+            <p class="err" id="e-doc-cv"></p>
+          </div>
+          <div class="field">
+            <label for="f-doc-english"><span data-i18n="d_english"></span> <span class="opt" data-i18n="optional"></span></label>
+            <input type="file" id="f-doc-english" name="English test" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx">
+            <p class="err" id="e-doc-english"></p>
+          </div>
+          <div class="field">
+            <label for="f-doc-other1"><span data-i18n="d_other1"></span> <span class="opt" data-i18n="optional"></span></label>
+            <input type="file" id="f-doc-other1" name="Other document 1" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx">
+            <p class="err" id="e-doc-other1"></p>
+          </div>
+          <div class="field">
+            <label for="f-doc-other2"><span data-i18n="d_other2"></span> <span class="opt" data-i18n="optional"></span></label>
+            <input type="file" id="f-doc-other2" name="Other document 2" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx">
+            <p class="err" id="e-doc-other2"></p>
+          </div>
+          <p class="field full total" id="docs-total"></p>
+          <p class="err field full" id="e-docs-total"></p>
+        </fieldset>
+
         <fieldset>
           <div class="field full">
             <label for="f-notes"><span data-i18n="l_notes"></span> <span class="opt" data-i18n="optional"></span></label>
@@ -637,7 +703,12 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       l_help: "I need help with", help_reg: "Registration", help_exam: "Exam preparation",
       l_notes: "Notes",
       l_consent: "My information is correct and Al-Tina may contact me.",
-      btn_submit: "Create application",
+      btn_submit: "Submit application",
+      sec_docs: "Documents", docs_hint: "PDF or photo. Up to 10 MB in total.",
+      d_passport: "Passport", d_certificate: "Graduation certificate", d_transcript: "Transcript", d_cv: "CV", d_english: "English test result", d_other1: "Other document", d_other2: "Other document",
+      total_size: "Total: {x} MB of 10 MB",
+      err_file: "Please attach this document.", err_total: "Files are over 10 MB in total. Use smaller files, or send the rest on WhatsApp.",
+      sent_title: "Application sent", sent_body: "Thank you. We received your application and documents. We'll contact you on WhatsApp.",
       err_required: "Required.", err_email: "Enter a valid email.", err_phone: "Enter a valid phone number.",
       err_gpa: "Enter a number from 50 to 100.", err_year: "Enter a valid year.", err_degree: "Choose one.",
       err_help: "Choose at least one.", err_consent: "Please tick this box.", err_summary: "Please fix the fields in red.",
@@ -697,7 +768,12 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       l_help: "أحتاج مساعدة في", help_reg: "التسجيل", help_exam: "التحضير للامتحانات",
       l_notes: "ملاحظات",
       l_consent: "معلوماتي صحيحة، وأوافق على تواصل التينة معي.",
-      btn_submit: "أنشئ الطلب",
+      btn_submit: "إرسال الطلب",
+      sec_docs: "الوثائق", docs_hint: "ملف PDF أو صورة. الحجم الكلي حتى 10 ميغابايت.",
+      d_passport: "جواز السفر", d_certificate: "وثيقة التخرج", d_transcript: "كشف الدرجات", d_cv: "السيرة الذاتية", d_english: "نتيجة اختبار اللغة الإنكليزية", d_other1: "وثيقة أخرى", d_other2: "وثيقة أخرى",
+      total_size: "المجموع: {x} من 10 ميغابايت",
+      err_file: "يرجى إرفاق هذه الوثيقة.", err_total: "حجم الملفات أكثر من 10 ميغابايت. استخدم ملفات أصغر، أو أرسل الباقي عبر واتساب.",
+      sent_title: "تم إرسال طلبك", sent_body: "شكراً لك. استلمنا طلبك ووثائقك، وسنتواصل معك عبر واتساب.",
       err_required: "مطلوب.", err_email: "اكتب بريداً صحيحاً.", err_phone: "اكتب رقم هاتف صحيحاً.",
       err_gpa: "اكتب رقماً من 50 إلى 100.", err_year: "اكتب سنة صحيحة.", err_degree: "اختر واحداً.",
       err_help: "اختر واحداً على الأقل.", err_consent: "يرجى التأشير على المربع.", err_summary: "يرجى تصحيح الحقول باللون الأحمر.",
@@ -863,6 +939,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
     renderCodes(); renderSelect("f-country", COUNTRIES); renderSelect("f-stage", STAGES); renderSelect("f-prov", PROVS); renderDest();
     if (lastResult) showResult(lastResult, false);
+    updateTotal();
     if ($("summary-err").textContent) validate(true);
   }
 
@@ -929,6 +1006,13 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       check("help", v.help.length > 0, t("err_help"), $("f-help-reg"));
       ["degree", "field"].forEach(function (k) { setErr(k, ""); });
     }
+    form.querySelectorAll('input[type=file][data-req]').forEach(function (inp) {
+      var id = inp.id.replace("f-", "");
+      check(id, inp.files && inp.files.length > 0, t("err_file"), inp);
+    });
+    var tot = updateTotal();
+    $("e-docs-total").textContent = tot > MAX_BYTES ? t("err_total") : "";
+    if (tot > MAX_BYTES) bad.push($("f-doc-passport"));
     check("consent", v.consent, t("err_consent"), $("f-consent"));
     $("summary-err").textContent = bad.length ? t("err_summary") : "";
     if (bad.length && !quiet && bad[0]) bad[0].focus();
@@ -1022,7 +1106,30 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     if (scroll) { $("result").focus({ preventScroll: true }); $("result").scrollIntoView({ block: "start" }); }
   }
 
+  var MAX_BYTES = 10 * 1024 * 1024;
+  function updateTotal() {
+    var tot = 0;
+    form.querySelectorAll("input[type=file]").forEach(function (i) { Array.prototype.forEach.call(i.files || [], function (f) { tot += f.size; }); });
+    var el = $("docs-total");
+    el.textContent = t("total_size").replace("{x}", (tot / 1048576).toFixed(1));
+    el.classList.toggle("over", tot > MAX_BYTES);
+    return tot;
+  }
+  var LIVE = /(^|\.)al-tina\.ca$/.test(location.hostname);
+
   form.addEventListener("submit", function (e) {
+    if (LIVE) {
+      var v2 = validate(false);
+      if (!v2) { e.preventDefault(); return; }
+      var d2 = new Date(), p2 = function (n) { return (n < 10 ? "0" : "") + n; };
+      var r2 = { v: v2, ref: makeRef(v2.service), date: d2.getFullYear() + "-" + p2(d2.getMonth() + 1) + "-" + p2(d2.getDate()) };
+      r2.matches = v2.service === "ph" ? [] : matchPrograms(v2);
+      $("f-summary").value = buildText(r2);
+      $("f-subject").value = "Al-Tina registration " + r2.ref + " — " + v2.name;
+      $("f-next").value = location.origin + location.pathname + "#sent";
+      try { localStorage.setItem("altina-last-ref", r2.ref); } catch (err) {}
+      return; // let the browser send the form and files
+    }
     e.preventDefault();
     var v = validate(false);
     if (!v) return;
@@ -1031,7 +1138,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     showResult(lastResult, true);
   });
   form.addEventListener("input", function () { saveDraft(); if ($("summary-err").textContent) validate(true); });
-  form.addEventListener("change", function (e) { if (e.target.name === "service") syncService(); if (e.target.name === "country") { var c = COUNTRIES.filter(function (x) { return x[0] === e.target.value; })[0]; if (c && c[3]) { $("f-cc").value = c[3]; syncPhonePh(); } } if (e.target.name === "cc") syncPhonePh(); saveDraft(); });
+  form.addEventListener("change", function (e) { if (e.target.name === "service") syncService(); if (e.target.name === "country") { var c = COUNTRIES.filter(function (x) { return x[0] === e.target.value; })[0]; if (c && c[3]) { $("f-cc").value = c[3]; syncPhonePh(); } } if (e.target.name === "cc") syncPhonePh(); if (e.target.type === "file") { updateTotal(); if ($("summary-err").textContent) validate(true); } saveDraft(); });
 
   document.querySelectorAll("a[data-pharm-cta]").forEach(function (a) {
     a.addEventListener("click", function () { $("f-service-ph").checked = true; syncService(); saveDraft(); });
@@ -1071,6 +1178,21 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   loadDraft();
   syncService();
   syncPhonePh();
+  updateTotal();
+  if (location.hash === "#sent") {
+    var ref = "";
+    try { ref = localStorage.getItem("altina-last-ref") || ""; localStorage.removeItem("altina-draft-v3"); } catch (e) {}
+    form.reset(); syncService(); updateTotal();
+    $("sent-ref").textContent = ref;
+    $("sent-ref").parentNode.hidden = !ref;
+    form.hidden = true; $("sent").hidden = false;
+    setTimeout(function () { $("sent").scrollIntoView({ block: "start" }); $("sent").focus({ preventScroll: true }); }, 50);
+  }
+  $("sent-new").addEventListener("click", function () {
+    $("sent").hidden = true; form.hidden = false;
+    try { history.replaceState(null, "", location.pathname + location.search + "#register"); } catch (e) {}
+    $("f-name").focus();
+  });
 })();
 </script>
 </body>
