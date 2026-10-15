@@ -141,6 +141,7 @@ html[lang="ar"] .arch .caps { letter-spacing: 0; }
 .shead .eyebrow { color: var(--brass-deep); margin-block-end: 10px; display: block; }
 .shead h2 { font-size: clamp(2.1rem, 4vw, 3.1rem); color: var(--forest); }
 .shead .sub { color: var(--muted); margin-block-start: 8px; max-width: 40em; }
+.note.travel { margin-block-start: 40px; font-size: 1.15rem; color: var(--forest); font-family: var(--f-display); }
 .note { color: var(--muted); font-size: .92rem; margin-block-start: 22px; }
 
 
@@ -329,6 +330,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <div><h2 data-i18n="docs_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2></div>
       </div>
       <ul class="ticks docs" id="docs"></ul>
+      <p class="note travel" data-i18n="travel_note"></p>
       <div class="ctas">
         <a class="btn btn-forest" href="#register" data-i18n="pharm_cta"></a>
       </div>
@@ -397,40 +399,14 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <fieldset>
           <legend data-i18n="sec_academic"></legend>
           <div class="field">
-            <label for="f-level" data-i18n="l_level"></label>
-            <select id="f-level" name="level">
-              <option value="" data-i18n="opt_choose"></option>
-              <option value="ba" data-i18n="lv_ba"></option>
-              <option value="pd" data-i18n="lv_pd"></option>
-              <option value="ma" data-i18n="lv_ma"></option>
-              <option value="phd" data-i18n="lv_phd"></option>
-            </select>
-            <p class="err" id="e-level"></p>
-          </div>
-          <div class="field">
             <label for="f-uni" data-i18n="l_uni"></label>
             <input type="text" id="f-uni" name="uni" data-i18n-ph="ph_uni">
             <p class="err" id="e-uni"></p>
           </div>
           <div class="field">
-            <label for="f-gpa" data-i18n="l_gpa"></label>
-            <input type="number" id="f-gpa" name="gpa" inputmode="decimal" min="50" max="100" step="0.01" placeholder="78.5">
-            <p class="err" id="e-gpa"></p>
-          </div>
-          <div class="field">
             <label for="f-gradyear" data-i18n="l_gradyear"></label>
             <input type="number" id="f-gradyear" name="gradyear" inputmode="numeric" min="1960" max="2027" placeholder="2023">
             <p class="err" id="e-gradyear"></p>
-          </div>
-          <div class="field">
-            <label for="f-work" data-i18n="l_work"></label>
-            <select id="f-work" name="work">
-              <option value="0" data-i18n="work_0"></option>
-              <option value="1" data-i18n="work_1"></option>
-              <option value="2" data-i18n="work_2"></option>
-              <option value="3" data-i18n="work_3"></option>
-              <option value="5" data-i18n="work_5"></option>
-            </select>
           </div>
           <div class="field">
             <label for="f-eng" data-i18n="l_eng"></label>
@@ -465,6 +441,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
             <div class="picks" role="group" aria-labelledby="l-help">
               <label><input type="checkbox" name="help" id="f-help-reg" value="reg"> <span data-i18n="help_reg"></span></label>
               <label><input type="checkbox" name="help" id="f-help-exam" value="exam"> <span data-i18n="help_exam"></span></label>
+              <label><input type="checkbox" name="help" id="f-help-travel" value="travel"> <span data-i18n="help_travel"></span></label>
             </div>
             <p class="err" id="e-help"></p>
           </div>
@@ -594,7 +571,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       nav_path: "The path", nav_services: "Services", nav_register: "Register", nav_contact: "Contact",
       hero_kicker: "For pharmacists from Iraq",
       hero_title: "Become a <em>pharmacist</em> in <em>Canada</em>",
-      hero_lead: "If you want to be a pharmacist in Canada, this page is for you. We help with registration and exam preparation.",
+      hero_lead: "If you want to be a pharmacist in Canada, this page is for you. We help with registration and exam preparation, and we help to facilitate your travel to Canada.",
       cta_register: "Register now", cta_explore: "See the path",
       arch_label: "Two services",
       arch_s1: "Registration", arch_s1d: "PEBC · Provincial licence",
@@ -608,19 +585,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       svc_reg: ["PEBC document evaluation", "Exam applications", "Registration with your provincial regulator", "Language and jurisprudence requirements"],
       svc_exam_title: "Exam preparation",
       svc_exam: ["Qualifying Exam Part I (MCQ)", "Qualifying Exam Part II (OSCE) practice stations", "Provincial jurisprudence exam"],
+      travel_note: "We help to facilitate your travel to Canada.",
       pharm_cta: "Register now",
       reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes.",
       sec_personal: "Personal", sec_academic: "Pharmacy education", sec_pharm: "Pharmacy in Canada",
       l_name: "Full name (as in passport)", ph_name: "Ali Hussein Kadhim",
       l_birth: "Year of birth", l_country: "Country of residence", opt_choose: "Choose…",
       l_phone: "Phone / WhatsApp", l_cc: "Country code", l_email: "Email", optional: "(optional)",
-      l_level: "Highest degree", lv_ba: "Bachelor of Pharmacy", lv_pd: "PharmD", lv_ma: "Master's", lv_phd: "PhD",
       l_uni: "University", ph_uni: "University of Baghdad",
-      l_gpa: "Average (%)", l_gradyear: "Graduation year",
-      l_work: "Pharmacy work experience", work_0: "None", work_1: "Under 2 years", work_2: "2 years", work_3: "3–5 years", work_5: "5+ years",
+      l_gradyear: "Graduation year",
       l_eng: "English test", eng_none: "Not yet", eng_other: "Other", l_engscore: "Score",
       l_stage: "Where are you now?", l_prov: "Province",
-      l_help: "I need help with", help_reg: "Registration", help_exam: "Exam preparation",
+      l_help: "I need help with", help_reg: "Registration", help_exam: "Exam preparation", help_travel: "Travel to Canada",
       l_notes: "Notes",
       l_consent: "My information is correct and Al-Tina may contact me.",
       btn_submit: "Submit application",
@@ -630,7 +606,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       err_file: "Please attach this document.", err_total: "Files are over 10 MB in total. Use smaller files, or send the rest on WhatsApp.",
       sent_title: "Application sent", sent_body: "Thank you. We received your application and documents. We'll contact you on WhatsApp.",
       err_required: "Required.", err_email: "Enter a valid email.", err_phone: "Enter a valid phone number.",
-      err_gpa: "Enter a number from 50 to 100.", err_year: "Enter a valid year.",
+      err_year: "Enter a valid year.",
       err_help: "Choose at least one.", err_consent: "Please tick this box.", err_summary: "Please fix the fields in red.",
       res_title: "Application ready", res_ref: "Reference",
       res_text_lbl: "Your application",
@@ -651,7 +627,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       nav_path: "المسار", nav_services: "الخدمات", nav_register: "التسجيل", nav_contact: "تواصل معنا",
       hero_kicker: "للصيادلة من العراق",
       hero_title: "كن <em>صيدلانياً</em> في <em>كندا</em>",
-      hero_lead: "إذا كنت تريد أن تصبح صيدلانياً في كندا، فهذه الصفحة لك. نساعدك في التسجيل والتحضير للامتحانات.",
+      hero_lead: "إذا كنت تريد أن تصبح صيدلانياً في كندا، فهذه الصفحة لك. نساعدك في التسجيل والتحضير للامتحانات، ونساعد في تسهيل سفرك إلى كندا.",
       cta_register: "سجّل الآن", cta_explore: "اطّلع على المسار",
       arch_label: "خدمتان",
       arch_s1: "التسجيل", arch_s1d: "PEBC · ترخيص المقاطعة",
@@ -665,19 +641,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       svc_reg: ["تقييم الوثائق لدى PEBC", "التقديم على الامتحانات", "التسجيل لدى هيئة الصيدلة في المقاطعة", "متطلبات اللغة والقوانين"],
       svc_exam_title: "التحضير للامتحانات",
       svc_exam: ["امتحان التأهيل الجزء الأول (MCQ)", "تدريب على محطات الجزء الثاني (OSCE)", "امتحان القوانين في المقاطعة"],
+      travel_note: "نساعد في تسهيل سفرك إلى كندا.",
       pharm_cta: "سجّل الآن",
       reg_eyebrow: "ابدأ من هنا", reg_title: "التسجيل", reg_lead: "يستغرق 5 دقائق تقريباً.",
       sec_personal: "المعلومات الشخصية", sec_academic: "دراسة الصيدلة", sec_pharm: "الصيدلة في كندا",
       l_name: "الاسم الكامل (كما في الجواز)", ph_name: "علي حسين كاظم",
       l_birth: "سنة الميلاد", l_country: "بلد الإقامة", opt_choose: "اختر…",
       l_phone: "الهاتف / واتساب", l_cc: "رمز الدولة", l_email: "البريد الإلكتروني", optional: "(اختياري)",
-      l_level: "أعلى شهادة", lv_ba: "بكالوريوس صيدلة", lv_pd: "دكتور صيدلة (PharmD)", lv_ma: "ماجستير", lv_phd: "دكتوراه",
       l_uni: "الجامعة", ph_uni: "جامعة بغداد",
-      l_gpa: "المعدل (%)", l_gradyear: "سنة التخرج",
-      l_work: "الخبرة في الصيدلة", work_0: "لا توجد", work_1: "أقل من سنتين", work_2: "سنتان", work_3: "3–5 سنوات", work_5: "أكثر من 5 سنوات",
+      l_gradyear: "سنة التخرج",
       l_eng: "اختبار الإنكليزية", eng_none: "لم أقدّم بعد", eng_other: "آخر", l_engscore: "الدرجة",
       l_stage: "أين وصلت؟", l_prov: "المقاطعة",
-      l_help: "أحتاج مساعدة في", help_reg: "التسجيل", help_exam: "التحضير للامتحانات",
+      l_help: "أحتاج مساعدة في", help_reg: "التسجيل", help_exam: "التحضير للامتحانات", help_travel: "السفر إلى كندا",
       l_notes: "ملاحظات",
       l_consent: "معلوماتي صحيحة، وأوافق على تواصل التينة معي.",
       btn_submit: "إرسال الطلب",
@@ -687,7 +662,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       err_file: "يرجى إرفاق هذه الوثيقة.", err_total: "حجم الملفات أكثر من 10 ميغابايت. استخدم ملفات أصغر، أو أرسل الباقي عبر واتساب.",
       sent_title: "تم إرسال طلبك", sent_body: "شكراً لك. استلمنا طلبك ووثائقك، وسنتواصل معك عبر واتساب.",
       err_required: "مطلوب.", err_email: "اكتب بريداً صحيحاً.", err_phone: "اكتب رقم هاتف صحيحاً.",
-      err_gpa: "اكتب رقماً من 50 إلى 100.", err_year: "اكتب سنة صحيحة.",
+      err_year: "اكتب سنة صحيحة.",
       err_help: "اختر واحداً على الأقل.", err_consent: "يرجى التأشير على المربع.", err_summary: "يرجى تصحيح الحقول باللون الأحمر.",
       res_title: "طلبك جاهز", res_ref: "الرقم المرجعي",
       res_text_lbl: "طلبك",
@@ -804,7 +779,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   }
 
   // ----- Form -----
-  var TEXT_FIELDS = ["name", "birth", "country", "cc", "phone", "email", "level", "uni", "gpa", "gradyear", "work", "eng", "engscore", "stage", "prov", "notes"];
+  var TEXT_FIELDS = ["name", "birth", "country", "cc", "phone", "email", "uni", "gradyear", "eng", "engscore", "stage", "prov", "notes"];
   function readForm() {
     var v = {};
     TEXT_FIELDS.forEach(function (k) { v[k] = (form.elements[k].value || "").trim(); });
@@ -821,9 +796,9 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   var saveTimer;
   function saveDraft() {
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(function () { try { localStorage.setItem("altina-draft-v4", JSON.stringify(readForm())); } catch (e) {} }, 400);
+    saveTimer = setTimeout(function () { try { localStorage.setItem("altina-draft-v5", JSON.stringify(readForm())); } catch (e) {} }, 400);
   }
-  function loadDraft() { try { var s = localStorage.getItem("altina-draft-v4"); if (s) writeForm(JSON.parse(s)); } catch (e) {} }
+  function loadDraft() { try { var s = localStorage.getItem("altina-draft-v5"); if (s) writeForm(JSON.parse(s)); } catch (e) {} }
 
   function setErr(id, msg, input) {
     $("e-" + id).textContent = msg || "";
@@ -840,10 +815,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     var digits = v.phone.replace(/\D/g, "").replace(/^0+/, "");
     check("phone", digits.length >= 6 && digits.length <= 13 && /^[\d\s\-()]+$/.test(v.phone), v.phone ? t("err_phone") : t("err_required"), $("f-phone"));
     check("email", !v.email || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email), t("err_email"), $("f-email"));
-    check("level", !!v.level, t("err_required"), $("f-level"));
     check("uni", !!v.uni, t("err_required"), $("f-uni"));
-    var g = Number(v.gpa);
-    check("gpa", v.gpa && g >= 50 && g <= 100, v.gpa ? t("err_gpa") : t("err_required"), $("f-gpa"));
     var gy = Number(v.gradyear);
     check("gradyear", v.gradyear && gy >= 1960 && gy <= year + 1, v.gradyear ? t("err_year") : t("err_required"), $("f-gradyear"));
     check("stage", !!v.stage, t("err_required"), $("f-stage"));
@@ -871,8 +843,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   function buildText(r) {
     var v = r.v, L = I18N[lang], sep = lang === "ar" ? "، " : ", ";
     var iso = function (s) { return lang === "ar" ? "⁦" + s + "⁩" : s; };
-    var levels = { ba: L.lv_ba, pd: L.lv_pd, ma: L.lv_ma, phd: L.lv_phd };
-    var works = { "0": L.work_0, "1": L.work_1, "2": L.work_2, "3": L.work_3, "5": L.work_5 };
+    var helps = { reg: L.help_reg, exam: L.help_exam, travel: L.help_travel };
     var engNames = { none: L.eng_none, ielts: "IELTS", toefl: "TOEFL iBT", celpip: "CELPIP", other: L.eng_other };
     var lines = [
       L.t_header,
@@ -885,17 +856,14 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       L.l_phone + ": " + iso("+" + v.cc + " " + v.phone.replace(/^0+/, "")),
       L.l_email + ": " + (v.email || L.t_none),
       "",
-      L.l_level + ": " + (levels[v.level] || ""),
       L.l_uni + ": " + v.uni,
-      L.l_gpa + ": " + v.gpa + "%",
       L.l_gradyear + ": " + v.gradyear,
       L.l_eng + ": " + engNames[v.eng] + (v.engscore ? " " + v.engscore : ""),
-      L.l_work + ": " + (works[v.work] || ""),
       ""
     ];
     lines.push(L.t_stage + ": " + pick(STAGES, v.stage));
     lines.push(L.l_prov + ": " + pick(PROVS, v.prov));
-    lines.push(L.l_help + ": " + v.help.map(function (h) { return h === "reg" ? L.help_reg : L.help_exam; }).join(sep));
+    lines.push(L.l_help + ": " + v.help.map(function (h) { return helps[h] || h; }).join(sep));
     lines.push(L.l_notes + ": " + (v.notes || L.t_none));
     return lines.join("\n");
   }
@@ -967,7 +935,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   $("btn-edit").addEventListener("click", function () { $("result").hidden = true; form.hidden = false; lastResult = null; $("f-name").focus(); });
   $("btn-new").addEventListener("click", function () {
     form.reset();
-    try { localStorage.removeItem("altina-draft-v4"); } catch (e) {}
+    try { localStorage.removeItem("altina-draft-v5"); } catch (e) {}
     lastResult = null;
     form.querySelectorAll("[aria-invalid]").forEach(function (i) { i.removeAttribute("aria-invalid"); });
     form.querySelectorAll(".err").forEach(function (p) { p.textContent = ""; });
@@ -986,7 +954,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   updateTotal();
   if (location.hash === "#sent") {
     var ref = "";
-    try { ref = localStorage.getItem("altina-last-ref") || ""; localStorage.removeItem("altina-draft-v4"); } catch (e) {}
+    try { ref = localStorage.getItem("altina-last-ref") || ""; localStorage.removeItem("altina-draft-v5"); } catch (e) {}
     form.reset(); updateTotal();
     $("sent-ref").textContent = ref;
     $("sent-ref").parentNode.hidden = !ref;
