@@ -11,6 +11,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap">
 <style>
+/* Scrollbar: gold */
+@supports not selector(::-webkit-scrollbar) { html { scrollbar-color: #d4bc7c #ece6d8; } }
+::-webkit-scrollbar { width: 14px; height: 14px; }
+::-webkit-scrollbar-track { background: #ece6d8; }
+::-webkit-scrollbar-thumb { background: #d4bc7c; border-radius: 999px; border: 2px solid #163f32; }
+::-webkit-scrollbar-thumb:hover { background: #c4a95f; }
 /* Layout: Al-Tina brand (forest, brass, warm paper; Newsreader + Manrope). Forest hero with a brass rosette frieze, gate-arch panel, then pharmacy pathway, services, documents, registration, contact. */
 :root {
   color-scheme: light;
@@ -141,8 +147,7 @@ html[lang="ar"] .arch .caps { letter-spacing: 0; }
 .shead .eyebrow { color: var(--brass-deep); margin-block-end: 10px; display: block; }
 .shead h2 { font-size: clamp(2.1rem, 4vw, 3.1rem); color: var(--forest); }
 .shead .sub { color: var(--muted); margin-block-start: 8px; max-width: 40em; }
-.note.travel, .note.fee { margin-block-start: 40px; font-size: 1.15rem; color: var(--forest); font-family: var(--f-display); }
-.note.fee { margin-block-start: 10px; }
+.note.travel { margin-block-start: 40px; font-size: 1.15rem; color: var(--forest); font-family: var(--f-display); }
 .note { color: var(--muted); font-size: .92rem; margin-block-start: 22px; }
 
 
@@ -316,7 +321,6 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <ol class="path" id="path"></ol>
-      <p class="note" data-i18n="path_note"></p>
       <div class="svc" id="services">
         <div class="svc-card">
           <h3 data-i18n="svc_reg_title"></h3>
@@ -332,7 +336,6 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       </div>
       <ul class="ticks docs" id="docs"></ul>
       <p class="note travel" data-i18n="travel_note"></p>
-      <p class="note fee" data-i18n="fee_note"></p>
       <div class="ctas">
         <a class="btn btn-forest" href="#register" data-i18n="pharm_cta"></a>
       </div>
@@ -582,15 +585,13 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       docs: ["Passport", "Pharmacy degree certificate and transcript (in English, attested)", "Pharmacy licence or registration from your country", "English test (IELTS, TOEFL or CELPIP)", "CV"],
       pharm_eyebrow: "Practise in Canada", pharm_title: "The path to a pharmacy licence", pharm_sub: "For pharmacists who graduated outside Canada.",
       path: [["Document evaluation", "PEBC"], ["Qualifying Exam, Part I", "MCQ"], ["Qualifying Exam, Part II", "OSCE"], ["Provincial licence", "Language, jurisprudence, practical training"]],
-      path_note: "From January 2027 the Evaluating Exam is no longer required. Its last sitting is October 2026.",
       svc_reg_title: "Registration",
       svc_reg: ["PEBC document evaluation", "Exam applications", "Registration with your provincial regulator", "Language and jurisprudence requirements"],
       svc_exam_title: "Exam preparation",
       svc_exam: ["Qualifying Exam Part I (MCQ)", "Qualifying Exam Part II (OSCE) practice stations", "Provincial jurisprudence exam"],
       travel_note: "We help to facilitate your travel to Canada.",
-      fee_note: "Our consultation fee is 250 USD only.",
       pharm_cta: "Register now",
-      reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes. Consultation fee: 250 USD.",
+      reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes.",
       sec_personal: "Personal", sec_academic: "Pharmacy education", sec_pharm: "Pharmacy in Canada",
       l_name: "Full name (as in passport)", ph_name: "Ali Hussein Kadhim",
       l_birth: "Year of birth", l_country: "Country of residence", opt_choose: "Choose…",
@@ -639,15 +640,13 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       docs: ["جواز السفر", "شهادة بكالوريوس الصيدلة وكشف الدرجات (بالإنكليزية ومصدّقة)", "إجازة ممارسة الصيدلة أو التسجيل في بلدك", "اختبار لغة إنكليزية (IELTS أو TOEFL أو CELPIP)", "سيرة ذاتية"],
       pharm_eyebrow: "ممارسة المهنة في كندا", pharm_title: "الطريق إلى ترخيص الصيدلة", pharm_sub: "للصيادلة خريجي الجامعات خارج كندا.",
       path: [["تقييم الوثائق", "PEBC"], ["امتحان التأهيل، الجزء الأول", "اختيار من متعدد (MCQ)"], ["امتحان التأهيل، الجزء الثاني", "الامتحان السريري (OSCE)"], ["الترخيص من المقاطعة", "اللغة، القوانين، التدريب العملي"]],
-      path_note: "ابتداءً من كانون الثاني 2027 لم يعد امتحان التقييم (EE) مطلوباً، وآخر دورة له في تشرين الأول 2026.",
       svc_reg_title: "التسجيل",
       svc_reg: ["تقييم الوثائق لدى PEBC", "التقديم على الامتحانات", "التسجيل لدى هيئة الصيدلة في المقاطعة", "متطلبات اللغة والقوانين"],
       svc_exam_title: "التحضير للامتحانات",
       svc_exam: ["امتحان التأهيل الجزء الأول (MCQ)", "تدريب على محطات الجزء الثاني (OSCE)", "امتحان القوانين في المقاطعة"],
       travel_note: "نساعد في تسهيل سفرك إلى كندا.",
-      fee_note: "رسوم الاستشارة 250 دولاراً أمريكياً فقط.",
       pharm_cta: "سجّل الآن",
-      reg_eyebrow: "ابدأ من هنا", reg_title: "التسجيل", reg_lead: "يستغرق 5 دقائق تقريباً. رسوم الاستشارة: 250 دولاراً أمريكياً.",
+      reg_eyebrow: "ابدأ من هنا", reg_title: "التسجيل", reg_lead: "يستغرق 5 دقائق تقريباً.",
       sec_personal: "المعلومات الشخصية", sec_academic: "دراسة الصيدلة", sec_pharm: "الصيدلة في كندا",
       l_name: "الاسم الكامل (كما في الجواز)", ph_name: "علي حسين كاظم",
       l_birth: "سنة الميلاد", l_country: "بلد الإقامة", opt_choose: "اختر…",
