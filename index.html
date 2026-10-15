@@ -141,7 +141,8 @@ html[lang="ar"] .arch .caps { letter-spacing: 0; }
 .shead .eyebrow { color: var(--brass-deep); margin-block-end: 10px; display: block; }
 .shead h2 { font-size: clamp(2.1rem, 4vw, 3.1rem); color: var(--forest); }
 .shead .sub { color: var(--muted); margin-block-start: 8px; max-width: 40em; }
-.note.travel { margin-block-start: 40px; font-size: 1.15rem; color: var(--forest); font-family: var(--f-display); }
+.note.travel, .note.fee { margin-block-start: 40px; font-size: 1.15rem; color: var(--forest); font-family: var(--f-display); }
+.note.fee { margin-block-start: 10px; }
 .note { color: var(--muted); font-size: .92rem; margin-block-start: 22px; }
 
 
@@ -327,10 +328,11 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <div class="shead" style="margin-block:72px 24px">
-        <div><h2 data-i18n="docs_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2></div>
+        <div><h2 data-i18n="docs_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2><p class="sub" data-i18n="docs_sub"></p></div>
       </div>
       <ul class="ticks docs" id="docs"></ul>
       <p class="note travel" data-i18n="travel_note"></p>
+      <p class="note fee" data-i18n="fee_note"></p>
       <div class="ctas">
         <a class="btn btn-forest" href="#register" data-i18n="pharm_cta"></a>
       </div>
@@ -576,7 +578,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       arch_label: "Two services",
       arch_s1: "Registration", arch_s1d: "PEBC · Provincial licence",
       arch_s2: "Exam preparation", arch_s2d: "MCQ · OSCE · Jurisprudence",
-      docs_title: "Documents you'll need",
+      docs_title: "Documents you need", docs_sub: "We help you get them in the proper way.",
       docs: ["Passport", "Pharmacy degree certificate and transcript (in English, attested)", "Pharmacy licence or registration from your country", "English test (IELTS, TOEFL or CELPIP)", "CV"],
       pharm_eyebrow: "Practise in Canada", pharm_title: "The path to a pharmacy licence", pharm_sub: "For pharmacists who graduated outside Canada.",
       path: [["Document evaluation", "PEBC"], ["Qualifying Exam, Part I", "MCQ"], ["Qualifying Exam, Part II", "OSCE"], ["Provincial licence", "Language, jurisprudence, practical training"]],
@@ -586,15 +588,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       svc_exam_title: "Exam preparation",
       svc_exam: ["Qualifying Exam Part I (MCQ)", "Qualifying Exam Part II (OSCE) practice stations", "Provincial jurisprudence exam"],
       travel_note: "We help to facilitate your travel to Canada.",
+      fee_note: "Our consultation fee is 250 USD only.",
       pharm_cta: "Register now",
-      reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes.",
+      reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes. Consultation fee: 250 USD.",
       sec_personal: "Personal", sec_academic: "Pharmacy education", sec_pharm: "Pharmacy in Canada",
       l_name: "Full name (as in passport)", ph_name: "Ali Hussein Kadhim",
       l_birth: "Year of birth", l_country: "Country of residence", opt_choose: "Choose…",
       l_phone: "Phone / WhatsApp", l_cc: "Country code", l_email: "Email", optional: "(optional)",
       l_uni: "University", ph_uni: "University of Baghdad",
       l_gradyear: "Graduation year",
-      l_eng: "English test", eng_none: "Not yet", eng_other: "Other", l_engscore: "Score",
+      l_eng: "English test", eng_none: "Not yet", eng_other: "Other", l_engscore: "English test overall score",
       l_stage: "Where are you now?", l_prov: "Province",
       l_help: "I need help with", help_reg: "Registration", help_exam: "Exam preparation", help_travel: "Travel to Canada",
       l_notes: "Notes",
@@ -632,7 +635,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       arch_label: "خدمتان",
       arch_s1: "التسجيل", arch_s1d: "PEBC · ترخيص المقاطعة",
       arch_s2: "التحضير للامتحانات", arch_s2d: "MCQ · OSCE · القوانين",
-      docs_title: "الوثائق المطلوبة",
+      docs_title: "الوثائق التي تحتاجها", docs_sub: "نساعدك في الحصول عليها بالطريقة الصحيحة.",
       docs: ["جواز السفر", "شهادة بكالوريوس الصيدلة وكشف الدرجات (بالإنكليزية ومصدّقة)", "إجازة ممارسة الصيدلة أو التسجيل في بلدك", "اختبار لغة إنكليزية (IELTS أو TOEFL أو CELPIP)", "سيرة ذاتية"],
       pharm_eyebrow: "ممارسة المهنة في كندا", pharm_title: "الطريق إلى ترخيص الصيدلة", pharm_sub: "للصيادلة خريجي الجامعات خارج كندا.",
       path: [["تقييم الوثائق", "PEBC"], ["امتحان التأهيل، الجزء الأول", "اختيار من متعدد (MCQ)"], ["امتحان التأهيل، الجزء الثاني", "الامتحان السريري (OSCE)"], ["الترخيص من المقاطعة", "اللغة، القوانين، التدريب العملي"]],
@@ -642,15 +645,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       svc_exam_title: "التحضير للامتحانات",
       svc_exam: ["امتحان التأهيل الجزء الأول (MCQ)", "تدريب على محطات الجزء الثاني (OSCE)", "امتحان القوانين في المقاطعة"],
       travel_note: "نساعد في تسهيل سفرك إلى كندا.",
+      fee_note: "رسوم الاستشارة 250 دولاراً أمريكياً فقط.",
       pharm_cta: "سجّل الآن",
-      reg_eyebrow: "ابدأ من هنا", reg_title: "التسجيل", reg_lead: "يستغرق 5 دقائق تقريباً.",
+      reg_eyebrow: "ابدأ من هنا", reg_title: "التسجيل", reg_lead: "يستغرق 5 دقائق تقريباً. رسوم الاستشارة: 250 دولاراً أمريكياً.",
       sec_personal: "المعلومات الشخصية", sec_academic: "دراسة الصيدلة", sec_pharm: "الصيدلة في كندا",
       l_name: "الاسم الكامل (كما في الجواز)", ph_name: "علي حسين كاظم",
       l_birth: "سنة الميلاد", l_country: "بلد الإقامة", opt_choose: "اختر…",
       l_phone: "الهاتف / واتساب", l_cc: "رمز الدولة", l_email: "البريد الإلكتروني", optional: "(اختياري)",
       l_uni: "الجامعة", ph_uni: "جامعة بغداد",
       l_gradyear: "سنة التخرج",
-      l_eng: "اختبار الإنكليزية", eng_none: "لم أقدّم بعد", eng_other: "آخر", l_engscore: "الدرجة",
+      l_eng: "اختبار الإنكليزية", eng_none: "لم أقدّم بعد", eng_other: "آخر", l_engscore: "الدرجة الكلية لاختبار الإنكليزية",
       l_stage: "أين وصلت؟", l_prov: "المقاطعة",
       l_help: "أحتاج مساعدة في", help_reg: "التسجيل", help_exam: "التحضير للامتحانات", help_travel: "السفر إلى كندا",
       l_notes: "ملاحظات",
