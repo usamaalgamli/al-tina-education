@@ -181,6 +181,16 @@ html[lang="ar"] .path h3 { font-weight: 700; }
 .docs li:nth-last-child(2):nth-child(odd) { border-block-end: 0; }
 @media (max-width: 720px) { .docs { grid-template-columns: 1fr; } .docs li:nth-last-child(2):nth-child(odd) { border-block-end: 1px solid var(--line); } }
 
+/* FAQ */
+.faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--forest); border-radius: 14px; padding: 8px 28px; }
+.qa { padding-block: 20px; border-block-end: 1px solid var(--line); min-width: 0; }
+.faq .qa:nth-last-child(1), .faq .qa:nth-last-child(2) { border-block-end: 0; }
+.qa h3 { display: flex; align-items: center; gap: 12px; font-family: var(--f-body); font-size: 1.12rem; font-weight: 700; line-height: 1.45; color: var(--forest); }
+.qa h3 svg { width: 14px; height: 14px; flex: none; color: var(--brass); }
+.qa p { color: var(--ink); margin-block-start: 6px; padding-inline-start: 26px; }
+.qa .chain .step, .qa .lat { white-space: nowrap; }
+.qa .chain .arw { color: var(--brass-deep); }
+@media (max-width: 760px) { .faq { grid-template-columns: 1fr; padding-inline: 22px; } .faq .qa:nth-last-child(2) { border-block-end: 1px solid var(--line); } }
 /* Form */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 5vw, 52px); box-shadow: var(--shadow); position: relative; overflow: hidden; }
 .card::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--forest), var(--brass)); }
@@ -281,6 +291,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     <nav class="nav caps" aria-label="Main">
       <a href="#pharmacy" data-i18n="nav_path"></a>
       <a href="#services" data-i18n="nav_services"></a>
+      <a href="#faq" data-i18n="nav_faq"></a>
       <a href="#register" data-i18n="nav_register"></a>
       <a href="#contact" data-i18n="nav_contact"></a>
     </nav>
@@ -341,6 +352,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       <div class="ctas">
         <a class="btn btn-forest" href="#register" data-i18n="pharm_cta"></a>
       </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="faq_eyebrow"></span>
+          <h2 data-i18n="faq_title"></h2>
+          <p class="sub" data-i18n="faq_sub"></p>
+        </div>
+      </div>
+      <div class="faq" id="faq-list"></div>
+      <p class="note" data-i18n="faq_src"></p>
     </div>
   </section>
 
@@ -575,7 +600,22 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   var I18N = {
     en: {
       brand_sub: "Pharmacy in Canada",
-      nav_path: "The path", nav_services: "Services", nav_register: "Register", nav_contact: "Contact",
+      nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
+      faq_eyebrow: "Most asked", faq_title: "Answers to your questions", faq_sub: "Collected from your comments on our posts.",
+      faq_src: "Sources: PEBC · NAPRA · CIHI (2024) · Job Bank. Northern wages: Usama Algamli's experience.",
+      faq: [
+        ["How do I start?", ["Gateway", "Document evaluation", "MCQ", "OSCE", "Provincial requirements"]],
+        ["What are the exams?", "Two exams only: MCQ first. After you pass it, you apply for the OSCE."],
+        ["What is on the exam?", "It is based on NAPRA's entry-to-practice competencies, with the most weight on clinical care."],
+        ["Can I do the steps from Iraq?", "Yes. Gateway registration, document evaluation and the MCQ (taken remotely) can all be done from Iraq. Only the OSCE is in Canada."],
+        ["New graduate with no experience or residency?", "You can apply. If you don't have a practice licence, you submit a Statutory Declaration."],
+        ["Which language test?", "IELTS Academic (reading 7, listening 7, speaking 7, writing 6.5), OET, or TEF Canada in French."],
+        ["What is the salary in Canada?", "The average pharmacist wage is about CAD 55 an hour, roughly CAD 108,000 a year full time. In northern Canada it can reach CAD 100 an hour."],
+        ["How much does it cost?", "It depends on the province and the number of attempts. Contact us and we'll send you a table with all the fees."],
+        ["Immigration and visa?", "A separate route from licensing. It's best to start with licensing and use it later for immigration."],
+        ["Is it impossible for an Iraqi?", "No. 36.7% of Alberta's pharmacists were educated outside Canada, and many Iraqis have made it."],
+        ["Same steps for dentistry?", "No, dentistry is a completely different route."]
+      ],
       hero_kicker: "For pharmacists from Iraq",
       hero_title: "Become a <em>pharmacist</em> in <em>Canada</em>",
       hero_lead: "If you want to be a pharmacist in Canada, this page is for you. We help with registration and exam preparation, and we help to facilitate your travel to Canada.",
@@ -630,7 +670,22 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     },
     ar: {
       brand_sub: "الصيدلة في كندا",
-      nav_path: "المسار", nav_services: "الخدمات", nav_register: "التسجيل", nav_contact: "تواصل معنا",
+      nav_path: "المسار", nav_services: "الخدمات", nav_faq: "أجوبة لأسئلتك", nav_register: "التسجيل", nav_contact: "تواصل معنا",
+      faq_eyebrow: "الأسئلة الأكثر تكراراً", faq_title: "أجوبة لأسئلتك", faq_sub: "جمعناها من تعليقاتكم على منشوراتنا.",
+      faq_src: "المصادر: PEBC · NAPRA · CIHI (2024) · Job Bank. أجور الشمال من خبرة Usama Algamli.",
+      faq: [
+        ["شلون أبدي؟", ["Gateway", "تقييم الوثائق", "MCQ", "OSCE", "متطلبات المقاطعة"]],
+        ["شنو الامتحانات؟", "امتحانين فقط: MCQ أولاً، وبعد ما تنجح بيه تقدّم على OSCE."],
+        ["شنو يجي بالامتحان؟", "مبني على كفاءات NAPRA للصيدلي المبتدئ، وأكبر وزن للرعاية السريرية."],
+        ["أكدر أسوي الخطوات وآني بالعراق؟", "نعم. التسجيل في Gateway، تقييم الوثائق، وامتحان MCQ عن بُعد، كلها من العراق. بس الـ OSCE يكون داخل كندا."],
+        ["خريج جديد بدون خبرة أو إقامة؟", "تكدر تقدّم. إذا ما عندك إجازة ممارسة، تقدّم إقرار رسمي (Statutory Declaration)."],
+        ["شنو امتحان اللغة؟", "IELTS Academic (قراءة 7، استماع 7، محادثة 7، كتابة 6.5) أو OET، أو TEF Canada بالفرنسي."],
+        ["شكد الراتب بكندا؟", "معدل أجور الصيدلي حوالي 55 دولار كندي بالساعة، يعني تقريباً 108 آلاف بالسنة بدوام كامل. وبشمال كندا يوصل لـ 100 دولار بالساعة."],
+        ["شكد تكلف المعادلة؟", "تختلف حسب المقاطعة وعدد المحاولات. تواصل ويانا ونرسلك جدول بكل الرسوم."],
+        ["الهجرة والفيزا؟", "طريق منفصل عن المعادلة. الأفضل تبدي بالمعادلة وتستخدمها بعدين للهجرة."],
+        ["مستحيل يقبلون عراقي؟", "لا. 36.7% من صيادلة ألبرتا تعلّموا خارج كندا، وهواية عراقيين وصلوا."],
+        ["نفس الخطوات لطب الأسنان؟", "لا، طب الأسنان مسار مختلف تماماً."]
+      ],
       hero_kicker: "للصيادلة من العراق",
       hero_title: "كن <em>صيدلانياً</em> في <em>كندا</em>",
       hero_lead: "إذا كنت تريد أن تصبح صيدلانياً في كندا، فهذه الصفحة لك. نساعدك في التسجيل والتحضير للامتحانات، ونساعد في تسهيل سفرك إلى كندا.",
@@ -749,6 +804,35 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     });
   }
 
+  function renderFaq() {
+    var box = $("faq-list"); box.textContent = "";
+    t("faq").forEach(function (q) {
+      var d = el("div", "qa"), h = el("h3");
+      h.appendChild(rosette()); h.appendChild(el("span", null, q[0]));
+      d.appendChild(h);
+      var p = el("p");
+      if (Array.isArray(q[1])) {
+        p.className = "chain";
+        q[1].forEach(function (s, i) {
+          var step = el("span", "step");
+          if (i) { p.appendChild(document.createTextNode(" ")); step.appendChild(el("span", "arw", lang === "ar" ? "← " : "→ ")); }
+          step.appendChild(el("bdi", null, s));
+          p.appendChild(step);
+        });
+      } else if (lang !== "ar") {
+        p.textContent = q[1];
+      } else {
+        // keep Latin words (IELTS, Statutory Declaration…) in their own direction inside Arabic text
+        q[1].split(/(\(?[A-Za-z][A-Za-z0-9.'\- ]*[A-Za-z0-9]\)?|[A-Za-z])/).forEach(function (part, i) {
+          if (!part) return;
+          p.appendChild(i % 2 ? el("bdi", "lat", part) : document.createTextNode(part));
+        });
+      }
+      d.appendChild(p);
+      box.appendChild(d);
+    });
+  }
+
   function renderSelect(id, list) {
     var sel = $(id), cur = sel.value;
     sel.textContent = "";
@@ -776,6 +860,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-lang") === lang)); });
     $("hero-title").innerHTML = t("hero_title");
     renderPath();
+    renderFaq();
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
     renderCodes(); renderSelect("f-country", COUNTRIES); renderSelect("f-stage", STAGES); renderSelect("f-prov", PROVS);
     if (lastResult) showResult(lastResult, false);
