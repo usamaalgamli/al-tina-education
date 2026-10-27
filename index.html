@@ -79,6 +79,8 @@ html[lang="ar"] .caps { font-size: .92rem; letter-spacing: 0; text-transform: no
 .nav { display: flex; gap: 24px; margin-inline-start: auto; }
 .nav a { color: var(--muted); text-decoration: none; }
 .nav a:hover { color: var(--forest); }
+.nav a.hl { background: var(--forest-tint); color: var(--forest); padding: 2px 14px; margin-block: -2px; border-radius: 999px; box-shadow: 0 4px 12px -6px rgba(22, 63, 50, .35); }
+.nav a.hl:hover { background: #d6e3d9; }
 .tabs { display: flex; padding: 3px; border-radius: 999px; background: var(--forest-tint); }
 .tabs button { font: inherit; font-size: .8rem; font-weight: 600; padding: 6px 14px; border: 0; border-radius: 999px; background: transparent; color: var(--forest); cursor: pointer; }
 .tabs button[aria-selected="true"] { background: var(--forest); color: var(--on-forest); }
@@ -291,7 +293,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     <nav class="nav caps" aria-label="Main">
       <a href="#pharmacy" data-i18n="nav_path"></a>
       <a href="#services" data-i18n="nav_services"></a>
-      <a href="#faq" data-i18n="nav_faq"></a>
+      <a class="hl" href="#faq" data-i18n="nav_faq"></a>
       <a href="#register" data-i18n="nav_register"></a>
       <a href="#contact" data-i18n="nav_contact"></a>
     </nav>
