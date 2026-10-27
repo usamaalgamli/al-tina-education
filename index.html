@@ -192,6 +192,9 @@ html[lang="ar"] .path h3 { font-weight: 700; }
 .qa p { color: var(--ink); margin-block-start: 6px; padding-inline-start: 26px; }
 .qa .chain .step, .qa .lat { white-space: nowrap; }
 .qa .chain .arw { color: var(--brass-deep); }
+.fees { margin: 40px auto 0; max-width: 720px; text-align: center; }
+.fees figcaption { font-family: var(--f-display); font-size: 1.35rem; color: var(--forest); margin-block-end: 16px; }
+.fees img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow); }
 @media (max-width: 760px) { .faq { grid-template-columns: 1fr; padding-inline: 22px; } .faq .qa:nth-last-child(2) { border-block-end: 1px solid var(--line); } }
 /* Form */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 5vw, 52px); box-shadow: var(--shadow); position: relative; overflow: hidden; }
@@ -367,6 +370,10 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <div class="faq" id="faq-list"></div>
+      <figure class="fees" id="fees">
+        <figcaption data-i18n="fees_cap"></figcaption>
+        <a href="fees-2027.jpg" target="_blank" rel="noopener"><img src="fees-2027.jpg" width="1080" height="1350" loading="lazy" alt="PEBC fees and time, Manitoba 2027"></a>
+      </figure>
       <p class="note" data-i18n="faq_src"></p>
     </div>
   </section>
@@ -603,7 +610,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     en: {
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
-      faq_eyebrow: "Most asked", faq_title: "Answers to your questions", faq_sub: "Collected from your comments on our posts.",
+      faq_eyebrow: "Most asked", faq_title: "Answers to your questions", fees_cap: "Fees and time (Manitoba, new PEBC pathway, 2027)", faq_sub: "Collected from your comments on our posts.",
       faq_src: "Sources: PEBC · NAPRA · CIHI (2024) · Job Bank.",
       faq: [
         ["How do I start?", ["Gateway", "Document evaluation", "MCQ", "OSCE", "Jurisprudence exam"]],
@@ -619,7 +626,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["How do I send my transcript and attestation?", "By DHL."],
         ["Which language test?", "IELTS Academic (reading 7, listening 7, speaking 7, writing 6.5), OET, or TEF Canada in French."],
         ["How do I pay the fees from Iraq?", "Give the money in cash to someone who has a credit or debit card from outside Iraq, and they pay for you. Iraqi cards often don't work."],
-        ["How much does it cost?", "It depends on the province and the number of attempts. Contact us and we'll send you a table with all the fees."],
+        ["How much does it cost?", "It depends on the province and the number of attempts. See the fees and time table below."],
         ["What is the practical training?", "You work as a pharmacist under supervision. Your supervisor tells you what to do: data entry, product check, data verification, clinical verification and documentation."],
         ["What is the jurisprudence exam?", "A provincial exam on the legal way to handle a prescription."],
         ["Which province should I start in?", "It depends on many criteria. We decide together when and where."],
@@ -686,7 +693,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     ar: {
       brand_sub: "الصيدلة في كندا",
       nav_path: "المسار", nav_services: "الخدمات", nav_faq: "أجوبة لأسئلتك", nav_register: "التسجيل", nav_contact: "تواصل معنا",
-      faq_eyebrow: "الأسئلة الأكثر تكراراً", faq_title: "أجوبة لأسئلتك", faq_sub: "جمعناها من تعليقاتكم على منشوراتنا.",
+      faq_eyebrow: "الأسئلة الأكثر تكراراً", faq_title: "أجوبة لأسئلتك", fees_cap: "الرسوم والوقت (مانيتوبا، مسار PEBC الجديد، 2027)", faq_sub: "جمعناها من تعليقاتكم على منشوراتنا.",
       faq_src: "المصادر: PEBC · NAPRA · CIHI (2024) · Job Bank.",
       faq: [
         ["شلون أبدي؟", ["Gateway", "تقييم الوثائق", "MCQ", "OSCE", "امتحان القوانين"]],
@@ -702,7 +709,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["شلون أرسل كشف الدرجات والتصديق؟", "عن طريق DHL."],
         ["شنو امتحان اللغة؟", "IELTS Academic (قراءة 7، استماع 7، محادثة 7، كتابة 6.5) أو OET، أو TEF Canada بالفرنسي."],
         ["شلون أدفع الرسوم من العراق؟", "تنطي المبلغ كاش لشخص عنده بطاقة credit أو debit من خارج العراق ويدفع عنك، لأن البطاقات العراقية أغلب الأحيان ما تشتغل."],
-        ["شكد تكلف المعادلة؟", "تختلف حسب المقاطعة وعدد المحاولات. تواصل ويانا ونرسلك جدول بكل الرسوم."],
+        ["شكد تكلف المعادلة؟", "تختلف حسب المقاطعة وعدد المحاولات. شوف جدول الرسوم والوقت تحت."],
         ["شنو التدريب العملي؟", "تشتغل صيدلي تحت إشراف، والمشرف يحدد شغلك: إدخال البيانات، فحص المنتج، التحقق من البيانات، التحقق السريري، والتوثيق."],
         ["شنو امتحان القوانين؟", "امتحان بالمقاطعة عن الطريقة القانونية للتعامل ويا الوصفة."],
         ["أي مقاطعة أبدي بيها؟", "تعتمد على معايير هواية، ونقرر سوه وين ومتى."],
