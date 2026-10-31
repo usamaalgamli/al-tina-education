@@ -252,6 +252,7 @@ input[type="file"]:focus-visible { outline: 2px solid var(--brass); outline-offs
 /* Contact */
 .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-grid.one { grid-template-columns: minmax(0, 520px); }
 .cbox { display: grid; gap: 6px; padding: 26px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink); min-width: 0; transition: border-color .2s, transform .2s; }
 .cbox:hover { border-color: var(--forest); transform: translateY(-2px); }
 .cbox .k { color: var(--brass-deep); }
@@ -574,8 +575,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <p class="sub" data-i18n="contact_sub"></p>
         </div>
       </div>
-      <div class="contact-grid">
-        <a class="cbox" href="mailto:contact@al-tina.ca"><span class="k caps" data-i18n="c_email"></span><span class="v">contact@al-tina.ca</span></a>
+      <div class="contact-grid one">
         <a class="cbox" href="https://wa.me/15879669624" target="_blank" rel="noopener"><span class="k caps" data-i18n="c_wa"></span><span class="v">+1 (587) 966-9624</span></a>
       </div>
     </div>
@@ -587,7 +587,6 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     <div class="cols">
       <a class="logo" href="#top" aria-label="Al-Tina"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><defs><mask id="altgap" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><path d="M14 49V30A27 27 0 0 1 32.0 4.54A27 27 0 0 1 50 30V49" stroke="#000" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M20 49V32A18 18 0 0 1 32.0 15.03A18 18 0 0 1 44 32V49" stroke="#000" stroke-width=".8" fill="none" stroke-linecap="round"/><path d="M27.75 29.57H36.25V38.07H27.75Z" stroke="#000" stroke-width=".55" fill="none"/><path d="M32 27.81L38.01 33.82L32 39.83L25.99 33.82Z" stroke="#000" stroke-width=".55" fill="none"/></mask></defs><g mask="url(#altgap)"><path d="M14 49V30A27 27 0 0 1 32.0 4.54A27 27 0 0 1 50 30V49" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/><path d="M20 49V32A18 18 0 0 1 32.0 15.03A18 18 0 0 1 44 32V49" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g><path d="M9 50H55" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M12.5 54.5H51.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 59H48" style="stroke:var(--brass)" stroke-width="3" stroke-linecap="round"/><path d="M24.5 49V35A11.5 11.5 0 0 1 32.0 24.22A11.5 11.5 0 0 1 39.5 35V49Z" style="fill:var(--brass)"/><g mask="url(#altgap)"><path d="M27.75 29.57H36.25V38.07H27.75Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="miter"/><path d="M32 27.81L38.01 33.82L32 39.83L25.99 33.82Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="miter"/></g><g fill="currentColor" transform="translate(32 33.82) scale(0.135) translate(-20 -20)"><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(45 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(90 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(135 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(180 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(225 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(270 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(315 20 20)"/><circle cx="20" cy="20" r="3.8"/></g></svg><span class="wm"><span class="nm">Al-Tina<span>التينة</span></span><span class="sub" data-i18n="brand_sub"></span></span></a>
       <div class="fc">
-        <a href="mailto:contact@al-tina.ca">contact@al-tina.ca</a>
         <a href="https://wa.me/15879669624" target="_blank" rel="noopener">WhatsApp +1 (587) 966-9624</a>
         <a href="https://al-tina.ca" target="_blank" rel="noopener">Al-Tina.ca</a>
       </div>
@@ -604,7 +603,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 (function () {
   "use strict";
 
-  var CONTACT = { whatsapp: "+1 (587) 966-9624", email: "contact@al-tina.ca" };
+  var CONTACT = { whatsapp: "+1 (587) 966-9624" };
 
   var I18N = {
     en: {
@@ -689,7 +688,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       btn_copy: "Copy text", btn_edit: "Edit", btn_new: "New application",
       copied: "Copied.", copy_fail: "Select the text and copy it.",
       next_title: "Send it to Al-Tina",
-      next_send: "Send your application by email or WhatsApp. We'll reply to you directly.",
+      next_send: "Send your application on WhatsApp. We'll reply to you directly.",
       next_mail: "Send by email", next_wa: "Send on WhatsApp",
       contact_eyebrow: "Get in touch", contact_title: "Contact us", contact_sub: "Questions before you register? Reach us directly.",
       c_email: "Email", c_wa: "WhatsApp",
@@ -780,7 +779,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       btn_copy: "نسخ النص", btn_edit: "تعديل", btn_new: "طلب جديد",
       copied: "تم النسخ.", copy_fail: "حدّد النص وانسخه.",
       next_title: "أرسله إلى التينة",
-      next_send: "أرسل طلبك بالبريد الإلكتروني أو عبر واتساب، وسنرد عليك مباشرة.",
+      next_send: "أرسل طلبك عبر واتساب، وسنرد عليك مباشرة.",
       next_mail: "أرسل بالبريد", next_wa: "أرسل عبر واتساب",
       contact_eyebrow: "تواصل", contact_title: "تواصل معنا", contact_sub: "لديك سؤال قبل التسجيل؟ تواصل معنا مباشرة.",
       c_email: "البريد الإلكتروني", c_wa: "واتساب",
@@ -1015,9 +1014,6 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     box.appendChild(el("b", null, t("next_title")));
     box.appendChild(el("p", null, t("next_send")));
     var row = el("div", "actions");
-    var m = el("a", "btn btn-forest", t("next_mail"));
-    m.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent(t("t_header") + " " + r.ref) + "&body=" + encodeURIComponent(text);
-    row.appendChild(m);
     var w = el("a", "btn btn-brass", t("next_wa"));
     w.href = "https://wa.me/" + CONTACT.whatsapp.replace(/\D/g, "") + "?text=" + encodeURIComponent(text);
     w.target = "_blank"; w.rel = "noopener";
