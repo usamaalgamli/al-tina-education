@@ -186,7 +186,7 @@ html[lang="ar"] .path h3 { font-weight: 700; }
 /* FAQ */
 .faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--forest); border-radius: 14px; padding: 8px 28px; }
 .qa { padding-block: 20px; border-block-end: 1px solid var(--line); min-width: 0; }
-.faq .qa:nth-last-child(1), .faq .qa:nth-last-child(2) { border-block-end: 0; }
+.faq .qa:last-child, .faq .qa:nth-last-child(2):nth-child(odd) { border-block-end: 0; }
 .qa h3 { display: flex; align-items: center; gap: 12px; font-family: var(--f-body); font-size: 1.12rem; font-weight: 700; line-height: 1.45; color: var(--forest); }
 .qa h3 svg { width: 14px; height: 14px; flex: none; color: var(--brass); }
 .qa p { color: var(--ink); margin-block-start: 6px; padding-inline-start: 26px; }
@@ -620,7 +620,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["How long should I study, and with what?", "Within that same year. There is now only one exam from Iraq (MCQ), and most of it is what we studied and saw in our hospital and pharmacy rotations. Study materials depend on whether you prepare with us or with someone else."],
         ["What are the pass rates?", "They change every year. PEBC publishes them on its website."],
         ["Can I do the steps from Iraq?", "Yes. Gateway registration, document evaluation and the MCQ (taken remotely) can all be done from Iraq. Only the OSCE is in Canada."],
-        ["Is the OSCE in Iraq or in Canada?", "In Canada. It's the only PEBC exam you have to do in Canada."],
+        ["Where are the MCQ exam centres in Iraq?", "You don't need a centre. You take the MCQ online from home, with a live Prometric proctor watching you (remote proctoring). You need a private room, a webcam and stable internet. You can also take it at a Prometric test centre."],
+        ["Is the OSCE in Iraq or in Canada?","In Canada. It's the only PEBC exam you have to do in Canada."],
         ["Do I have to pass the OSCE before the other steps?", "No. You can complete the other steps. The OSCE is the only exam you come to Canada for."],
         ["Can I work in Canada before the OSCE? As what?", "Yes. You work as a pharmacist, as a Provisional Pharmacist."],
         ["How long do results stay valid?", "Your document evaluation is valid for 5 years. After you pass the MCQ, you have 3 years to pass the OSCE."],
@@ -711,7 +712,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["كم شهر أدرس؟ وشنو المصادر؟", "ضمن نفس السنة. هسه امتحان واحد بس من العراق (MCQ)، وأغلبه من اللي درسناه وشفناه بالتدريب بالمستشفيات والصيدليات. والمصادر تعتمد إذا تحضّر ويانا أو ويا غيرنا."],
         ["شكد نسبة النجاح؟", "تتغير كل سنة، و PEBC ينشرها على موقعه."],
         ["أكدر أسوي الخطوات وآني بالعراق؟", "نعم. التسجيل في Gateway، تقييم الوثائق، وامتحان MCQ عن بُعد، كلها من العراق. بس الـ OSCE يكون داخل كندا."],
-        ["الـ OSCE بالعراق لو بكندا؟", "بكندا. هو امتحان PEBC الوحيد اللي لازم تسويه بكندا."],
+        ["وين مراكز امتحان MCQ بالعراق؟", "ما تحتاج مركز. تقدّم الـ MCQ أونلاين من بيتك، ويراقبك مراقب مباشر من Prometric (remote proctoring). تحتاج غرفة لوحدك، كاميرا، وإنترنت ثابت. وتكدر هم تقدّم بمركز Prometric."],
+        ["الـ OSCE بالعراق لو بكندا؟","بكندا. هو امتحان PEBC الوحيد اللي لازم تسويه بكندا."],
         ["لازم أنجح بالـ OSCE حتى أكمل الباقي؟", "لا. تكدر تكمل باقي الخطوات، والـ OSCE هو الامتحان الوحيد اللي تجي عليه لكندا."],
         ["أكدر أشتغل بكندا قبل الـ OSCE؟ وشنو أشتغل؟", "نعم تكدر. تشتغل صيدلي، تحت مسمى Provisional Pharmacist."],
         ["شكد تبقى النتائج صالحة؟", "تقييم الوثائق يبقى صالح 5 سنوات. وبعد ما تنجح بالـ MCQ، عندك 3 سنوات حتى تنجح بالـ OSCE."],
