@@ -77,7 +77,7 @@ html[lang="ar"] .caps { font-size: .92rem; letter-spacing: 0; text-transform: no
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-block-end: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; gap: 28px; padding-block: 12px; }
 .nav { display: flex; gap: 24px; margin-inline-start: auto; }
-.nav a { color: var(--muted); text-decoration: none; }
+.nav a { color: var(--muted); text-decoration: none; white-space: nowrap; }
 .nav a:hover { color: var(--forest); }
 .nav a.hl { background: var(--forest-tint); color: var(--forest); padding: 2px 14px; margin-block: -2px; border-radius: 999px; box-shadow: 0 4px 12px -6px rgba(22, 63, 50, .35); }
 .nav a.hl:hover { background: #d6e3d9; }
@@ -85,7 +85,14 @@ html[lang="ar"] .caps { font-size: .92rem; letter-spacing: 0; text-transform: no
 .tabs button { font: inherit; font-size: .8rem; font-weight: 600; padding: 6px 14px; border: 0; border-radius: 999px; background: transparent; color: var(--forest); cursor: pointer; }
 .tabs button[aria-selected="true"] { background: var(--forest); color: var(--on-forest); }
 .tabs button[lang="ar"] { font-family: "Amiri", serif; font-size: 1rem; padding-block: 3px; }
-@media (max-width: 960px) { .nav { display: none; } .tabs { margin-inline-start: auto; } }
+@media (max-width: 1240px) {
+  .top .wrap { flex-wrap: wrap; row-gap: 6px; }
+  .tabs { margin-inline-start: auto; }
+  .nav { order: 3; width: 100%; margin-inline-start: 0; gap: 8px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; padding-block: 2px 4px; font-size: .84rem; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex: none; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+  .nav a.hl { margin-block: 0; padding: 4px 12px; border-color: transparent; }
+}
 .logo .nm { white-space: nowrap; }
 @media (max-width: 560px) { .logo .sub { display: none; } .logo .nm span { display: none; } .logo .nm { font-size: 1.12rem; } .logo { gap: 8px; } .logo .mark { height: 38px; } .top .wrap { gap: 12px; } .tabs button { padding: 5px 10px; font-size: .74rem; } .tabs button[lang="ar"] { font-size: .92rem; } }
 
@@ -196,6 +203,46 @@ html[lang="ar"] .path h3 { font-weight: 700; }
 .fees figcaption { font-family: var(--f-display); font-size: 1.35rem; color: var(--forest); margin-block-end: 16px; }
 .fees img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow); }
 @media (max-width: 760px) { .faq { grid-template-columns: 1fr; padding-inline: 22px; } .faq .qa:nth-last-child(2) { border-block-end: 1px solid var(--line); } }
+
+/* Life in Canada */
+.life { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 32px; align-items: start; }
+.budget { background: var(--forest); color: var(--on-forest); border-radius: 16px; padding: clamp(24px, 4vw, 38px); box-shadow: var(--shadow); min-width: 0; }
+.budget .k { color: var(--hero-muted); font-size: .95rem; }
+.budget .big { display: block; font-family: var(--f-display); font-size: clamp(2.8rem, 6vw, 3.8rem); line-height: 1.1; color: var(--brass); margin-block: 4px 18px; }
+.budget ul { list-style: none; margin: 0; padding: 0; }
+.budget li { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; padding-block: 14px; border-block-start: 1px solid rgba(250, 248, 243, .16); }
+.budget li .v { flex: none; font-weight: 700; font-size: 1.15rem; white-space: nowrap; }
+.budget li.left { color: #e8d6a6; }
+.budget li.left .v { font-size: 1.4rem; color: var(--brass); }
+.budget .car { display: flex; gap: 14px; align-items: flex-start; margin-block-start: 18px; padding: 16px 18px; border-radius: 12px; background: rgba(250, 248, 243, .07); border: 1px solid rgba(212, 188, 124, .35); }
+.budget .car svg { width: 30px; height: 30px; flex: none; color: var(--brass); margin-block-start: 2px; }
+.budget .car b { display: block; font-weight: 700; }
+.budget .car span { color: var(--hero-muted); font-size: .95rem; }
+.budget .src { color: var(--hero-muted); font-size: .78rem; line-height: 1.6; margin-block-start: 18px; }
+.vids-h { font-family: var(--f-display); font-size: 1.45rem; color: var(--forest); margin-block-end: 14px; }
+html[lang="ar"] .vids-h { font-weight: 600; }
+.vids { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 18px; }
+.vid { margin: 0; min-width: 0; }
+.vid .play, .vid iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; }
+.vid .play { position: relative; padding: 0; cursor: pointer; background: #0f2e24 center / cover no-repeat; overflow: hidden; box-shadow: var(--shadow); }
+.vid .play::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15, 46, 36, 0) 40%, rgba(15, 46, 36, .55)); transition: opacity .2s; }
+.vid .play::after { content: ""; position: absolute; top: 50%; left: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: var(--brass) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.5v13l10.5-6.5z' fill='%230f2e24'/%3E%3C/svg%3E") center / 26px no-repeat; box-shadow: 0 8px 20px -6px rgba(0, 0, 0, .45); transition: transform .2s; }
+.vid .play:hover::after, .vid .play:focus-visible::after { transform: scale(1.08); }
+.vid .play:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
+.vid figcaption { margin-block-start: 10px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+.vid figcaption small { display: block; font-weight: 400; color: var(--muted); font-size: .84rem; margin-block-start: 2px; }
+@media (max-width: 900px) { .life { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .vids { grid-template-columns: 1fr; } }
+
+/* Test yourself */
+.test { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 32px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--brass); border-radius: 16px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); }
+.test .num { font-family: var(--f-display); font-size: clamp(4rem, 9vw, 6rem); line-height: .9; color: var(--forest); text-align: center; }
+.test .num small { display: block; font-family: var(--f-body); font-size: .9rem; color: var(--brass-deep); font-weight: 600; margin-block-start: 8px; }
+.test h3 { font-size: 1.5rem; color: var(--forest); }
+.test p { color: var(--muted); margin-block-start: 6px; }
+.test .ctas { margin-block-start: 18px; }
+.test .link { color: var(--forest); }
+@media (max-width: 600px) { .test { grid-template-columns: 1fr; text-align: center; } .test .ctas { justify-content: center; } }
 /* Form */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 5vw, 52px); box-shadow: var(--shadow); position: relative; overflow: hidden; }
 .card::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--forest), var(--brass)); }
@@ -296,6 +343,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     <nav class="nav caps" aria-label="Main">
       <a href="#pharmacy" data-i18n="nav_path"></a>
       <a href="#services" data-i18n="nav_services"></a>
+      <a href="#life" data-i18n="nav_life"></a>
+      <a href="#test" data-i18n="nav_test"></a>
       <a class="hl" href="#faq" data-i18n="nav_faq"></a>
       <a href="#register" data-i18n="nav_register"></a>
       <a href="#contact" data-i18n="nav_contact"></a>
@@ -356,6 +405,58 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       <p class="note travel" data-i18n="travel_note"></p>
       <div class="ctas">
         <a class="btn btn-forest" href="#register" data-i18n="pharm_cta"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="life">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="life_eyebrow"></span>
+          <h2 data-i18n="life_title"></h2>
+          <p class="sub" data-i18n="life_sub"></p>
+        </div>
+      </div>
+      <div class="life">
+        <div class="budget">
+          <span class="k" data-i18n="life_net_k"></span>
+          <bdi class="big" dir="ltr">≈ $6,680</bdi>
+          <ul id="life-rows"></ul>
+          <div class="car">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16.5V12l2-5h10l2 5v4.5"/><path d="M3.5 16.5h17v2.5h-17z"/><path d="M5 12h14"/><circle cx="8" cy="15" r=".6" fill="currentColor"/><circle cx="16" cy="15" r=".6" fill="currentColor"/></svg>
+            <div><b id="life-car"></b><span data-i18n="life_car_d"></span></div>
+          </div>
+          <p class="src" id="life-src"></p>
+        </div>
+        <div>
+          <h3 class="vids-h" data-i18n="life_vids"></h3>
+          <div class="vids" id="vids"></div>
+          <p class="note" data-i18n="life_vid_note"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="test">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="test_eyebrow"></span>
+          <h2 data-i18n="test_title"></h2>
+        </div>
+      </div>
+      <div class="test">
+        <div class="num"><bdi>96</bdi><small data-i18n="test_num"></small></div>
+        <div>
+          <h3 data-i18n="test_h"></h3>
+          <p id="test-sub"></p>
+          <div class="ctas">
+            <a class="btn btn-forest" href="https://pebc.ca/wp-content/uploads/pdfs/Sample%20Question%20PDFs/Pharmacist%20Qual%20Exam%20Sample%20Questions%20-%20EN.pdf" target="_blank" rel="noopener" data-i18n="test_pdf"></a>
+            <a class="link" href="https://pebc.ca/pharmacists/qualifying-examination/preparing-for-the-examination/part-i/" target="_blank" rel="noopener" data-i18n="test_more"></a>
+          </div>
+          <p class="note" data-i18n="test_note"></p>
+        </div>
       </div>
     </div>
   </section>
@@ -610,6 +711,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     en: {
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
+      nav_life: "Life in Canada", nav_test: "Test yourself",
+      life_eyebrow: "Life in Canada", life_title: "What a pharmacist's pay gives you", life_sub: "Example: a full-time pharmacist in Alberta, 37.5 hours a week, in 2026.",
+      life_net_k: "Take-home pay, every month",
+      life_rows: [["Rent: 2-bedroom apartment in Calgary", "≈ $1,900"], ["Food for a family of four", "≈ $1,465"], ["Left for a car, restaurants, going out, travel and savings", "≈ $3,315"]],
+      life_car: "A new 2026 Toyota Corolla starts at $24,520", life_car_d: "About 4 months of take-home pay.",
+      life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · CMHC (10/2025) for rent · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
+      life_vids: "See life in Alberta and Canada", life_vid_note: "Official videos on YouTube. They play here on the page.",
+      test_eyebrow: "Test yourself", test_title: "Try the official MCQ questions", test_num: "questions",
+      test_h: "PEBC sample questions, free", test_sub: "96 sample questions for the MCQ, with the answer key, from PEBC (9/2026). The PDF opens on PEBC's website.",
+      test_pdf: "Open the sample questions (PDF)", test_more: "More from PEBC: sample exam and exam demo",
+      test_note: "The questions belong to PEBC. Al-Tina is independent and not affiliated with PEBC.",
       faq_eyebrow: "Most asked", faq_title: "Answers to your questions", fees_cap: "Fees and time (Manitoba, new PEBC pathway, 2027)", fees_img: "fees-2027-en-v5.jpg", faq_sub: "Collected from your comments on our posts.",
       faq_src: "Sources: PEBC · NAPRA · CIHI (2024) · Job Bank.",
       faq: [
@@ -704,6 +816,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     ar: {
       brand_sub: "الصيدلة في كندا",
       nav_path: "المسار", nav_services: "الخدمات", nav_faq: "أجوبة لأسئلتك", nav_register: "التسجيل", nav_contact: "تواصل معنا",
+      nav_life: "حياة الصيدلي بكندا", nav_test: "اختبر نفسك",
+      life_eyebrow: "الحياة في كندا", life_title: "شنو يوفّرلك راتب الصيدلي بكندا؟", life_sub: "مثال: صيدلي بدوام كامل في ألبرتا، 37.5 ساعة بالأسبوع، سنة 2026.",
+      life_net_k: "راتبك الصافي كل شهر",
+      life_rows: [["إيجار شقة غرفتين نوم بكالكري", "≈ $1,900"], ["أكل عائلة من 4 أشخاص", "≈ $1,465"], ["يبقى لك للسيارة، المطاعم، الطلعات، السفر والتوفير", "≈ $3,315"]],
+      life_car: "سيارة Toyota Corolla 2026 جديدة تبدأ من $24,520", life_car_d: "يعني تقريباً راتب 4 أشهر.",
+      life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · CMHC (10/2025) للإيجار · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة ونمط حياتك.",
+      life_vids: "شوف الحياة في ألبرتا وكندا", life_vid_note: "فيديوهات رسمية من YouTube، تشتغل هنا داخل الصفحة.",
+      test_eyebrow: "اختبر نفسك", test_title: "جرّب أسئلة الـ MCQ الرسمية", test_num: "سؤال",
+      test_h: "أسئلة نموذجية من PEBC، مجاناً", test_sub: "96 سؤال نموذجي لامتحان MCQ مع الأجوبة، من PEBC (9/2026). الملف يفتح على موقع PEBC.",
+      test_pdf: "افتح الأسئلة النموذجية (PDF)", test_more: "المزيد من PEBC: امتحان تجريبي وشاشة الامتحان",
+      test_note: "الأسئلة ملك PEBC. التينة جهة مستقلة وغير تابعة لـ PEBC.",
       faq_eyebrow: "الأسئلة الأكثر تكراراً", faq_title: "أجوبة لأسئلتك", fees_cap: "الرسوم والوقت (مانيتوبا، مسار PEBC الجديد، 2027)", fees_img: "fees-2027-ar-v2.jpg", faq_sub: "جمعناها من تعليقاتكم على منشوراتنا.",
       faq_src: "المصادر: PEBC · NAPRA · CIHI (2024) · Job Bank.",
       faq: [
@@ -876,17 +999,66 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           step.appendChild(el("bdi", null, s));
           p.appendChild(step);
         });
-      } else if (lang !== "ar") {
-        p.textContent = q[1];
       } else {
-        // keep Latin words (IELTS, Statutory Declaration…) in their own direction inside Arabic text
-        q[1].split(/(\(?[A-Za-z][A-Za-z0-9.'\- ]*[A-Za-z0-9]\)?|[A-Za-z])/).forEach(function (part, i) {
-          if (!part) return;
-          p.appendChild(i % 2 ? el("bdi", "lat", part) : document.createTextNode(part));
-        });
+        fillBidi(p, q[1]);
       }
       d.appendChild(p);
       box.appendChild(d);
+    });
+  }
+
+  // keep Latin words (IELTS, Statutory Declaration…) and $ amounts in their own direction inside Arabic text
+  function fillBidi(node, text) {
+    node.textContent = "";
+    if (lang !== "ar") { node.textContent = text; return; }
+    text.split(/(\(?[A-Za-z][A-Za-z0-9.'\- ]*[A-Za-z0-9]\)?|[A-Za-z]|≈ ?\$[\d,.]+|\$[\d,.]+|\(?\d+(?:[\/–-]\d+)+\)?)/).forEach(function (part, i) {
+      if (!part) return;
+      node.appendChild(i % 2 ? el("bdi", "lat", part) : document.createTextNode(part));
+    });
+  }
+
+  var VIDEOS = [
+    ["ThFCg0tBDck", "ألبرتا والجبال الصخرية", "Alberta and the Rocky Mountains", "Travel Alberta"],
+    ["wZYOrkfxk6Y", "كالكري: شنو تتوقع من المدينة", "Calgary: what to expect", "Tourism Calgary"],
+    ["uJFuR6LfdpI", "مهرجان كالكري ستامبيد", "The Calgary Stampede", "Travel Alberta"],
+    ["HfTkZmKK1b0", "كندا: استكشف أكثر", "Canada: keep exploring", "Destination Canada"]
+  ];
+  function renderLife() {
+    var ul = $("life-rows"); ul.textContent = "";
+    t("life_rows").forEach(function (r, i, all) {
+      var li = el("li", i === all.length - 1 ? "left" : null), s = el("span");
+      fillBidi(s, r[0]); li.appendChild(s);
+      var v = el("bdi", "v", r[1]); v.dir = "ltr"; li.appendChild(v);
+      ul.appendChild(li);
+    });
+    fillBidi($("life-car"), t("life_car"));
+    fillBidi($("life-src"), t("life_src"));
+    fillBidi($("test-sub"), t("test_sub"));
+    var box = $("vids");
+    if (!box.children.length) {
+      VIDEOS.forEach(function (v) {
+        var f = el("figure", "vid"), b = el("button", "play");
+        b.type = "button";
+        b.style.backgroundImage = "url(https://i.ytimg.com/vi/" + v[0] + "/hqdefault.jpg)";
+        b.addEventListener("click", function () {
+          var ifr = document.createElement("iframe");
+          ifr.src = "https://www.youtube-nocookie.com/embed/" + v[0] + "?autoplay=1&rel=0";
+          ifr.title = b.getAttribute("aria-label");
+          ifr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          ifr.allowFullscreen = true;
+          ifr.referrerPolicy = "strict-origin-when-cross-origin";
+          f.replaceChild(ifr, b);
+        });
+        f.appendChild(b);
+        var c = el("figcaption"); c.appendChild(el("span")); c.appendChild(el("small", null, v[3]));
+        f.appendChild(c);
+        box.appendChild(f);
+      });
+    }
+    Array.prototype.forEach.call(box.children, function (f, i) {
+      var name = lang === "ar" ? VIDEOS[i][1] : VIDEOS[i][2];
+      f.querySelector("figcaption span").textContent = name;
+      var b = f.querySelector(".play"); if (b) b.setAttribute("aria-label", name + " — YouTube");
     });
   }
 
@@ -917,6 +1089,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-lang") === lang)); });
     $("hero-title").innerHTML = t("hero_title");
     renderPath();
+    renderLife();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
