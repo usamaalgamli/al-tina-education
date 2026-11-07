@@ -260,6 +260,11 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 #faq .paynote { margin-block-start: 32px; }
 #pharmacy .paynote { margin-block: 44px 24px; }
 
+.paynote strong { font-weight: 800; font-size: 1.08em; }
+.hero-pay { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-block-start: 26px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(212, 188, 124, .55); background: rgba(212, 188, 124, .12); color: var(--hero-ink); }
+.hero-pay strong { color: #e8d6a6; font-weight: 800; font-size: 1.1rem; }
+.hero-pay span { color: var(--hero-muted); font-size: .95rem; }
+
 /* Test yourself */
 .test { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 32px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--brass); border-radius: 16px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); }
 .test .num { font-family: var(--f-display); font-size: clamp(4rem, 9vw, 6rem); line-height: .9; color: var(--forest); text-align: center; }
@@ -393,6 +398,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <a class="btn btn-brass" href="#register" data-i18n="cta_register"></a>
           <a class="link" href="#pharmacy" data-i18n="cta_explore"></a>
         </div>
+        <p class="hero-pay"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_short"></span></p>
       </div>
       <aside class="arch" aria-labelledby="arch-label">
         <svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><defs><mask id="altgap" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><path d="M14 49V30A27 27 0 0 1 32.0 4.54A27 27 0 0 1 50 30V49" stroke="#000" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M20 49V32A18 18 0 0 1 32.0 15.03A18 18 0 0 1 44 32V49" stroke="#000" stroke-width=".8" fill="none" stroke-linecap="round"/><path d="M27.75 29.57H36.25V38.07H27.75Z" stroke="#000" stroke-width=".55" fill="none"/><path d="M32 27.81L38.01 33.82L32 39.83L25.99 33.82Z" stroke="#000" stroke-width=".55" fill="none"/></mask></defs><g mask="url(#altgap)"><path d="M14 49V30A27 27 0 0 1 32.0 4.54A27 27 0 0 1 50 30V49" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/><path d="M20 49V32A18 18 0 0 1 32.0 15.03A18 18 0 0 1 44 32V49" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g><path d="M9 50H55" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M12.5 54.5H51.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 59H48" style="stroke:var(--brass)" stroke-width="3" stroke-linecap="round"/><path d="M24.5 49V35A11.5 11.5 0 0 1 32.0 24.22A11.5 11.5 0 0 1 39.5 35V49Z" style="fill:var(--brass)"/><g mask="url(#altgap)"><path d="M27.75 29.57H36.25V38.07H27.75Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="miter"/><path d="M32 27.81L38.01 33.82L32 39.83L25.99 33.82Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="miter"/></g><g fill="currentColor" transform="translate(32 33.82) scale(0.135) translate(-20 -20)"><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(45 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(90 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(135 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(180 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(225 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(270 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(315 20 20)"/><circle cx="20" cy="20" r="3.8"/></g></svg>
@@ -414,7 +420,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <ol class="path" id="path"></ol>
-      <p class="paynote" data-i18n="pay_note"></p>
+      <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <div class="svc" id="services">
         <div class="svc-card">
           <h3 data-i18n="svc_reg_title"></h3>
@@ -516,7 +522,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <div class="faq" id="faq-list"></div>
-      <p class="paynote" data-i18n="pay_note"></p>
+      <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <figure class="fees" id="fees">
         <figcaption data-i18n="fees_cap"></figcaption>
         <a href="fees-2027-ar-v2.jpg" target="_blank" rel="noopener"><img src="fees-2027-ar-v2.jpg" width="1080" height="1350" loading="lazy" alt="PEBC fees and time, Manitoba 2027"></a>
@@ -769,7 +775,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       test_eyebrow: "Test yourself", test_title: "Try the official MCQ questions", test_num: "questions",
       test_h: "PEBC sample questions, free", test_sub: "96 questions with answers, from PEBC's website.",
       test_pdf: "Open the sample questions (PDF)", test_more: "More from PEBC: sample exam and exam demo",
-      pay_note: "You never pay us upfront. You get the service and see the result, then you pay. Many things are free, just ask.",
+      pay_b: "No upfront payment, ever.", pay_short: "You pay only after you get the result.",
+      pay_note: "You get the service and see the result, then you pay. Many things are free, just ask.",
       test_courses: "Want a course? Many pharmacists recommend:",
       cities_h: "Canada live: pick a city", cities_sub: "Live cameras: see the city right now.",
       cities_note: "YouTube cameras run by their owners. They can stop at any time.",
@@ -816,7 +823,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["Can I work as a pharmacy technician meanwhile?", "No. You can work as a pharmacy intern. A pharmacy technician is a completely different job from a pharmacist."],
         ["What is the salary in Canada?", "The average pharmacist wage is about CAD 55 an hour, roughly CAD 108,000 a year full time. In northern Canada it can reach CAD 100 an hour."],
         ["Do you give a visa?", "No, the visa comes from Canada's immigration department. Your exams are what open the way to the visa. We connect you with a trusted Iraqi immigration lawyer: you talk to him directly, and he explains and handles everything."],
-        ["Do you guarantee the visa? If I don't get it, is the money lost?", "No one can guarantee a visa. But you don't pay everything first: before the visa, only about CAD 2,315 (us, Gateway, documents, MCQ). Your MCQ pass lasts 3 years, so you can apply again."],
+        ["Do you guarantee the visa? If I don't get it, is the money lost?", "No one can guarantee a visa, but we won't leave you until you get it. We know what we're doing, so there is no upfront payment: you see the result, then you pay. This goes for all our services."],
         ["Does licensing speed up immigration?","Yes, a lot."],
         ["Is there an age limit? Can I bring my family?", "There is no age limit. Bringing your family is an immigration matter that can be solved easily, and yes, you can bring them."],
         ["I'm a pharmacist and my wife is a doctor. Do I apply alone and bring her later, or do we come together?", "You come together."],
@@ -891,7 +898,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       test_eyebrow: "جرّب نفسك", test_title: "جرّب أسئلة الـ MCQ الرسمية", test_num: "سؤال",
       test_h: "أسئلة نموذجية من PEBC، ببلاش", test_sub: "96 سؤال وياها الأجوبة، من موقع PEBC.",
       test_pdf: "افتح الأسئلة (PDF)", test_more: "أكثر من PEBC: امتحان تجريبي وشاشة الامتحان",
-      pay_note: "ما تدفعلنا ولا فلس مقدّماً. تاخذ الخدمة وتشوف النتيجة، وبعدين تدفع. وهواية أشياء ببلاش، بس اسأل.",
+      pay_b: "ماكو دفع مقدّم أبداً.", pay_short: "تدفع بس بعد ما تشوف النتيجة.",
+      pay_note: "تاخذ الخدمة وتشوف النتيجة، وبعدين تدفع. وهواية أشياء ببلاش، بس اسأل.",
       test_courses: "تريد كورس؟ هواية صيادلة ينصحون بـ:",
       cities_h: "كندا مباشر: اختار مدينة", cities_sub: "كاميرات مباشرة: شوف المدينة هسه.",
       cities_note: "كاميرات YouTube يشغلوها أصحابها، وممكن توكف بأي وقت.",
@@ -938,7 +946,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["أكدر أشتغل فني صيدلة لحد ما أكمل؟", "لا. تكدر تشتغل Pharmacy Intern. فني الصيدلة صنف شغل مختلف تماماً عن الصيدلي."],
         ["شكد الراتب بكندا؟", "معدل أجور الصيدلي حوالي 55 دولار كندي بالساعة، يعني تقريباً 108 آلاف بالسنة بدوام كامل. وبشمال كندا يوصل لـ 100 دولار بالساعة."],
         ["تطلّعون فيزا؟", "لا، الفيزا من الهجرة الكندية. امتحاناتك هي اللي تفتحلك طريق الفيزا. ونوصلك بمحامي هجرة عراقي موثوق: تحجي وياه مباشرة، ويشرحلك ويتابع كلشي."],
-        ["تضمنون الفيزا؟ وإذا ما حصلتها تروح الفلوس؟", "محد يضمن الفيزا. بس ما تدفع كلشي أول: قبل الفيزا تدفع بس حوالي 2,315 دولار، لأجورنا و Gateway والوثائق والـ MCQ. ونجاح الـ MCQ يبقى 3 سنوات، فتكدر تعيد التقديم."],
+        ["تضمنون الفيزا؟ وإذا ما حصلتها تروح الفلوس؟", "محد يكدر يضمن الفيزا، بس إحنا ما نتركك لحد ما تحصلها. ولأن نعرف شنسوي، ماكو دفع مقدّم: تشوف النتيجة وبعدين تدفع، وهذا بكل خدماتنا."],
         ["المعادلة تسرّع الهجرة؟","نعم، هواية."],
         ["أكو عمر محدد؟ وأكدر أجيب عائلتي؟", "ماكو عمر محدد. وجلب العائلة موضوع هجرة وينحل بسهولة، ونعم تكدر تجيبهم."],
         ["آني صيدلاني وزوجتي طبيبة، أقدّم وحدي وبعدين لمّ شمل، لو نجي سوه؟", "تجون سوه."],
