@@ -255,6 +255,10 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .ncard .links a { color: var(--forest); font-weight: 700; }
 @media (max-width: 900px) { .newc-grid { grid-template-columns: 1fr; } }
 
+.paynote { display: flex; align-items: center; gap: 12px; margin-block: 0 22px; padding: 14px 20px; border-radius: 12px; background: var(--brass-tint); border: 1px solid #e3d5ae; color: var(--forest); font-weight: 600; }
+.paynote::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--brass); transform: rotate(45deg); }
+#faq .paynote { margin-block-start: 32px; }
+
 /* Test yourself */
 .test { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 32px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--brass); border-radius: 16px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); }
 .test .num { font-family: var(--f-display); font-size: clamp(4rem, 9vw, 6rem); line-height: .9; color: var(--forest); text-align: center; }
@@ -409,6 +413,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <ol class="path" id="path"></ol>
+      <p class="paynote" data-i18n="pay_note"></p>
       <div class="svc" id="services">
         <div class="svc-card">
           <h3 data-i18n="svc_reg_title"></h3>
@@ -510,6 +515,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <div class="faq" id="faq-list"></div>
+      <p class="paynote" data-i18n="pay_note"></p>
       <figure class="fees" id="fees">
         <figcaption data-i18n="fees_cap"></figcaption>
         <a href="fees-2027-ar-v2.jpg" target="_blank" rel="noopener"><img src="fees-2027-ar-v2.jpg" width="1080" height="1350" loading="lazy" alt="PEBC fees and time, Manitoba 2027"></a>
@@ -751,32 +757,33 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
       nav_life: "Life in Canada", nav_test: "Test yourself",
-      life_eyebrow: "Life in Canada", life_title: "What a pharmacist's pay gives you", life_sub: "Example: a full-time pharmacist in Alberta, 37.5 hours a week, in 2026.",
-      life_net_k: "Take-home pay every month, after taxes",
-      life_gross: "Before taxes it is ≈ $9,017 a month ($108,205 a year). Income tax, pension (CPP) and employment insurance (EI) come off, and ≈ $6,680 reaches your hand.",
-      life_buy: "Or buy an apartment in Calgary: average price $288,800", life_buy_d: "As a newcomer, expect a down payment of about 20% (≈ $57,760), then ≈ $1,270 to $1,345 a month. Once you are established in Canada, it can be 5% (≈ $14,440), then ≈ $1,570 to $1,660 a month. Interest 4.44% to 5.00%, over 25 years. Less than or about the same as rent, and the apartment becomes yours. Condo fees and property tax not included.",
+      life_eyebrow: "Life in Canada", life_title: "What a pharmacist's pay gives you", life_sub: "Example: a full-time pharmacist in Alberta (37.5 hours a week), 2026.",
+      life_net_k: "Your monthly pay after taxes",
+      life_gross: "Before taxes: ≈ $9,017 a month.",
+      life_buy: "Or buy an apartment: average $288,800", life_buy_d: "At first: 20% down (≈ $57,760), then ≈ $1,300 a month. Once settled: 5% down, then ≈ $1,600 a month. About the same as rent, and it's yours. Condo fees and property tax extra.",
       life_rows: [["Rent: 2-bedroom apartment in Calgary", "≈ $1,900"], ["Food for a family of four", "≈ $1,465"], ["Left for a car, restaurants, going out, travel and savings", "≈ $3,315"]],
-      life_car: "A new 2026 Toyota Corolla starts at $24,520", life_car_d: "Or finance it: about $500 a month, with $500 down or nothing down. Cash: about 4 months of take-home pay. Our advice: buy new, not used. A new car has a warranty that covers repairs; a used one is costly to fix and has many problems.",
+      life_car: "New 2026 Toyota Corolla: from $24,520", life_car_d: "≈ $500 a month, with $500 down or nothing down. Our advice: buy new, not used. The warranty covers repairs.",
       life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · CMHC (10/2025) for rent · CREB (10/2026) for the apartment price · nesto (11/2026) for mortgage rates · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
-      life_vids: "See life in Alberta and Canada", life_vid_note: "Official videos on YouTube. They play here on the page.",
+      life_vids: "See life in Alberta and Canada", life_vid_note: "Official videos. They play here on the page.",
       test_eyebrow: "Test yourself", test_title: "Try the official MCQ questions", test_num: "questions",
-      test_h: "PEBC sample questions, free", test_sub: "96 sample questions for the MCQ, with the answer key, from PEBC (9/2026). The PDF opens on PEBC's website.",
+      test_h: "PEBC sample questions, free", test_sub: "96 questions with answers, from PEBC's website.",
       test_pdf: "Open the sample questions (PDF)", test_more: "More from PEBC: sample exam and exam demo",
-      test_courses: "Want a course? Many pharmacists recommend these to prepare for the MCQ and OSCE:",
-      cities_h: "Canada live: pick a city", cities_sub: "Live cameras on YouTube. See the streets, the weather and the city right now.",
-      cities_note: "Live cameras run by their owners on YouTube. A camera may stop or move at any time.",
+      pay_note: "You never pay us upfront. You get the service and see the result, then you pay. Many things are free, just ask.",
+      test_courses: "Want a course? Many pharmacists recommend:",
+      cities_h: "Canada live: pick a city", cities_sub: "Live cameras: see the city right now.",
+      cities_note: "YouTube cameras run by their owners. They can stop at any time.",
       badge_live: "LIVE", badge_ext: "Opens on YouTube",
       new_h: "For newcomers",
       new_cards: [
-        ["Health insurance: free", "In Alberta, the government plan (AHCIP) covers doctors and hospitals, and you pay no monthly fee. Register for free at any Alberta registry agent with your passport, proof of address (a lease or a bill), and your PR card or work permit (it must not expire within 6 months). The card comes by mail. Medicines, dental and glasses are not covered for adults; a full-time job's benefits usually cover them."],
-        ["Car insurance: required", "The Alberta average is ≈ $166 a month ($1,991 a year). As a newcomer you pay more at first because you have no driving history in Canada, and it goes down over time with no accidents. Bring a letter from your insurance company back home that shows your years of driving; it may lower the price."],
-        ["Housing: where to look", "To rent: RentFaster, Rentals.ca, Kijiji and Facebook Marketplace. To buy: Realtor.ca. Bring your job letter and a bank statement, because some landlords ask for proof of income or a bigger deposit when you have no credit history in Canada.", [["RentFaster", "https://www.rentfaster.ca/"], ["Rentals.ca", "https://rentals.ca/"], ["Kijiji", "https://www.kijiji.ca/"], ["Realtor.ca", "https://www.realtor.ca/"]]],
-        ["Dental insurance (CDCP)", "Dental coverage from the Government of Canada. You can apply until you start a job that gives you dental insurance, if your family income is under $90,000 a year and you filed last year's tax return in Canada. Applying is easy and free, online or by phone at 1-833-537-4342.", [["Apply for CDCP", "https://www.canada.ca/en/services/benefits/dental/dental-care-plan/apply.html"]]],
-        ["More help", "Canada Child Benefit (CCB): tax-free money every month for each child under 18. Settlement help: free or low-cost help with papers, jobs and English classes (LINC for permanent residents). Windmill: loans up to $15,000 for exams and licensing.", [["CCB", "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html"], ["Immigrant Services Calgary", "https://www.immigrantservicescalgary.ca/"], ["Centre for Newcomers", "https://www.centrefornewcomers.ca/"], ["Windmill", "https://www.windmillmicrolending.org/"]]],
-        ["Food bank", "If you need food at the start, the Calgary Food Bank gives you a free food hamper every 10 days. Request it online, then pick it up by car or at a location near you; delivery is available if you can't go out. For any other help (housing, money, health), call 211: free, 24/7.", [["Calgary Food Bank", "https://www.calgaryfoodbank.com/"], ["211 Alberta", "https://ab.211.ca/"]]]
+        ["Health insurance: free", "Covers doctors and hospitals, no monthly fee. Register free at any Alberta registry agent: passport + proof of address + PR card or work permit. Medicines and dental: through your job's benefits."],
+        ["Driver's licence: we help you", "Within 90 days: a knowledge test at a registry, then a road test. With 2+ years of driving, you get a full licence right away. Car insurance is required: ≈ $166 a month on average in Alberta, higher at first.", [["Alberta.ca", "https://www.alberta.ca/exchange-non-alberta-licences"]]],
+        ["Housing: where to look", "Rent: RentFaster, Rentals.ca, Kijiji, Facebook Marketplace. Buy: Realtor.ca. Bring your job letter and a bank statement.", [["RentFaster", "https://www.rentfaster.ca/"], ["Rentals.ca", "https://rentals.ca/"], ["Kijiji", "https://www.kijiji.ca/"], ["Realtor.ca", "https://www.realtor.ca/"]]],
+        ["Dental (CDCP): free", "Free government dental care until you start a job with dental insurance. Family income under $90,000 and last year's tax return filed in Canada. Easy to apply online.", [["Apply for CDCP", "https://www.canada.ca/en/services/benefits/dental/dental-care-plan/apply.html"]]],
+        ["More help", "Monthly money for children (CCB). Free help with papers, jobs and English. Windmill loans up to $15,000 for exam fees.", [["CCB", "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html"], ["Immigrant Services Calgary", "https://www.immigrantservicescalgary.ca/"], ["Centre for Newcomers", "https://www.centrefornewcomers.ca/"], ["Windmill", "https://www.windmillmicrolending.org/"]]],
+        ["Food bank: free", "A free food hamper every 10 days. Order online, pick up near you. For any other help, call 211.", [["Calgary Food Bank", "https://www.calgaryfoodbank.com/"], ["211 Alberta", "https://ab.211.ca/"]]]
       ],
       new_src: "Sources: Alberta.ca (AHCIP) · Canada.ca (CDCP, CCB) · Calgary.ca · Calgary Food Bank · 211 Alberta · Automobile Insurance Rate Board 2026, via Western Financial Group.",
-      test_note: "The questions belong to PEBC. Al-Tina is independent and not affiliated with PEBC or these courses.",
+      test_note: "The questions belong to PEBC. Al-Tina is not affiliated with PEBC or these courses.",
       faq_eyebrow: "Most asked", faq_title: "Answers to your questions", fees_cap: "Fees and time (Manitoba, new PEBC pathway, 2027)", fees_img: "fees-2027-en-v5.jpg", faq_sub: "Collected from your comments on our posts.",
       faq_src: "Sources: PEBC · NAPRA · CIHI (2024) · Job Bank.",
       faq: [
@@ -784,7 +791,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["How long does the whole path take?", "About a year to a year and a half. You finish every step from Iraq except the OSCE, then you come to Canada."],
         ["What are the exams?", "Two exams only: MCQ first. After you pass it, you apply for the OSCE."],
         ["What is on the exam?", "It is based on NAPRA's entry-to-practice competencies, with the most weight on clinical care."],
-        ["How long should I study, and with what?", "Within that same year. There is now only one exam from Iraq (MCQ), and most of it is what we studied and saw in our hospital and pharmacy rotations. Study materials depend on whether you prepare with us or with someone else."],
+        ["How long should I study, and with what?", "Within the same year. Most of the MCQ is what you studied and saw in training. Materials depend on whether you prepare with us or someone else."],
         ["What are the pass rates?", "They change every year. PEBC publishes them on its website."],
         ["Can I do the steps from Iraq?", "Yes. Gateway registration, document evaluation and the MCQ (taken remotely) can all be done from Iraq. Only the OSCE is in Canada."],
         ["Where are the MCQ exam centres in Iraq?", "You don't need a centre. You take the MCQ online from home, with a live Prometric proctor watching you (remote proctoring). You need a private room, a webcam and stable internet. You can also take it at a Prometric test centre."],
@@ -796,19 +803,19 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["New graduate with no experience or residency?", "You can apply. If you don't have a practice licence, you submit a Statutory Declaration."],
         ["How do I send my transcript and attestation?", "By DHL."],
         ["Which language test?", "IELTS Academic (reading 7, listening 7, speaking 7, writing 6.5), OET, or TEF Canada in French."],
-        ["How do I pay the fees from Iraq?", "Give the money in cash to someone who has a credit or debit card from outside Iraq, and they pay for you. Iraqi cards often don't work."],
-        ["How much does it cost?", "About CAD 7,544 in total, including our office fee of CAD 340 (Manitoba, 2027). It depends on the province and the number of attempts. See the fees and time table below."],
-        ["Why does it cost so much?", "Most of it is official fees: PEBC, the language test and the provincial pharmacy regulator. Our office fee is only CAD 340 of the CAD 7,544. You don't pay it all at once; you pay step by step over about a year. The total is about one month's pay for a pharmacist in Canada."],
-        ["What is your office fee?","CAD 340. It's the first line in the table: PEBC registration, forms preparation and lawyer costs."],
-        ["Does the office fee cover only the application, or also the study material and courses?", "We help you with everything, but we don't run a study course. We help you understand how they ask, what they focus on and what they want to know."],
+        ["How do I pay the fees from Iraq?", "Iraqi cards often don't work. Give cash to someone with a card from outside Iraq, and they pay for you."],
+        ["How much does it cost?", "You pay us after the service, never upfront. In total, about CAD 7,544 over a year, including our CAD 340 (Manitoba, 2027). See the table below."],
+        ["Why does it cost so much?", "Most of it is official fees (PEBC, language test, province). Ours is only CAD 340, paid after the service. You pay step by step, about one month of a pharmacist's pay in total."],
+        ["What is your office fee?", "CAD 340, paid after the service, not upfront. It covers PEBC registration, the forms and the lawyer."],
+        ["Does the office fee cover the courses too?", "We help with everything except a study course. We show you how they ask and what they focus on."],
         ["Do you have an office in Iraq?", "No, everything is online."],
         ["What is the practical training?", "You work as a pharmacist under supervision. Your supervisor tells you what to do: data entry, product check, data verification, clinical verification and documentation."],
         ["What is the jurisprudence exam?", "A provincial exam on the legal way to handle a prescription."],
         ["Which province should I start in?", "It depends on many criteria. We decide together when and where."],
         ["Can I work as a pharmacy technician meanwhile?", "No. You can work as a pharmacy intern. A pharmacy technician is a completely different job from a pharmacist."],
         ["What is the salary in Canada?", "The average pharmacist wage is about CAD 55 an hour, roughly CAD 108,000 a year full time. In northern Canada it can reach CAD 100 an hour."],
-        ["Immigration and visa?", "A separate route from licensing. It's best to start with licensing and use it later for immigration."],
-        ["Do you guarantee the visa? If I don't get it, is all the money lost?", "No one can guarantee a visa. Canada's immigration department (IRCC) decides. But you don't pay everything up front: before the visa you only pay our office, Gateway, document evaluation and the MCQ (about CAD 2,315). The OSCE and provincial fees come later. Your MCQ pass stays valid for 3 years, so you have time to apply for the visa again if it's refused."],
+        ["Do you give a visa?", "No, the visa comes from Canada's immigration department. Your exams are what open the way to the visa. We connect you with a trusted Iraqi immigration lawyer: you talk to him directly, and he explains and handles everything."],
+        ["Do you guarantee the visa? If I don't get it, is the money lost?", "No one can guarantee a visa. But you don't pay everything first: before the visa, only about CAD 2,315 (us, Gateway, documents, MCQ). Your MCQ pass lasts 3 years, so you can apply again."],
         ["Does licensing speed up immigration?","Yes, a lot."],
         ["Is there an age limit? Can I bring my family?", "There is no age limit. Bringing your family is an immigration matter that can be solved easily, and yes, you can bring them."],
         ["I'm a pharmacist and my wife is a doctor. Do I apply alone and bring her later, or do we come together?", "You come together."],
@@ -872,32 +879,33 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "الصيدلة في كندا",
       nav_path: "المسار", nav_services: "الخدمات", nav_faq: "أجوبة لأسئلتك", nav_register: "التسجيل", nav_contact: "تواصل معنا",
       nav_life: "حياة الصيدلي بكندا", nav_test: "اختبر نفسك",
-      life_eyebrow: "الحياة في كندا", life_title: "شنو يوفّرلك راتب الصيدلي بكندا؟", life_sub: "مثال: صيدلي بدوام كامل في ألبرتا، 37.5 ساعة بالأسبوع، سنة 2026.",
-      life_net_k: "راتبك الصافي كل شهر، يعني بعد الضرائب",
-      life_gross: "قبل الضرائب ≈ $9,017 بالشهر ($108,205 بالسنة). تنقص منه ضريبة الدخل والتقاعد (CPP) والتأمين (EI)، ويوصل لإيدك ≈ $6,680.",
-      life_buy: "أو تشتري شقة بكالكري: معدل السعر $288,800", life_buy_d: "بالبداية كقادم جديد، المقدّم حوالي 20% (≈ $57,760) والقسط ≈ $1,270 إلى $1,345 بالشهر. وبعد ما تستقر بكندا يصير المقدّم 5% (≈ $14,440) والقسط ≈ $1,570 إلى $1,660 بالشهر. الفائدة 4.44% إلى 5.00% لمدة 25 سنة. يعني أقل أو نفس الإيجار، والشقة تصير ملكك. بدون رسوم العمارة والضريبة العقارية.",
+      life_eyebrow: "الحياة في كندا", life_title: "شنو يوفّرلك راتب الصيدلي بكندا؟", life_sub: "مثال: صيدلي بدوام كامل بألبرتا (37.5 ساعة بالأسبوع)، 2026.",
+      life_net_k: "راتبك بالشهر بعد الضرائب",
+      life_gross: "قبل الضرائب: ≈ $9,017 بالشهر.",
+      life_buy: "أو تشتري شقة: المعدل $288,800", life_buy_d: "بالبداية: مقدّم 20% (≈ $57,760) وقسط ≈ $1,300 بالشهر. بعد ما تستقر: مقدّم 5% وقسط ≈ $1,600. تقريباً مثل الإيجار، والشقة ملكك. رسوم العمارة والضريبة العقارية على حدة.",
       life_rows: [["إيجار شقة غرفتين نوم بكالكري", "≈ $1,900"], ["أكل عائلة من 4 أشخاص", "≈ $1,465"], ["يبقى لك للسيارة، المطاعم، الطلعات، السفر والتوفير", "≈ $3,315"]],
-      life_car: "سيارة Toyota Corolla 2026 جديدة تبدأ من $24,520", life_car_d: "أو بالأقساط: بحدود $500 بالشهر، والمقدّم $500 أو بدون مقدّم أصلاً. وكاش: تقريباً راتب 4 أشهر. نصيحتنا: اشتري سيارة جديدة مو مستعملة. الجديدة عليها ضمان (warranty) يغطي التصليح، والمستعملة تصليحها غالي ومشاكلها هواية.",
+      life_car: "سيارة Toyota Corolla 2026 جديدة: من $24,520", life_car_d: "قسط ≈ $500 بالشهر، بمقدّم $500 أو بدون مقدّم. نصيحتنا: اشتري جديدة مو مستعملة، الضمان (warranty) يغطي التصليح.",
       life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · CMHC (10/2025) للإيجار · CREB (10/2026) لسعر الشقة · nesto (11/2026) لفائدة القرض · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة ونمط حياتك.",
-      life_vids: "شوف الحياة في ألبرتا وكندا", life_vid_note: "فيديوهات رسمية من YouTube، تشتغل هنا داخل الصفحة.",
+      life_vids: "شوف الحياة في ألبرتا وكندا", life_vid_note: "فيديوهات رسمية، تشتغل هنا بالصفحة.",
       test_eyebrow: "اختبر نفسك", test_title: "جرّب أسئلة الـ MCQ الرسمية", test_num: "سؤال",
-      test_h: "أسئلة نموذجية من PEBC، مجاناً", test_sub: "96 سؤال نموذجي لامتحان MCQ مع الأجوبة، من PEBC (9/2026). الملف يفتح على موقع PEBC.",
+      test_h: "أسئلة نموذجية من PEBC، مجاناً", test_sub: "96 سؤال مع الأجوبة، من موقع PEBC.",
       test_pdf: "افتح الأسئلة النموذجية (PDF)", test_more: "المزيد من PEBC: امتحان تجريبي وشاشة الامتحان",
-      test_courses: "تريد كورس؟ صيادلة هواية ينصحون بهذني للتحضير للـ MCQ والـ OSCE:",
-      cities_h: "كندا مباشر: اختار مدينة", cities_sub: "كاميرات مباشرة على YouTube. شوف الشوارع والجو والمدينة هسه.",
-      cities_note: "كاميرات مباشرة يشغّلها أصحابها على YouTube، وممكن توقف أو تتغير بأي وقت.",
+      pay_note: "ما تدفع لنا شي مقدّماً. تاخذ الخدمة وتشوف النتيجة، وبعدها تدفع. وهواية أشياء مجاناً، بس اسأل.",
+      test_courses: "تريد كورس؟ صيادلة هواية ينصحون بـ:",
+      cities_h: "كندا مباشر: اختار مدينة", cities_sub: "كاميرات مباشرة: شوف المدينة هسه.",
+      cities_note: "كاميرات YouTube يشغّلها أصحابها، وممكن توقف بأي وقت.",
       badge_live: "مباشر", badge_ext: "يفتح على YouTube",
       new_h: "للقادمين الجدد",
       new_cards: [
-        ["التأمين الصحي: مجاني", "بألبرتا تأمين الحكومة (AHCIP) يغطي الطبيب والمستشفى، وما تدفع عليه اشتراك شهري. تسجّل مجاناً بأي Alberta Registry Agent: جيب جوازك، إثبات سكن (عقد إيجار أو فاتورة)، وبطاقة الإقامة أو تصريح العمل (لازم ما يخلص قبل 6 أشهر). والبطاقة توصلك بالبريد. الأدوية والأسنان والنظارات مو مغطاة للكبار، وغالباً تغطيها benefits الشغل بدوام كامل."],
-        ["تأمين السيارة: إجباري", "معدل ألبرتا ≈ $166 بالشهر ($1,991 بالسنة). كقادم جديد تدفع أكثر بالبداية لأن ما عندك تاريخ قيادة بكندا، ويقل مع الوقت إذا ما عندك حوادث. جيب رسالة من شركة التأمين ببلدك تثبت سنين قيادتك، ممكن تنزّل السعر."],
-        ["السكن: وين تدوّر؟", "للإيجار: RentFaster و Rentals.ca و Kijiji و Facebook Marketplace. للشراء: Realtor.ca. جيب رسالة الشغل وكشف حسابك البنكي، لأن بعض الملاك يطلبون إثبات دخل أو تأمين أكثر إذا ما عندك تاريخ ائتماني بكندا.", [["RentFaster", "https://www.rentfaster.ca/"], ["Rentals.ca", "https://rentals.ca/"], ["Kijiji", "https://www.kijiji.ca/"], ["Realtor.ca", "https://www.realtor.ca/"]]],
-        ["تأمين الأسنان (CDCP)", "تأمين أسنان من الحكومة الكندية. تكدر تقدّم عليه لحد ما تبدي شغل يعطيك تأمين أسنان، إذا دخل عائلتك أقل من $90,000 بالسنة وقدّمت ضريبة السنة الماضية بكندا. التقديم سهل ومجاني، أونلاين أو بالتلفون 1-833-537-4342.", [["قدّم على CDCP", "https://www.canada.ca/en/services/benefits/dental/dental-care-plan/apply.html"]]],
-        ["مساعدات ثانية", "مساعدة الأطفال (CCB): فلوس كل شهر بدون ضريبة لكل طفل تحت 18 سنة. خدمات الاستقرار: مساعدة مجانية أو رخيصة بالأوراق والشغل ودروس الإنكليزي (LINC للمقيمين الدائمين). قرض Windmill: لحد $15,000 لرسوم الامتحانات والترخيص.", [["CCB", "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html"], ["Immigrant Services Calgary", "https://www.immigrantservicescalgary.ca/"], ["Centre for Newcomers", "https://www.centrefornewcomers.ca/"], ["Windmill", "https://www.windmillmicrolending.org/"]]],
-        ["بنك الطعام (Food Bank)", "إذا احتجت أكل بالبداية، بنك الطعام بكالكري يعطيك سلة أكل (hamper) مجاناً كل 10 أيام. تطلبها أونلاين، وتستلمها بالسيارة أو من فرع قريب منك، وأكو توصيل إذا ما تكدر تطلع. ولأي مساعدة ثانية (سكن، فلوس، صحة) اتصل على 211، مجاني وعلى مدار الساعة.", [["Calgary Food Bank", "https://www.calgaryfoodbank.com/"], ["211 Alberta", "https://ab.211.ca/"]]]
+        ["التأمين الصحي: مجاني", "يغطي الطبيب والمستشفى، بدون اشتراك. سجّل مجاناً بأي Alberta Registry Agent: الجواز + إثبات سكن + الإقامة أو تصريح العمل. الأدوية والأسنان: من تأمين الشغل."],
+        ["رخصة السياقة: نساعدك بيها", "خلال 90 يوم: امتحان نظري بأي registry، وبعدها امتحان عملي. إذا عندك سنتين سياقة أو أكثر، تاخذ رخصة كاملة مباشرة. تأمين السيارة إجباري: معدل ألبرتا ≈ $166 بالشهر، وبالبداية أغلى.", [["Alberta.ca", "https://www.alberta.ca/exchange-non-alberta-licences"]]],
+        ["السكن: وين تدوّر؟", "إيجار: RentFaster و Rentals.ca و Kijiji و Facebook Marketplace. شراء: Realtor.ca. جيب رسالة الشغل وكشف حسابك البنكي.", [["RentFaster", "https://www.rentfaster.ca/"], ["Rentals.ca", "https://rentals.ca/"], ["Kijiji", "https://www.kijiji.ca/"], ["Realtor.ca", "https://www.realtor.ca/"]]],
+        ["الأسنان (CDCP): مجاني", "علاج أسنان مجاني من الحكومة لحد ما تبدي شغل بتأمين أسنان. الشرط: دخل العائلة أقل من $90,000 وقدّمت ضريبة السنة الماضية بكندا. التقديم سهل وأونلاين.", [["قدّم على CDCP", "https://www.canada.ca/en/services/benefits/dental/dental-care-plan/apply.html"]]],
+        ["مساعدات ثانية", "فلوس شهرية للأطفال (CCB). مساعدة مجانية بالأوراق والشغل والإنكليزي. قرض Windmill لحد $15,000 لرسوم الامتحانات.", [["CCB", "https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview.html"], ["Immigrant Services Calgary", "https://www.immigrantservicescalgary.ca/"], ["Centre for Newcomers", "https://www.centrefornewcomers.ca/"], ["Windmill", "https://www.windmillmicrolending.org/"]]],
+        ["بنك الطعام: مجاني", "سلة أكل مجانية كل 10 أيام: اطلبها أونلاين واستلمها قريب منك. ولأي مساعدة ثانية اتصل على 211.", [["Calgary Food Bank", "https://www.calgaryfoodbank.com/"], ["211 Alberta", "https://ab.211.ca/"]]]
       ],
       new_src: "المصادر: Alberta.ca (AHCIP) · Canada.ca: CDCP و CCB · Calgary.ca · Calgary Food Bank · 211 Alberta · Automobile Insurance Rate Board 2026، عن طريق Western Financial Group.",
-      test_note: "الأسئلة ملك PEBC. التينة جهة مستقلة وغير تابعة لـ PEBC ولا لهذي الكورسات.",
+      test_note: "الأسئلة ملك PEBC. التينة غير تابعة لـ PEBC ولا للكورسات.",
       faq_eyebrow: "الأسئلة الأكثر تكراراً", faq_title: "أجوبة لأسئلتك", fees_cap: "الرسوم والوقت (مانيتوبا، مسار PEBC الجديد، 2027)", fees_img: "fees-2027-ar-v2.jpg", faq_sub: "جمعناها من تعليقاتكم على منشوراتنا.",
       faq_src: "المصادر: PEBC · NAPRA · CIHI (2024) · Job Bank.",
       faq: [
@@ -905,7 +913,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["شكد ياخذ وقت كل الطريق؟", "تقريباً سنة إلى سنة ونص. تخلص كل الخطوات وآنت بالعراق عدا الـ OSCE، وبعدها توصل كندا."],
         ["شنو الامتحانات؟", "امتحانين فقط: MCQ أولاً، وبعد ما تنجح بيه تقدّم على OSCE."],
         ["شنو يجي بالامتحان؟", "مبني على كفاءات NAPRA للصيدلي المبتدئ، وأكبر وزن للرعاية السريرية."],
-        ["كم شهر أدرس؟ وشنو المصادر؟", "ضمن نفس السنة. هسه امتحان واحد بس من العراق (MCQ)، وأغلبه من اللي درسناه وشفناه بالتدريب بالمستشفيات والصيدليات. والمصادر تعتمد إذا تحضّر ويانا أو ويا غيرنا."],
+        ["كم شهر أدرس؟ وشنو المصادر؟", "ضمن نفس السنة. أغلب الـ MCQ من اللي درسته وشفته بالتدريب. والمصادر حسب إذا تحضّر ويانا أو ويا غيرنا."],
         ["شكد نسبة النجاح؟", "تتغير كل سنة، و PEBC ينشرها على موقعه."],
         ["أكدر أسوي الخطوات وآني بالعراق؟", "نعم. التسجيل في Gateway، تقييم الوثائق، وامتحان MCQ عن بُعد، كلها من العراق. بس الـ OSCE يكون داخل كندا."],
         ["وين مراكز امتحان MCQ بالعراق؟", "ما تحتاج مركز. تقدّم الـ MCQ أونلاين من بيتك، ويراقبك مراقب مباشر من Prometric (remote proctoring). تحتاج غرفة لوحدك، كاميرا، وإنترنت ثابت. وتكدر هم تقدّم بمركز Prometric."],
@@ -917,19 +925,19 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["خريج جديد بدون خبرة أو إقامة؟", "تكدر تقدّم. إذا ما عندك إجازة ممارسة، تقدّم إقرار رسمي (Statutory Declaration)."],
         ["شلون أرسل كشف الدرجات والتصديق؟", "عن طريق DHL."],
         ["شنو امتحان اللغة؟", "IELTS Academic (قراءة 7، استماع 7، محادثة 7، كتابة 6.5) أو OET، أو TEF Canada بالفرنسي."],
-        ["شلون أدفع الرسوم من العراق؟", "تنطي المبلغ كاش لشخص عنده بطاقة credit أو debit من خارج العراق ويدفع عنك، لأن البطاقات العراقية أغلب الأحيان ما تشتغل."],
-        ["شكد تكلف المعادلة؟", "تقريباً 7,544 دولار كندي بالمجموع، وبيها رسوم مكتبنا 340 دولار (مانيتوبا، 2027). تختلف حسب المقاطعة وعدد المحاولات. شوف جدول الرسوم والوقت تحت."],
-        ["ليش كل هاي المبالغ؟", "لأن أغلبها رسوم رسمية: PEBC، امتحان اللغة، وهيئة الصيدلة بالمقاطعة. رسوم مكتبنا بس 340 دولار من أصل 7,544. وما تدفعها مرة وحدة، تدفعها خطوة بخطوة خلال حوالي سنة. والمجموع تقريباً راتب شهر واحد للصيدلي بكندا."],
-        ["شكد أجور المكتب؟","340 دولار كندي. هي أول خطوة بالجدول: التسجيل في PEBC، تحضير الاستمارات، وأجور المحامي."],
-        ["أجور المكتب تشمل بس التقديم، لو حتى شرح المناهج والكورسات؟", "نساعدك بكلشي، بس ما نسوي كورس دراسي. نساعدك تفهم شلون يسألون، شنو يركزون عليه، وشنو يريدون يعرفون."],
+        ["شلون أدفع الرسوم من العراق؟", "البطاقات العراقية أغلب الأحيان ما تشتغل. تنطي كاش لشخص عنده بطاقة من برّه العراق ويدفع عنك."],
+        ["شكد تكلف المعادلة؟", "تدفع لنا بعد الخدمة، مو مقدّماً. المجموع تقريباً 7,544 دولار خلال سنة، وبيها أجورنا 340 دولار (مانيتوبا، 2027). شوف الجدول تحت."],
+        ["ليش كل هاي المبالغ؟", "أغلبها رسوم رسمية (PEBC، اللغة، المقاطعة). أجورنا بس 340 دولار وتدفعها بعد الخدمة. والباقي خطوة بخطوة، والمجموع تقريباً راتب شهر للصيدلي بكندا."],
+        ["شكد أجور المكتب؟", "340 دولار كندي، تدفعها بعد الخدمة مو مقدّماً. تشمل التسجيل في PEBC، الاستمارات، وأجور المحامي."],
+        ["أجور المكتب تشمل الكورسات؟", "نساعدك بكلشي عدا الكورس الدراسي. نعلّمك شلون يسألون وشنو يركزون عليه."],
         ["عدكم مكتب بالعراق؟", "لا، كلشي أونلاين."],
         ["شنو التدريب العملي؟", "تشتغل صيدلي تحت إشراف، والمشرف يحدد شغلك: إدخال البيانات، فحص المنتج، التحقق من البيانات، التحقق السريري، والتوثيق."],
         ["شنو امتحان القوانين؟", "امتحان بالمقاطعة عن الطريقة القانونية للتعامل ويا الوصفة."],
         ["أي مقاطعة أبدي بيها؟", "تعتمد على معايير هواية، ونقرر سوه وين ومتى."],
         ["أكدر أشتغل فني صيدلة لحد ما أكمل؟", "لا. تكدر تشتغل Pharmacy Intern. فني الصيدلة صنف شغل مختلف تماماً عن الصيدلي."],
         ["شكد الراتب بكندا؟", "معدل أجور الصيدلي حوالي 55 دولار كندي بالساعة، يعني تقريباً 108 آلاف بالسنة بدوام كامل. وبشمال كندا يوصل لـ 100 دولار بالساعة."],
-        ["الهجرة والفيزا؟", "طريق منفصل عن المعادلة. الأفضل تبدي بالمعادلة وتستخدمها بعدين للهجرة."],
-        ["تضمنون الفيزا؟ وإذا ما حصلتها تروح كل الفلوس؟", "محد يكدر يضمن الفيزا، القرار بيد الهجرة الكندية (IRCC). بس ما تدفع كلشي مقدّماً: قبل الفيزا تدفع بس رسوم مكتبنا، Gateway، تقييم الوثائق، والـ MCQ (حوالي 2,315 دولار). رسوم الـ OSCE والمقاطعة تجي بعدين. ونجاحك بالـ MCQ يبقى صالح 3 سنوات، فعندك وقت تعيد التقديم على الفيزا إذا انرفضت."],
+        ["تطلّعون فيزا؟", "لا، الفيزا من الهجرة الكندية. امتحاناتك هي اللي تفتحلك طريق الفيزا. ونوصلك بمحامي هجرة عراقي موثوق: تحجي وياه مباشرة، ويشرحلك ويتابع كلشي."],
+        ["تضمنون الفيزا؟ وإذا ما حصلتها تروح الفلوس؟", "محد يضمن الفيزا. بس ما تدفع كلشي أول: قبل الفيزا تدفع بس حوالي 2,315 دولار، لأجورنا و Gateway والوثائق والـ MCQ. ونجاح الـ MCQ يبقى 3 سنوات، فتكدر تعيد التقديم."],
         ["المعادلة تسرّع الهجرة؟","نعم، هواية."],
         ["أكو عمر محدد؟ وأكدر أجيب عائلتي؟", "ماكو عمر محدد. وجلب العائلة موضوع هجرة وينحل بسهولة، ونعم تكدر تجيبهم."],
         ["آني صيدلاني وزوجتي طبيبة، أقدّم وحدي وبعدين لمّ شمل، لو نجي سوه؟", "تجون سوه."],
