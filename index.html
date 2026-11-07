@@ -237,6 +237,24 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 @media (max-width: 900px) { .life { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .vids { grid-template-columns: 1fr; } }
 
+.cities, .newc { margin-block-start: 64px; }
+.sub2 { color: var(--muted); margin-block: -6px 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 14px 20px; }
+.chips button { font: inherit; font-size: .92rem; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--forest); cursor: pointer; transition: background-color .15s, border-color .15s; }
+.chips button:hover { border-color: var(--forest); }
+.chips button[aria-selected="true"] { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
+.vid .badge { position: absolute; top: 10px; inset-inline-start: 10px; z-index: 1; background: #c4302b; color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: .04em; padding: 3px 9px; border-radius: 4px; }
+.vid .badge.ext { background: rgba(15, 46, 36, .85); }
+.newc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.ncard { background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--forest); border-radius: 14px; padding: 22px 24px; min-width: 0; }
+.ncard:nth-child(2) { border-block-start-color: var(--brass); }
+.ncard h4 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-size: 1.15rem; color: var(--forest); }
+.ncard h4 svg { width: 14px; height: 14px; flex: none; color: var(--brass); }
+.ncard p { color: var(--ink); line-height: 1.75; }
+.ncard .links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-block-start: 12px; }
+.ncard .links a { color: var(--forest); font-weight: 700; }
+@media (max-width: 900px) { .newc-grid { grid-template-columns: 1fr; } }
+
 /* Test yourself */
 .test { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 32px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--brass); border-radius: 16px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); }
 .test .num { font-family: var(--f-display); font-size: clamp(4rem, 9vw, 6rem); line-height: .9; color: var(--forest); text-align: center; }
@@ -442,6 +460,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <div class="vids" id="vids"></div>
           <p class="note" data-i18n="life_vid_note"></p>
         </div>
+      </div>
+      <div class="cities">
+        <h3 class="vids-h" data-i18n="cities_h"></h3>
+        <p class="sub2" data-i18n="cities_sub"></p>
+        <div class="chips" id="city-chips" role="tablist"></div>
+        <div class="vids" id="city-vids"></div>
+        <p class="note" data-i18n="cities_note"></p>
+      </div>
+      <div class="newc">
+        <h3 class="vids-h" data-i18n="new_h"></h3>
+        <div class="newc-grid" id="newc"></div>
+        <p class="note" id="new-src"></p>
       </div>
     </div>
   </section>
@@ -724,7 +754,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       life_eyebrow: "Life in Canada", life_title: "What a pharmacist's pay gives you", life_sub: "Example: a full-time pharmacist in Alberta, 37.5 hours a week, in 2026.",
       life_net_k: "Take-home pay every month, after taxes",
       life_gross: "Before taxes it is ≈ $9,017 a month ($108,205 a year). Income tax, pension (CPP) and employment insurance (EI) come off, and ≈ $6,680 reaches your hand.",
-      life_buy: "Or buy an apartment in Calgary: average price $288,800", life_buy_d: "Down payment 5% ≈ $14,440, then ≈ $1,570 to $1,660 a month at 4.44% to 5.00% interest over 25 years. About the same as rent, and the apartment becomes yours. Condo fees and property tax not included.",
+      life_buy: "Or buy an apartment in Calgary: average price $288,800", life_buy_d: "As a newcomer, expect a down payment of about 20% (≈ $57,760), then ≈ $1,270 to $1,345 a month. Once you are established in Canada, it can be 5% (≈ $14,440), then ≈ $1,570 to $1,660 a month. Interest 4.44% to 5.00%, over 25 years. Less than or about the same as rent, and the apartment becomes yours. Condo fees and property tax not included.",
       life_rows: [["Rent: 2-bedroom apartment in Calgary", "≈ $1,900"], ["Food for a family of four", "≈ $1,465"], ["Left for a car, restaurants, going out, travel and savings", "≈ $3,315"]],
       life_car: "A new 2026 Toyota Corolla starts at $24,520", life_car_d: "Or finance it for about $500 a month. Cash: about 4 months of take-home pay.",
       life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · CMHC (10/2025) for rent · CREB (10/2026) for the apartment price · nesto (11/2026) for mortgage rates · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
@@ -732,7 +762,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       test_eyebrow: "Test yourself", test_title: "Try the official MCQ questions", test_num: "questions",
       test_h: "PEBC sample questions, free", test_sub: "96 sample questions for the MCQ, with the answer key, from PEBC (9/2026). The PDF opens on PEBC's website.",
       test_pdf: "Open the sample questions (PDF)", test_more: "More from PEBC: sample exam and exam demo",
-      test_courses: "Want a course? Many pharmacists use these to prepare for the MCQ and OSCE:",
+      test_courses: "Want a course? Many pharmacists recommend these to prepare for the MCQ and OSCE:",
+      cities_h: "Canada live: pick a city", cities_sub: "Live cameras on YouTube. See the streets, the weather and the city right now.",
+      cities_note: "Live cameras run by their owners on YouTube. A camera may stop or move at any time.",
+      badge_live: "LIVE", badge_ext: "Opens on YouTube",
+      new_h: "For newcomers",
+      new_cards: [
+        ["Health insurance: free", "In Alberta, the government plan (AHCIP) covers doctors and hospitals, and you pay no monthly fee. Register for free at any Alberta registry agent with your passport, proof of address (a lease or a bill), and your PR card or work permit (it must not expire within 6 months). The card comes by mail. Medicines, dental and glasses are not covered for adults; a full-time job's benefits usually cover them."],
+        ["Car insurance: required", "The Alberta average is ≈ $166 a month ($1,991 a year). As a newcomer you pay more at first because you have no driving history in Canada, and it goes down over time with no accidents. Bring a letter from your insurance company back home that shows your years of driving; it may lower the price."],
+        ["Housing: where to look", "To rent: RentFaster, Rentals.ca, Kijiji and Facebook Marketplace. To buy: Realtor.ca. Bring your job letter and a bank statement, because some landlords ask for proof of income or a bigger deposit when you have no credit history in Canada.", [["RentFaster", "https://www.rentfaster.ca/"], ["Rentals.ca", "https://rentals.ca/"], ["Kijiji", "https://www.kijiji.ca/"], ["Realtor.ca", "https://www.realtor.ca/"]]]
+      ],
+      new_src: "Sources: Alberta.ca (AHCIP) · Automobile Insurance Rate Board 2026 (via Western Financial Group).",
       test_note: "The questions belong to PEBC. Al-Tina is independent and not affiliated with PEBC or these courses.",
       faq_eyebrow: "Most asked", faq_title: "Answers to your questions", fees_cap: "Fees and time (Manitoba, new PEBC pathway, 2027)", fees_img: "fees-2027-en-v5.jpg", faq_sub: "Collected from your comments on our posts.",
       faq_src: "Sources: PEBC · NAPRA · CIHI (2024) · Job Bank.",
@@ -832,7 +872,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       life_eyebrow: "الحياة في كندا", life_title: "شنو يوفّرلك راتب الصيدلي بكندا؟", life_sub: "مثال: صيدلي بدوام كامل في ألبرتا، 37.5 ساعة بالأسبوع، سنة 2026.",
       life_net_k: "راتبك الصافي كل شهر، يعني بعد الضرائب",
       life_gross: "قبل الضرائب ≈ $9,017 بالشهر ($108,205 بالسنة). تنقص منه ضريبة الدخل والتقاعد (CPP) والتأمين (EI)، ويوصل لإيدك ≈ $6,680.",
-      life_buy: "أو تشتري شقة بكالكري: معدل السعر $288,800", life_buy_d: "مقدّم 5% ≈ $14,440، وبعدها قسط ≈ $1,570 إلى $1,660 بالشهر بفائدة 4.44% إلى 5.00% لمدة 25 سنة. يعني تقريباً نفس الإيجار، والشقة تصير ملكك. بدون رسوم العمارة والضريبة العقارية.",
+      life_buy: "أو تشتري شقة بكالكري: معدل السعر $288,800", life_buy_d: "بالبداية كقادم جديد، المقدّم حوالي 20% (≈ $57,760) والقسط ≈ $1,270 إلى $1,345 بالشهر. وبعد ما تستقر بكندا يصير المقدّم 5% (≈ $14,440) والقسط ≈ $1,570 إلى $1,660 بالشهر. الفائدة 4.44% إلى 5.00% لمدة 25 سنة. يعني أقل أو نفس الإيجار، والشقة تصير ملكك. بدون رسوم العمارة والضريبة العقارية.",
       life_rows: [["إيجار شقة غرفتين نوم بكالكري", "≈ $1,900"], ["أكل عائلة من 4 أشخاص", "≈ $1,465"], ["يبقى لك للسيارة، المطاعم، الطلعات، السفر والتوفير", "≈ $3,315"]],
       life_car: "سيارة Toyota Corolla 2026 جديدة تبدأ من $24,520", life_car_d: "أو بالأقساط بحدود $500 بالشهر. وكاش: تقريباً راتب 4 أشهر.",
       life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · CMHC (10/2025) للإيجار · CREB (10/2026) لسعر الشقة · nesto (11/2026) لفائدة القرض · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة ونمط حياتك.",
@@ -840,7 +880,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       test_eyebrow: "اختبر نفسك", test_title: "جرّب أسئلة الـ MCQ الرسمية", test_num: "سؤال",
       test_h: "أسئلة نموذجية من PEBC، مجاناً", test_sub: "96 سؤال نموذجي لامتحان MCQ مع الأجوبة، من PEBC (9/2026). الملف يفتح على موقع PEBC.",
       test_pdf: "افتح الأسئلة النموذجية (PDF)", test_more: "المزيد من PEBC: امتحان تجريبي وشاشة الامتحان",
-      test_courses: "تريد كورس؟ صيادلة هواية يستخدمون هذني للتحضير للـ MCQ والـ OSCE:",
+      test_courses: "تريد كورس؟ صيادلة هواية ينصحون بهذني للتحضير للـ MCQ والـ OSCE:",
+      cities_h: "كندا مباشر: اختار مدينة", cities_sub: "كاميرات مباشرة على YouTube. شوف الشوارع والجو والمدينة هسه.",
+      cities_note: "كاميرات مباشرة يشغّلها أصحابها على YouTube، وممكن توقف أو تتغير بأي وقت.",
+      badge_live: "مباشر", badge_ext: "يفتح على YouTube",
+      new_h: "للقادمين الجدد",
+      new_cards: [
+        ["التأمين الصحي: مجاني", "بألبرتا تأمين الحكومة (AHCIP) يغطي الطبيب والمستشفى، وما تدفع عليه اشتراك شهري. تسجّل مجاناً بأي Alberta Registry Agent: جيب جوازك، إثبات سكن (عقد إيجار أو فاتورة)، وبطاقة الإقامة أو تصريح العمل (لازم ما يخلص قبل 6 أشهر). والبطاقة توصلك بالبريد. الأدوية والأسنان والنظارات مو مغطاة للكبار، وغالباً تغطيها benefits الشغل بدوام كامل."],
+        ["تأمين السيارة: إجباري", "معدل ألبرتا ≈ $166 بالشهر ($1,991 بالسنة). كقادم جديد تدفع أكثر بالبداية لأن ما عندك تاريخ قيادة بكندا، ويقل مع الوقت إذا ما عندك حوادث. جيب رسالة من شركة التأمين ببلدك تثبت سنين قيادتك، ممكن تنزّل السعر."],
+        ["السكن: وين تدوّر؟", "للإيجار: RentFaster و Rentals.ca و Kijiji و Facebook Marketplace. للشراء: Realtor.ca. جيب رسالة الشغل وكشف حسابك البنكي، لأن بعض الملاك يطلبون إثبات دخل أو تأمين أكثر إذا ما عندك تاريخ ائتماني بكندا.", [["RentFaster", "https://www.rentfaster.ca/"], ["Rentals.ca", "https://rentals.ca/"], ["Kijiji", "https://www.kijiji.ca/"], ["Realtor.ca", "https://www.realtor.ca/"]]]
+      ],
+      new_src: "المصادر: Alberta.ca (AHCIP) · Automobile Insurance Rate Board 2026، عن طريق Western Financial Group.",
       test_note: "الأسئلة ملك PEBC. التينة جهة مستقلة وغير تابعة لـ PEBC ولا لهذي الكورسات.",
       faq_eyebrow: "الأسئلة الأكثر تكراراً", faq_title: "أجوبة لأسئلتك", fees_cap: "الرسوم والوقت (مانيتوبا، مسار PEBC الجديد، 2027)", fees_img: "fees-2027-ar-v2.jpg", faq_sub: "جمعناها من تعليقاتكم على منشوراتنا.",
       faq_src: "المصادر: PEBC · NAPRA · CIHI (2024) · Job Bank.",
@@ -1055,31 +1105,90 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     fillBidi($("test-sub"), t("test_sub"));
     fillBidi($("test-courses"), t("test_courses"));
     var box = $("vids");
-    if (!box.children.length) {
-      VIDEOS.forEach(function (v) {
-        var f = el("figure", "vid"), b = el("button", "play");
-        b.type = "button";
-        b.style.backgroundImage = "url(https://i.ytimg.com/vi/" + v[0] + "/hqdefault.jpg)";
-        b.addEventListener("click", function () {
-          var ifr = document.createElement("iframe");
-          ifr.src = "https://www.youtube-nocookie.com/embed/" + v[0] + "?autoplay=1&rel=0";
-          ifr.title = b.getAttribute("aria-label");
-          ifr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-          ifr.allowFullscreen = true;
-          ifr.referrerPolicy = "strict-origin-when-cross-origin";
-          f.replaceChild(ifr, b);
-        });
-        f.appendChild(b);
-        var c = el("figcaption"); c.appendChild(el("span")); c.appendChild(el("small", null, v[3]));
-        f.appendChild(c);
-        box.appendChild(f);
+    if (!box.children.length) VIDEOS.forEach(function (v) { box.appendChild(makeVid(v[0], v[3], false, true)); });
+    Array.prototype.forEach.call(box.children, function (f, i) { nameVid(f, lang === "ar" ? VIDEOS[i][1] : VIDEOS[i][2]); });
+    renderCities();
+    renderNewcomer();
+  }
+
+  // one YouTube video: picture first, the real player loads only when tapped
+  function makeVid(id, channel, live, embed) {
+    var f = el("figure", "vid"), b = el("button", "play");
+    b.type = "button";
+    b.style.backgroundImage = "url(https://i.ytimg.com/vi/" + id + "/" + (live ? "hqdefault_live" : "hqdefault") + ".jpg)";
+    if (live || !embed) { var bd = el("span", "badge" + (embed ? "" : " ext")); bd.setAttribute("data-badge", live ? (embed ? "live" : "ext") : "ext"); b.appendChild(bd); }
+    b.addEventListener("click", function () {
+      if (!embed) { window.open("https://www.youtube.com/watch?v=" + id, "_blank", "noopener"); return; }
+      var ifr = document.createElement("iframe");
+      ifr.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+      ifr.title = b.getAttribute("aria-label");
+      ifr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      ifr.allowFullscreen = true;
+      ifr.referrerPolicy = "strict-origin-when-cross-origin";
+      f.replaceChild(ifr, b);
+    });
+    f.appendChild(b);
+    var c = el("figcaption"); c.appendChild(el("span")); c.appendChild(el("small", null, channel));
+    f.appendChild(c);
+    return f;
+  }
+  function nameVid(f, name) {
+    f.querySelector("figcaption span").textContent = name;
+    var b = f.querySelector(".play");
+    if (b) {
+      b.setAttribute("aria-label", name + " — YouTube");
+      var bd = b.querySelector(".badge");
+      if (bd) bd.textContent = bd.getAttribute("data-badge") === "live" ? t("badge_live") : t("badge_ext");
+    }
+  }
+
+  // live cameras by city: [key, Arabic, English, [[videoId, embeddable, Arabic caption, English caption, channel]]]
+  var CITIES = [
+    ["yyc", "كالكري", "Calgary", [["MwcqP3ta6RI", true, "وسط مدينة كالكري", "Downtown Calgary", "DELTATECH Calgary"], ["xsRDTfuksyI", true, "حديقة Central Memorial، كالكري", "Central Memorial Park, Calgary", "DELTATECH Calgary"]]],
+    ["yeg", "إدمنتن", "Edmonton", [["fU0HUxPe0xI", false, "وسط مدينة إدمنتن", "Downtown Edmonton", "YEG er"]]],
+    ["yvr", "فانكوفر", "Vancouver", [["GHEmhcWjiTE", true, "ميناء فانكوفر", "Vancouver harbour", "Vancouver Port Live"], ["rxyNjFKwzJA", true, "فانكوفر والجبال", "Vancouver and the mountains", "Vancouver City Views"]]],
+    ["yyz", "تورنتو", "Toronto", [["bbjwotvAvDM", true, "تورنتو من فوق", "Toronto skyline", "TorontoLive4k"], ["0r5sNl5MTj8", true, "برج CN والشارع السريع", "CN Tower and the Gardiner", "TorontoCNTowerLive"]]],
+    ["yow", "أوتاوا", "Ottawa", [["ygedW8Q-pOc", true, "أوتاوا، العاصمة", "Ottawa, the capital", "skyviewca"]]],
+    ["nia", "شلالات نياكرا", "Niagara Falls", [["7gBzLGlJnwk", true, "شلالات نياكرا", "Niagara Falls", "Niagara Falls Live"]]],
+    ["can", "كانمور (جبال الروكي)", "Canmore (Rockies)", [["_0wPODlF9wU", true, "الشارع الرئيسي، كانمور", "Main Street, Canmore", "CanmoreAlberta.com"]]]
+  ];
+  var curCity = "yyc";
+  function renderCities() {
+    var chips = $("city-chips"), vids = $("city-vids");
+    if (!chips.children.length) {
+      CITIES.forEach(function (c) {
+        var b = el("button"); b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("data-city", c[0]);
+        b.addEventListener("click", function () { curCity = c[0]; showCity(true); });
+        chips.appendChild(b);
       });
     }
-    Array.prototype.forEach.call(box.children, function (f, i) {
-      var name = lang === "ar" ? VIDEOS[i][1] : VIDEOS[i][2];
-      f.querySelector("figcaption span").textContent = name;
-      var b = f.querySelector(".play"); if (b) b.setAttribute("aria-label", name + " — YouTube");
+    Array.prototype.forEach.call(chips.children, function (b, i) { b.textContent = lang === "ar" ? CITIES[i][1] : CITIES[i][2]; });
+    showCity(false);
+  }
+  function showCity(rebuild) {
+    var vids = $("city-vids"), city = CITIES.filter(function (c) { return c[0] === curCity; })[0];
+    Array.prototype.forEach.call($("city-chips").children, function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-city") === curCity)); });
+    if (rebuild || vids.getAttribute("data-city") !== curCity) {
+      vids.textContent = ""; vids.setAttribute("data-city", curCity);
+      city[3].forEach(function (v) { vids.appendChild(makeVid(v[0], v[4], true, v[1])); });
+    }
+    Array.prototype.forEach.call(vids.children, function (f, i) { nameVid(f, lang === "ar" ? city[3][i][2] : city[3][i][3]); });
+  }
+
+  function renderNewcomer() {
+    var box = $("newc"); box.textContent = "";
+    t("new_cards").forEach(function (c) {
+      var d = el("div", "ncard"), h = el("h4");
+      h.appendChild(rosette()); h.appendChild(el("span", null, c[0])); d.appendChild(h);
+      var p = el("p"); fillBidi(p, c[1]); d.appendChild(p);
+      if (c[2]) {
+        var l = el("div", "links");
+        c[2].forEach(function (a) { var w = el("bdi"); w.dir = "ltr"; var x = el("a", null, a[0]); x.href = a[1]; x.target = "_blank"; x.rel = "noopener nofollow"; w.appendChild(x); l.appendChild(w); });
+        d.appendChild(l);
+      }
+      box.appendChild(d);
     });
+    fillBidi($("new-src"), t("new_src"));
   }
 
   function renderSelect(id, list) {
