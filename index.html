@@ -218,6 +218,17 @@ html[lang="ar"] .path h3 { font-weight: 700; }
 .budget .car svg { width: 30px; height: 30px; flex: none; color: var(--brass); margin-block-start: 2px; }
 .budget .car b { display: block; font-weight: 700; }
 .budget .car span { color: var(--hero-muted); font-size: .95rem; }
+.budget li .vv { flex: none; display: grid; justify-items: end; text-align: end; }
+.budget .iqd { display: block; color: var(--hero-muted); font-size: .8rem; font-weight: 400; white-space: nowrap; }
+.budget .iqd:empty, .iqd-auto:empty { display: none; }
+.budget .iqd-big { font-size: 1rem; margin: -12px 0 16px; color: #e8d6a6; }
+.iqd-auto { white-space: nowrap; color: var(--muted); font-size: .92em; }
+.budget .iqd-auto { color: #e8d6a6; }
+.fx { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin: 16px 0 0; padding: 10px 18px; border-radius: 12px; background: var(--brass-tint); border: 1px solid #e3d5ae; color: var(--forest); font-weight: 600; }
+.fx[hidden] { display: none; }
+.fx small { font-weight: 400; color: var(--muted); font-size: .82rem; }
+.fx-tot span { display: block; font-size: 1.05rem; }
+.fx-fees { display: flex; flex-direction: column; align-items: center; gap: 4px; max-width: 720px; margin: 16px auto 0; text-align: center; }
 .budget .gross { color: var(--hero-muted); font-size: .92rem; line-height: 1.6; margin: -6px 0 16px; }
 .test .courses { margin-block-start: 18px; color: var(--ink); }
 .test .courses a { color: var(--forest); font-weight: 700; }
@@ -253,6 +264,21 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .ncard p { color: var(--ink); line-height: 1.75; }
 .ncard .links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-block-start: 12px; }
 .ncard .links a { color: var(--forest); font-weight: 700; }
+.rsteps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.rsteps li { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-block-start: 3px solid var(--forest); border-radius: 14px; padding: 18px 20px; min-width: 0; }
+.rsteps li.env { border-block-start-color: var(--brass); }
+.rsteps .n { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--forest); color: var(--on-forest); font-family: var(--f-display); font-size: 1.05rem; }
+.rsteps li.env .n { background: var(--brass); color: #0f2e24; }
+.rsteps h3 { font-size: 1.1rem; color: var(--forest); margin: 4px 0; }
+.rsteps bdi { white-space: nowrap; }
+.rsteps p { margin: 0; color: var(--ink); font-size: .95rem; line-height: 1.7; }
+@media (max-width: 900px) { .rsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .rsteps { grid-template-columns: 1fr; } }
+.offl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-start: 28px; }
+.offl .k { font-weight: 700; color: var(--forest); margin-inline-end: 4px; }
+.offl a { display: inline-block; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--forest); font-weight: 700; text-decoration: none; }
+.offl a:hover { border-color: var(--forest); }
+.offl a.main { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
 @media (max-width: 900px) { .newc-grid { grid-template-columns: 1fr; } }
 
 .paynote { display: flex; align-items: center; gap: 12px; margin-block: 0 22px; padding: 14px 20px; border-radius: 12px; background: var(--brass-tint); border: 1px solid #e3d5ae; color: var(--forest); font-weight: 600; }
@@ -316,6 +342,14 @@ input[type="file"]:focus-visible { outline: 2px solid var(--brass); outline-offs
 .actions { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-block-start: 34px; }
 .summary-err { color: var(--danger); font-weight: 600; margin-block-start: 14px; }
 .summary-err:empty { display: none; }
+.sending { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 16px; background: rgba(15, 46, 36, .6); backdrop-filter: blur(3px); }
+.sending[hidden], .sending .slow[hidden] { display: none; }
+.sending .box { width: 100%; max-width: 380px; background: var(--paper); color: var(--ink); border-radius: 14px; border-block-start: 3px solid var(--forest); padding: 28px 22px; text-align: center; box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .5); }
+.sending b { display: block; font-size: 1.2rem; color: var(--forest); }
+.sending p { margin: 8px 0 0; color: var(--muted); font-size: .95rem; }
+.sending .slow { margin-block-start: 16px; display: grid; gap: 12px; justify-items: center; }
+.spin { width: 42px; height: 42px; margin: 0 auto 14px; border: 4px solid var(--forest-tint); border-block-start-color: var(--forest); border-radius: 50%; animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Result */
 .result { display: grid; gap: 22px; }
@@ -434,6 +468,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <div><h2 data-i18n="docs_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2><p class="sub" data-i18n="docs_sub"></p></div>
       </div>
       <ul class="ticks docs" id="docs"></ul>
+      <div class="shead" style="margin-block:72px 24px">
+        <div><h2 data-i18n="steps_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2><p class="sub" data-i18n="steps_sub"></p></div>
+      </div>
+      <ol class="rsteps" id="rsteps"></ol>
+      <div class="offl">
+        <span class="k" data-i18n="off_k"></span>
+        <a href="https://pebc.ca/" target="_blank" rel="noopener"><bdi dir="ltr">PEBC</bdi></a>
+        <a href="https://www.napra.ca/" target="_blank" rel="noopener"><bdi dir="ltr">NAPRA</bdi></a>
+        <a class="main" href="https://app.certemy.com/entry/self-enrollments/Pharmacist-Document-Evaluation/889562b5-ec8a-4b78-9a39-5600e71125f9" target="_blank" rel="noopener" data-i18n="off_new"></a>
+        <a href="https://pebc.certemy.com/entry/login" target="_blank" rel="noopener" data-i18n="off_login"></a>
+      </div>
       <p class="note travel" data-i18n="travel_note"></p>
     </div>
   </section>
@@ -445,14 +490,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <span class="eyebrow caps" data-i18n="life_eyebrow"></span>
           <h2 data-i18n="life_title"></h2>
           <p class="sub" data-i18n="life_sub"></p>
+          <p class="fx" hidden><span class="fx-rate"></span> <small class="fx-note"></small></p>
         </div>
       </div>
       <div class="life">
         <div class="budget">
           <span class="k" data-i18n="life_net_k"></span>
           <bdi class="big" dir="ltr">≈ $6,680</bdi>
+          <small class="iqd iqd-big" data-cad="6680"></small>
           <p class="gross" id="life-gross"></p>
           <ul id="life-rows"></ul>
+          <div class="car">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2.5 8.5 12 13l9.5-4.5z"/><path d="M6.5 10.5v4.5c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-4.5"/><path d="M21.5 8.5v5"/></svg>
+            <div><b id="life-intern"></b><span id="life-intern-d"></span></div>
+          </div>
           <div class="car">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9.5L12 4l8 5.5V20"/><path d="M3 20.5h18"/><path d="M9 20v-5h6v5"/><path d="M8 10.5h2M14 10.5h2"/></svg>
             <div><b id="life-buy"></b><span id="life-buy-d"></span></div>
@@ -523,6 +574,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <figcaption data-i18n="fees_cap"></figcaption>
         <a href="fees-2027-ar-v5.jpg" target="_blank" rel="noopener"><img src="fees-2027-ar-v5.jpg" width="1080" height="1350" loading="lazy" alt="PEBC fees and time, Manitoba 2027"></a>
       </figure>
+      <p class="fx fx-fees" hidden><span class="fx-tot"></span><span class="fx-rate"></span><small class="fx-note"></small></p>
       <p class="note" data-i18n="faq_src"></p>
     </div>
   </section>
@@ -696,6 +748,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <p class="summary-err" id="summary-err" role="alert"></p>
       </form>
 
+      <div class="sending" id="sending" hidden role="status" aria-live="polite">
+        <div class="box">
+          <div class="spin" aria-hidden="true"></div>
+          <b data-i18n="sending_title"></b>
+          <p data-i18n="sending_body"></p>
+          <div class="slow" id="sending-slow" hidden>
+            <p data-i18n="sending_slow"></p>
+            <a class="btn btn-brass" href="https://wa.me/15879669624" target="_blank" rel="noopener" data-i18n="c_wa"></a>
+          </div>
+        </div>
+      </div>
+
       <div class="card result" id="result" hidden tabindex="-1" aria-live="polite">
         <h2 data-i18n="res_title"></h2>
         <p><span data-i18n="res_ref"></span> <span class="ref" id="res-ref"></span></p>
@@ -760,13 +824,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
       nav_life: "Life in Canada", nav_test: "Test yourself",
+      fx_rate: "Today: 1 Canadian dollar ≈ {x} Iraqi dinars", fx_note: "Approximate market rate, updated daily · {d}", fx_to: "To get to Canada", fx_total: "Total",
+      iqd_m: "IQD {x} million", iqd_k: "IQD {x}",
       life_eyebrow: "Life in Canada", life_title: "What a pharmacist's pay gives you", life_sub: "Example: a full-time pharmacist in Alberta (37.5 hours a week), 2026.",
       life_net_k: "Your monthly pay after taxes",
       life_gross: "Before taxes: ≈ $9,017 a month.",
       life_buy: "Or buy an apartment: average $288,800", life_buy_d: "At first: 20% down (≈ $57,760), then ≈ $1,300 a month. Once settled: 5% down, then ≈ $1,600 a month. About the same as rent, and it's yours. Condo fees and property tax extra.",
       life_rows: [["Rent: 2-bedroom apartment in Calgary", "≈ $1,900"], ["Food for a family of four", "≈ $1,465"], ["Left for a car, restaurants, going out, travel and savings", "≈ $3,315"]],
+      life_intern: "Intern pay: $23.40 to $30.72 an hour", life_intern_d: "About $3,800 to $5,000 a month before taxes, full time. You work as an intern until you finish training and get your full licence, then ≈ $55 an hour. Example: a Walmart job ad in Calgary (11/2026).",
       life_car: "New 2026 Toyota Corolla: from $24,520", life_car_d: "≈ $500 a month, with $500 down or nothing down. Our advice: buy new, not used. The warranty covers repairs.",
-      life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · CMHC (10/2025) for rent · CREB (10/2026) for the apartment price · nesto (11/2026) for mortgage rates · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
+      life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · Walmart job ad (11/2026) for intern pay · currency-api (daily) for the dinar rate · CMHC (10/2025) for rent · CREB (10/2026) for the apartment price · nesto (11/2026) for mortgage rates · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
       life_vids: "See life in Alberta and Canada", life_vid_note: "Official videos. They play here on the page.",
       test_eyebrow: "Test yourself", test_title: "Try the official MCQ questions", test_num: "questions",
       test_h: "PEBC sample questions, free", test_sub: "96 questions with answers, from PEBC's website.",
@@ -844,6 +911,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       svc_exam_title: "Exam preparation",
       svc_exam: ["Qualifying Exam Part I (MCQ)", "Qualifying Exam Part II (OSCE) practice stations", "Provincial jurisprudence exam"],
       travel_note: "We help to facilitate your travel to Canada.",
+      steps_title: "Registration steps", steps_sub: "We help you with every step.",
+      rsteps: [
+        ["Register with NAPRA", "Pay the fee and you get a NAPRA ID."],
+        ["Register with PEBC", "Pay the fee and wait about a week for your PEBC ID."],
+        ["Envelope 1: from you", "Print the registration form from your Certemy account and stick your photo on it. Add your passport and your degree certificate. The lawyer signs them all. Write your name, PEBC ID and NAPRA ID on the envelope, then send it.", 1],
+        ["PEBC approves it", "Wait for PEBC to approve envelope 1."],
+        ["Envelope 2: from the Syndicate", "Sent by the Iraqi Pharmacists Syndicate.", 1],
+        ["Envelope 3: from your college", "Sent by your college of pharmacy.", 1]
+      ],
+      off_k: "Official links:", off_new: "Open a PEBC account (Certemy)", off_login: "Log in to PEBC (Certemy)",
       pharm_cta: "Register now",
       reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes.",
       sec_personal: "Personal", sec_academic: "Pharmacy education", sec_pharm: "Pharmacy in Canada",
@@ -860,7 +937,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       btn_submit: "Submit application",
       sec_docs: "Documents", docs_hint: "PDF or photo. Up to 10 MB in total.",
       d_passport: "Passport", d_certificate: "Pharmacy degree certificate", d_transcript: "Transcript", d_cv: "CV", d_english: "English test result", d_other1: "Other document", d_other2: "Other document",
-      total_size: "Total: {x} MB of 10 MB",
+      total_size: "Total: {x} MB of 10 MB", files_prep: "Preparing your photos…",
+      sending_title: "Sending your application…", sending_body: "Keep this page open. On slow internet it can take a minute.", sending_slow: "Slow internet? Keep waiting, or send your documents on WhatsApp.",
       err_file: "Please attach this document.", err_total: "Files are over 10 MB in total. Use smaller files, or send the rest on WhatsApp.",
       sent_title: "Application sent", sent_body: "Thank you. We received your application and documents. We'll contact you on WhatsApp.",
       err_required: "Required.", err_email: "Enter a valid email.", err_phone: "Enter a valid phone number.",
@@ -884,13 +962,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "الصيدلة بكندا",
       nav_path: "الطريق", nav_services: "خدماتنا", nav_faq: "أجوبة لأسئلتك", nav_register: "سجّل", nav_contact: "تواصل ويانا",
       nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك",
+      fx_rate: "سعر اليوم: 1 دولار كندي ≈ {x} دينار عراقي", fx_note: "سعر السوق تقريباً، يتحدّث كل يوم · {d}", fx_to: "لحد ما توصل كندا", fx_total: "المجموع الكلي",
+      iqd_m: "{x} مليون دينار", iqd_k: "{x} ألف دينار",
       life_eyebrow: "الحياة بكندا", life_title: "شنو يوفّرلك راتب الصيدلي بكندا؟", life_sub: "مثال: صيدلي بدوام كامل بألبرتا (37.5 ساعة بالأسبوع)، 2026.",
       life_net_k: "راتبك بالشهر بعد الضرائب",
       life_gross: "قبل الضرائب: ≈ $9,017 بالشهر.",
       life_buy: "أو تشتري شقة: المعدل $288,800", life_buy_d: "بالبداية: مقدّم 20% (≈ $57,760) وقسط ≈ $1,300 بالشهر. بعد ما تستقر: مقدّم 5% وقسط ≈ $1,600. تقريباً نفس الإيجار، والشقة تصير إلك. رسوم العمارة والضريبة العقارية تنحسب وحدها.",
       life_rows: [["إيجار شقة غرفتين نوم بكالكري", "≈ $1,900"], ["أكل عائلة من 4 أشخاص", "≈ $1,465"], ["يبقالك للسيارة والمطاعم والطلعات والسفر والتوفير", "≈ $3,315"]],
+      life_intern: "راتب الصيدلي المتدرّب (Intern): من $23.40 لـ $30.72 بالساعة", life_intern_d: "يعني تقريباً من $3,800 لـ $5,000 بالشهر قبل الضرائب بدوام كامل. تبقى Intern لحد ما تخلّص التدريب وتاخذ الرخصة الكاملة، وبعدها ≈ $55 بالساعة. مثال: إعلان شغل لـ Walmart بكالكري (11/2026).",
       life_car: "سيارة Toyota Corolla 2026 جديدة: من $24,520", life_car_d: "قسط ≈ $500 بالشهر، بمقدّم $500 أو بلا مقدّم. نصيحتنا: اشتري جديدة مو مستعملة، الضمان (warranty) يغطي التصليح.",
-      life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · CMHC (10/2025) للإيجار · CREB (10/2026) لسعر الشقة · nesto (11/2026) لفائدة القرض · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة وشلون تعيش.",
+      life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · إعلان Walmart (11/2026) لراتب الـ Intern · currency-api (يومي) لسعر الدينار · CMHC (10/2025) للإيجار · CREB (10/2026) لسعر الشقة · nesto (11/2026) لفائدة القرض · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة وشلون تعيش.",
       life_vids: "شوف الحياة بألبرتا وكندا", life_vid_note: "فيديوهات رسمية، تشتغل هنا بالصفحة.",
       test_eyebrow: "جرّب نفسك", test_title: "جرّب أسئلة الـ MCQ الرسمية", test_num: "سؤال",
       test_h: "أسئلة نموذجية من PEBC، ببلاش", test_sub: "96 سؤال وياها الأجوبة، من موقع PEBC.",
@@ -968,6 +1049,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       svc_exam_title: "التحضير للامتحانات",
       svc_exam: ["الامتحان الأول (MCQ)", "تدريب على محطات الامتحان الثاني (OSCE)", "امتحان القوانين بالمقاطعة"],
       travel_note: "ونسهّلك سفرتك لكندا هم.",
+      steps_title: "خطوات التسجيل", steps_sub: "ونساعدك بكل خطوة.",
+      rsteps: [
+        ["سجّل بـ NAPRA", "تدفع الرسوم ويطلعلك NAPRA ID."],
+        ["سجّل بـ PEBC", "تدفع الرسوم وتنتظر تقريباً أسبوع، ويطلعلك PEBC ID."],
+        ["الظرف الأول: منك", "ورقة التسجيل تسحبها من حسابك بـ Certemy وتلزك عليها صورتك، ووياها جوازك والجدارية. المحامي يوقّع عليهن كلهن. تكتب على الظرف اسمك و PEBC ID و NAPRA ID، وتدزّه.", 1],
+        ["PEBC توافق", "تنتظر PEBC توافق على الظرف الأول."],
+        ["الظرف الثاني: من النقابة", "يندزّ من نقابة صيادلة العراق.", 1],
+        ["الظرف الثالث: من الكلية", "يندزّ من كليتك.", 1]
+      ],
+      off_k: "روابط رسمية:", off_new: "سوّي حساب PEBC (Certemy)", off_login: "ادخل لحسابك بـ PEBC (Certemy)",
       pharm_cta: "سجّل هسه",
       reg_eyebrow: "ابدي من هنا", reg_title: "التسجيل", reg_lead: "ياخذ تقريباً 5 دقايق.",
       sec_personal: "معلوماتك", sec_academic: "دراستك للصيدلة", sec_pharm: "الصيدلة بكندا",
@@ -984,7 +1075,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       btn_submit: "دزّ الطلب",
       sec_docs: "الوثائق", docs_hint: "PDF أو صورة. المجموع لحد 10 ميغابايت.",
       d_passport: "الجواز", d_certificate: "شهادة البكالوريوس", d_transcript: "كشف الدرجات", d_cv: "السيرة الذاتية (CV)", d_english: "نتيجة امتحان الإنكليزي", d_other1: "وثيقة ثانية", d_other2: "وثيقة ثانية",
-      total_size: "المجموع: {x} من 10 ميغابايت",
+      total_size: "المجموع: {x} من 10 ميغابايت", files_prep: "دا نجهّز صورك…",
+      sending_title: "دا نرسل طلبك…", sending_body: "خلّي الصفحة مفتوحة. إذا النت ضعيف ممكن ياخذ دقيقة.", sending_slow: "النت بطيء؟ انتظر شوية، أو دزّ وثائقك بالواتساب.",
       err_file: "رجاءً ارفق هاي الوثيقة.", err_total: "الملفات أكثر من 10 ميغابايت. استعمل ملفات أصغر، أو دزّ الباقي بالواتساب.",
       sent_title: "وصلنا طلبك", sent_body: "شكراً إلك. وصلنا طلبك ووثائقك، وراح نحاجيك بالواتساب.",
       err_required: "لازم.", err_email: "اكتب إيميل صحيح.", err_phone: "اكتب رقم تلفون صحيح.",
@@ -1069,6 +1161,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     });
   }
 
+  function renderSteps() {
+    var ol = $("rsteps"); ol.textContent = "";
+    t("rsteps").forEach(function (s, i) {
+      var li = el("li", s[2] ? "env" : null), d = el("div"), h = el("h3"), p = el("p");
+      li.appendChild(el("span", "n", num(i + 1)));
+      fillBidi(h, s[0]); fillBidi(p, s[1]);
+      d.appendChild(h); d.appendChild(p); li.appendChild(d);
+      ol.appendChild(li);
+    });
+  }
+
   function renderFaq() {
     var box = $("faq-list"); box.textContent = "";
     t("faq").forEach(function (q) {
@@ -1096,10 +1199,83 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   function fillBidi(node, text) {
     node.textContent = "";
     if (lang !== "ar") { node.textContent = text; return; }
-    text.split(/(\(?[A-Za-z][A-Za-z0-9.'\- ]*[A-Za-z0-9]\)?|[A-Za-z]|\$[\d,.]+|\(?\d+(?:[\/–-]\d+)+\)?|\d[\d,.]*%)/).forEach(function (part, i) {
+    text.split(/(\(?[A-Za-z][A-Za-z0-9.'\- ]*[A-Za-z0-9]\)?|[A-Za-z]|\$\d(?:[\d,]*\d)?(?:\.\d+)?|\(?\d+(?:[\/–-]\d+)+\)?|\d[\d,.]*%)/).forEach(function (part, i) {
       if (!part) return;
       if (i % 2) { var b = el("bdi", "lat", part); b.dir = "ltr"; node.appendChild(b); } else node.appendChild(document.createTextNode(part));
     });
+  }
+
+  // ----- Canadian dollar to Iraqi dinar, refreshed every day -----
+  var FX = { rate: 1070.77, date: "2026-11-08" }; // fallback if the daily rate can't load
+  try { var fxc = JSON.parse(localStorage.getItem("altina-fx") || "null"); if (fxc && fxc.rate) FX = fxc; } catch (e) {}
+  function fmtIqd(cad) {
+    var n = cad * FX.rate, m = n / 1e6;
+    if (m >= 1) return t("iqd_m").replace("{x}", m >= 10 ? Math.round(m).toLocaleString("en-US") : String(Math.round(m * 10) / 10));
+    return lang === "ar" ? t("iqd_k").replace("{x}", Math.round(n / 1000).toLocaleString("en-US")) : t("iqd_k").replace("{x}", (Math.round(n / 1000) * 1000).toLocaleString("en-US"));
+  }
+  var MONEY = /(?:\$|CAD\s?)(\d(?:[\d,]*\d)?(?:\.\d+)?)|(\d(?:[\d,]*\d)?)\s?دولار(?:\s?كندي)?/g;
+  function autoIqd(root) {
+    if (!root) return;
+    root.querySelectorAll(".iqd-auto").forEach(function (x) { x.parentNode.removeChild(x); });
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), list = [], n;
+    while ((n = w.nextNode())) if (/\d/.test(n.nodeValue) && !n.parentNode.closest(".iqd, .v, .big, a, button")) list.push(n);
+    function tag(v, after) {
+      var x = el("bdi", "iqd-auto", /^\s*\)/.test(after) ? (lang === "ar" ? "، يعني " : ", about ") + fmtIqd(v) : " (≈ " + fmtIqd(v) + ")");
+      x.dir = lang === "ar" ? "rtl" : "ltr";
+      return x;
+    }
+    list.forEach(function (node) {
+      var text = node.nodeValue, m, last = 0, out = [];
+      MONEY.lastIndex = 0;
+      while ((m = MONEY.exec(text))) {
+        var v = Number((m[1] || m[2]).replace(/,/g, ""));
+        if (!(v >= 10)) continue;
+        var end = m.index + m[0].length;
+        var whole = node.parentNode.tagName === "BDI" && node.parentNode.childNodes.length === 1 && m.index === 0 && end === text.length;
+        if (whole) { // Arabic: the number sits in its own left-to-right box, so the dinar goes after that box
+          var nx = node.parentNode.nextSibling;
+          node.parentNode.parentNode.insertBefore(tag(v, nx && nx.nodeType === 3 ? nx.nodeValue : ""), nx);
+          return;
+        }
+        out.push(document.createTextNode(text.slice(last, end)));
+        out.push(tag(v, text.slice(end)));
+        last = end;
+      }
+      if (!out.length) return;
+      var p = node.parentNode;
+      out.push(document.createTextNode(text.slice(last)));
+      out.forEach(function (x) { p.insertBefore(x, node); });
+      p.removeChild(node);
+    });
+  }
+  function paintIqd() {
+    var d = (FX.date || "").split("-"), day = d.length === 3 ? Number(d[2]) + "/" + Number(d[1]) + "/" + d[0] : "";
+    document.querySelectorAll("[data-cad]").forEach(function (x) { x.textContent = "≈ " + fmtIqd(Number(x.getAttribute("data-cad"))); });
+    document.querySelectorAll(".fx").forEach(function (x) {
+      x.querySelector(".fx-rate").textContent = t("fx_rate").replace("{x}", Math.round(FX.rate).toLocaleString("en-US"));
+      x.querySelector(".fx-note").textContent = t("fx_note").replace("{d}", day);
+      var tot = x.querySelector(".fx-tot");
+      if (tot) {
+        tot.textContent = "";
+        [[t("fx_to"), "$5,594", 5594], [t("fx_total"), "$7,544", 7544]].forEach(function (r) { var l = el("span"); fillBidi(l, r[0] + ": " + r[1] + " ≈ " + fmtIqd(r[2])); tot.appendChild(l); });
+      }
+      x.hidden = false;
+    });
+    [document.querySelector(".budget"), $("newc"), $("faq-list")].forEach(autoIqd);
+  }
+  function loadFx() {
+    if (FX.t && Date.now() - FX.t < 6 * 3600 * 1000) return;
+    var urls = ["https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/cad.min.json", "https://latest.currency-api.pages.dev/v1/currencies/cad.min.json"];
+    (function next(i) {
+      if (i >= urls.length || !window.fetch) return;
+      fetch(urls[i]).then(function (r) { return r.json(); }).then(function (j) {
+        var r = j && j.cad && Number(j.cad.iqd);
+        if (!(r > 300 && r < 5000)) throw new Error("bad rate");
+        FX = { rate: r, date: j.date || "", t: Date.now() };
+        try { localStorage.setItem("altina-fx", JSON.stringify(FX)); } catch (e) {}
+        paintIqd();
+      }).catch(function () { next(i + 1); });
+    })(0);
   }
 
   var VIDEOS = [
@@ -1113,9 +1289,13 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     t("life_rows").forEach(function (r, i, all) {
       var li = el("li", i === all.length - 1 ? "left" : null), s = el("span");
       fillBidi(s, r[0]); li.appendChild(s);
-      var v = el("bdi", "v", r[1]); v.dir = "ltr"; li.appendChild(v);
+      var v = el("bdi", "v", r[1]); v.dir = "ltr";
+      var vv = el("span", "vv"), q = el("small", "iqd"); q.setAttribute("data-cad", r[1].replace(/[^\d.]/g, ""));
+      vv.appendChild(v); vv.appendChild(q); li.appendChild(vv);
       ul.appendChild(li);
     });
+    fillBidi($("life-intern"), t("life_intern"));
+    fillBidi($("life-intern-d"), t("life_intern_d"));
     fillBidi($("life-car"), t("life_car"));
     fillBidi($("life-car-d"), t("life_car_d"));
     fillBidi($("life-gross"), t("life_gross"));
@@ -1238,12 +1418,14 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-lang") === lang)); });
     $("hero-title").innerHTML = t("hero_title");
     renderPath();
+    renderSteps();
     renderLife();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
     renderCodes(); renderSelect("f-country", COUNTRIES); renderSelect("f-stage", STAGES); renderSelect("f-prov", PROVS);
     if (lastResult) showResult(lastResult, false);
+    paintIqd();
     updateTotal();
     if ($("summary-err").textContent) validate(true);
   }
@@ -1369,33 +1551,90 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     var tot = 0;
     form.querySelectorAll("input[type=file]").forEach(function (i) { Array.prototype.forEach.call(i.files || [], function (f) { tot += f.size; }); });
     var el = $("docs-total");
-    el.textContent = t("total_size").replace("{x}", (tot / 1048576).toFixed(1));
-    el.classList.toggle("over", tot > MAX_BYTES);
+    el.textContent = busy ? t("files_prep") : t("total_size").replace("{x}", (tot / 1048576).toFixed(1));
+    el.classList.toggle("over", !busy && tot > MAX_BYTES);
     return tot;
   }
   var LIVE = /(^|\.)al-tina\.ca$/.test(location.hostname);
 
-  form.addEventListener("submit", function (e) {
-    if (LIVE) {
-      var v2 = validate(false);
-      if (!v2) { e.preventDefault(); return; }
-      var d2 = new Date(), p2 = function (n) { return (n < 10 ? "0" : "") + n; };
-      var r2 = { v: v2, ref: makeRef(), date: d2.getFullYear() + "-" + p2(d2.getMonth() + 1) + "-" + p2(d2.getDate()) };
-      $("f-summary").value = buildText(r2);
-      $("f-subject").value = "Al-Tina registration " + r2.ref + " — " + v2.name;
-      $("f-next").value = location.origin + location.pathname + "#sent";
-      try { localStorage.setItem("altina-last-ref", r2.ref); } catch (err) {}
-      return; // let the browser send the form and files
-    }
-    e.preventDefault();
+  // Phone photos are big. Make them smaller before upload so sending is fast on slow internet.
+  var busy = 0, waiters = [], sending = false, slowTimer = null;
+  function shrink(file) {
+    return new Promise(function (resolve) {
+      var isImg = /^image\//.test(file.type) || /\.(jpe?g|png|heic|heif|webp)$/i.test(file.name);
+      if (!isImg || file.size < 700 * 1024) return resolve(file);
+      var url, img = new Image();
+      function done(out) { try { URL.revokeObjectURL(url); } catch (e) {} resolve(out); }
+      img.onload = function () {
+        try {
+          var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, 2000 / Math.max(w, h));
+          var c = document.createElement("canvas");
+          c.width = Math.round(w * k); c.height = Math.round(h * k);
+          var g = c.getContext("2d");
+          g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height);
+          g.drawImage(img, 0, 0, c.width, c.height);
+          c.toBlob(function (b) {
+            if (!b || b.size >= file.size) return done(file);
+            done(new File([b], file.name.replace(/\.[^.]+$/, "") + ".jpg", { type: "image/jpeg", lastModified: Date.now() }));
+          }, "image/jpeg", 0.82);
+        } catch (e) { done(file); }
+      };
+      img.onerror = function () { done(file); };
+      try { url = URL.createObjectURL(file); img.src = url; } catch (e) { resolve(file); }
+    });
+  }
+  function shrinkInput(inp) {
+    var f = inp.files && inp.files[0];
+    if (!f) return Promise.resolve();
+    busy++; updateTotal();
+    return shrink(f).then(function (out) {
+      if (out !== f && inp.files && inp.files[0] === f) {
+        try { var dt = new DataTransfer(); dt.items.add(out); inp.files = dt.files; } catch (e) {}
+      }
+    }, function () {}).then(function () {
+      busy--; updateTotal();
+      if (!busy) waiters.splice(0).forEach(function (fn) { fn(); });
+    });
+  }
+  function showSending(on) {
+    $("sending").hidden = !on;
+    $("sending-slow").hidden = true;
+    clearTimeout(slowTimer);
+    if (on) slowTimer = setTimeout(function () { $("sending-slow").hidden = false; }, 30000);
+  }
+  window.addEventListener("pageshow", function (e) { if (e.persisted) { sending = false; showSending(false); } });
+
+  function go() {
     var v = validate(false);
     if (!v) return;
     var d = new Date(), p = function (n) { return (n < 10 ? "0" : "") + n; };
-    lastResult = { v: v, ref: makeRef(), date: d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) };
+    var r = { v: v, ref: makeRef(), date: d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) };
+    if (LIVE) {
+      $("f-summary").value = buildText(r);
+      $("f-subject").value = "Al-Tina registration " + r.ref + " — " + v.name;
+      $("f-next").value = location.origin + location.pathname + "#sent";
+      try { localStorage.setItem("altina-last-ref", r.ref); } catch (err) {}
+      sending = true;
+      showSending(true);
+      HTMLFormElement.prototype.submit.call(form); // the browser sends the form and files
+      return;
+    }
+    lastResult = r;
     showResult(lastResult, true);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (sending) return;
+    if (busy) {
+      showSending(true);
+      waiters.push(function () { showSending(false); go(); });
+      return;
+    }
+    go();
   });
   form.addEventListener("input", function () { saveDraft(); if ($("summary-err").textContent) validate(true); });
-  form.addEventListener("change", function (e) { if (e.target.name === "country") { var c = COUNTRIES.filter(function (x) { return x[0] === e.target.value; })[0]; if (c && c[3]) { $("f-cc").value = c[3]; syncPhonePh(); } } if (e.target.name === "cc") syncPhonePh(); if (e.target.type === "file") { updateTotal(); if ($("summary-err").textContent) validate(true); } saveDraft(); });
+  form.addEventListener("change", function (e) { if (e.target.name === "country") { var c = COUNTRIES.filter(function (x) { return x[0] === e.target.value; })[0]; if (c && c[3]) { $("f-cc").value = c[3]; syncPhonePh(); } } if (e.target.name === "cc") syncPhonePh(); if (e.target.type === "file") { shrinkInput(e.target).then(function () { if ($("summary-err").textContent) validate(true); }); } saveDraft(); });
 
   $("btn-copy").addEventListener("click", function () {
     var ta = $("res-text"), st = $("copy-status");
@@ -1419,6 +1658,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   });
 
   applyLang(lang);
+  loadFx();
   loadDraft();
   syncPhonePh();
   updateTotal();
