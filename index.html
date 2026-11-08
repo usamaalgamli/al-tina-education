@@ -300,6 +300,19 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .test .ctas { margin-block-start: 18px; }
 .test .link { color: var(--forest); }
 @media (max-width: 600px) { .test { grid-template-columns: 1fr; text-align: center; } .test .ctas { justify-content: center; } }
+.mcq { background: var(--forest); color: var(--on-forest); border-radius: 16px; padding: clamp(24px, 4vw, 38px); box-shadow: var(--shadow); margin-block-end: 24px; }
+.mcq h3 { font-size: 1.6rem; color: var(--brass); }
+.mcq .lead { color: var(--hero-muted); margin: 6px 0 20px; }
+.mcq .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.mcq .stat { background: rgba(250, 248, 243, .07); border: 1px solid rgba(212, 188, 124, .35); border-radius: 12px; padding: 14px 12px; text-align: center; min-width: 0; }
+.mcq .stat b { display: block; font-family: var(--f-display); font-size: clamp(2rem, 5vw, 2.6rem); line-height: 1.1; color: var(--brass); }
+.mcq .stat.off b { color: #e8d6a6; opacity: .75; }
+.mcq .stat span { display: block; font-size: .88rem; color: var(--hero-muted); line-height: 1.45; margin-block-start: 4px; }
+.mcq ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 8px; }
+.mcq li { display: flex; gap: 10px; align-items: baseline; }
+.mcq li::before { content: ""; flex: none; width: 6px; height: 6px; background: var(--brass); transform: rotate(45deg) translateY(-2px); }
+.mcq .src { color: var(--hero-muted); font-size: .78rem; margin-block-start: 16px; }
+@media (max-width: 600px) { .mcq .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 /* Form */
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 5vw, 52px); box-shadow: var(--shadow); position: relative; overflow: hidden; }
 .card::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--forest), var(--brass)); }
@@ -542,6 +555,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <span class="eyebrow caps" data-i18n="test_eyebrow"></span>
           <h2 data-i18n="test_title"></h2>
         </div>
+      </div>
+      <div class="mcq">
+        <h3 data-i18n="mcq_h"></h3>
+        <p class="lead" id="mcq-lead"></p>
+        <div class="stats">
+          <div class="stat"><b><bdi>200</bdi></b><span data-i18n="mcq_s1"></span></div>
+          <div class="stat"><b><bdi>150</bdi></b><span data-i18n="mcq_s2"></span></div>
+          <div class="stat off"><b><bdi>50</bdi></b><span data-i18n="mcq_s3"></span></div>
+          <div class="stat"><b><bdi>260</bdi></b><span data-i18n="mcq_s4"></span></div>
+        </div>
+        <ul id="mcq-list"></ul>
+        <p class="src" id="mcq-src"></p>
       </div>
       <div class="test">
         <div class="num"><bdi>96</bdi><small data-i18n="test_num"></small></div>
@@ -835,6 +860,10 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       life_car: "New 2026 Toyota Corolla: from $24,520", life_car_d: "≈ $500 a month, with $500 down or nothing down. Our advice: buy new, not used. The warranty covers repairs.",
       life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · Walmart job ad (11/2026) for intern pay · currency-api (daily) for the dinar rate · CMHC (10/2025) for rent · CREB (10/2026) for the apartment price · nesto (11/2026) for mortgage rates · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
       life_vids: "See life in Alberta and Canada", life_vid_note: "Official videos. They play here on the page.",
+      mcq_h: "What is the MCQ?", mcq_lead: "PEBC's first exam: multiple-choice questions on a computer. You pick the best answer.",
+      mcq_s1: "questions in total", mcq_s2: "count toward your score", mcq_s3: "trial questions, not scored", mcq_s4: "minutes, about 1.3 per question",
+      mcq_list: ["Answer every question as if it counts.", "One section with no scheduled break. The clock keeps running if you step out.", "Each person gets their own version of the exam. A calculator and formulas are on screen.", "Online from home. Up to 4 attempts."],
+      mcq_src: "Source: PEBC FAQ and Candidate Information (11/2024).",
       test_eyebrow: "Test yourself", test_title: "Try the official MCQ questions", test_num: "questions",
       test_h: "PEBC sample questions, free", test_sub: "96 questions with answers, from PEBC's website.",
       test_pdf: "Open the sample questions (PDF)", test_more: "More from PEBC: sample exam and exam demo",
@@ -973,6 +1002,10 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       life_car: "سيارة Toyota Corolla 2026 جديدة: من $24,520", life_car_d: "قسط ≈ $500 بالشهر، بمقدّم $500 أو بلا مقدّم. نصيحتنا: اشتري جديدة مو مستعملة، الضمان (warranty) يغطي التصليح.",
       life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · إعلان Walmart (11/2026) لراتب الـ Intern · currency-api (يومي) لسعر الدينار · CMHC (10/2025) للإيجار · CREB (10/2026) لسعر الشقة · nesto (11/2026) لفائدة القرض · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة وشلون تعيش.",
       life_vids: "شوف الحياة بألبرتا وكندا", life_vid_note: "فيديوهات رسمية، تشتغل هنا بالصفحة.",
+      mcq_h: "شنو هو الـ MCQ؟", mcq_lead: "أول امتحان من امتحانات PEBC: أسئلة اختيار من متعدد على الكمبيوتر، تختار أحسن جواب.",
+      mcq_s1: "سؤال بالمجموع", mcq_s2: "تنحسب بالدرجة", mcq_s3: "تجريبية ما تنحسب", mcq_s4: "دقيقة، يعني 1.3 دقيقة للسؤال",
+      mcq_list: ["جاوب على كل الأسئلة كأنها كلها تنحسب.", "قسم واحد بدون استراحة. إذا طلعت، الوقت ما يوقف.", "كل واحد ياخذ نسخة خاصة بيه. الحاسبة والمعادلات موجودة على الشاشة.", "أونلاين من البيت. عندك لحد 4 محاولات."],
+      mcq_src: "المصدر: PEBC، الأسئلة الشائعة ومعلومات المرشحين (11/2024).",
       test_eyebrow: "جرّب نفسك", test_title: "جرّب أسئلة الـ MCQ الرسمية", test_num: "سؤال",
       test_h: "أسئلة نموذجية من PEBC، ببلاش", test_sub: "96 سؤال وياها الأجوبة، من موقع PEBC.",
       test_pdf: "افتح الأسئلة (PDF)", test_more: "أكثر من PEBC: امتحان تجريبي وشاشة الامتحان",
@@ -1303,6 +1336,10 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     fillBidi($("life-buy-d"), t("life_buy_d"));
     fillBidi($("life-src"), t("life_src"));
     fillBidi($("test-sub"), t("test_sub"));
+    fillBidi($("mcq-lead"), t("mcq_lead"));
+    fillBidi($("mcq-src"), t("mcq_src"));
+    var ml = $("mcq-list"); ml.textContent = "";
+    t("mcq_list").forEach(function (x) { var li = el("li"), sp = el("span"); fillBidi(sp, x); li.appendChild(sp); ml.appendChild(li); });
     fillBidi($("test-courses"), t("test_courses"));
     var box = $("vids");
     if (!box.children.length) VIDEOS.forEach(function (v) { box.appendChild(makeVid(v[0], v[3], false, true)); });
