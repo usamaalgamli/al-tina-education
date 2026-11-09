@@ -274,6 +274,17 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .rsteps p { margin: 0; color: var(--ink); font-size: .95rem; line-height: 1.7; }
 @media (max-width: 900px) { .rsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .rsteps { grid-template-columns: 1fr; } }
+.mist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.mist li { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: grid; gap: 8px; min-width: 0; }
+.mist .bad, .mist .good { display: flex; gap: 10px; align-items: flex-start; line-height: 1.6; }
+.mist .bad { color: #8a3b2b; }
+.mist .good { color: var(--ink); font-weight: 600; }
+.mist i { flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: .8rem; font-weight: 700; margin-block-start: 2px; }
+.mist .bad i { background: #f3dcd5; color: #8a3b2b; }
+.mist .good i { background: var(--forest); color: var(--on-forest); }
+.mist bdi { white-space: nowrap; }
+.mist-src { color: var(--muted); font-size: .8rem; margin-block-start: 12px; }
+@media (max-width: 700px) { .mist { grid-template-columns: 1fr; } }
 .offl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-start: 28px; }
 .offl .k { font-weight: 700; color: var(--forest); margin-inline-end: 4px; }
 .offl a { display: inline-block; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--forest); font-weight: 700; text-decoration: none; }
@@ -485,6 +496,11 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <div><h2 data-i18n="steps_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2><p class="sub" data-i18n="steps_sub"></p></div>
       </div>
       <ol class="rsteps" id="rsteps"></ol>
+      <div class="shead" style="margin-block:72px 24px">
+        <div><h2 data-i18n="mist_title" style="font-size:clamp(1.7rem,3vw,2.2rem)"></h2><p class="sub" data-i18n="mist_sub"></p></div>
+      </div>
+      <ul class="mist" id="mist"></ul>
+      <p class="mist-src" data-i18n="mist_src"></p>
       <div class="offl">
         <span class="k" data-i18n="off_k"></span>
         <a href="https://pebc.ca/" target="_blank" rel="noopener"><bdi dir="ltr">PEBC</bdi></a>
@@ -949,6 +965,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["Envelope 2: from the Syndicate", "Sent by the Iraqi Pharmacists Syndicate.", 1],
         ["Envelope 3: from your college", "Sent by your college of pharmacy.", 1]
       ],
+      mist_title: "Mistakes that delay your file", mist_sub: "And how to avoid them.", mist_src: "Source: PEBC, Applying for Document Evaluation.",
+      mist: [
+        ["You send your transcript yourself.", "Your college sends it straight to PEBC, issued less than a month before it arrives."],
+        ["You send a Syndicate ID card or registration certificate.", "The Syndicate sends the Letter of Good Standing directly, less than 6 months old."],
+        ["A copy of a copy, or a page without a signature.", "Copy from the original, with the lawyer's signature and licence number on every page."],
+        ["An old photo, or one cut from your passport.", "A new photo from the last year. Glue the same photo on the form and upload it to Certemy."],
+        ["You forget your NAPRA number.", "Write it in the top right corner of the PEBC form. Put your name, PEBC ID and NAPRA ID on the envelope."],
+        ["A translation from an office in Iraq, or a copy of a translation.", "A certified translator in Canada, sent with the original Arabic page."],
+        ["You send your originals.", "Send certified copies. PEBC never returns documents."],
+        ["You leave it late.", "Finish your file 8 weeks before the exam deadline. After 2 years an incomplete file closes."]
+      ],
       off_k: "Official links:", off_new: "Open a PEBC account (Certemy)", off_login: "Log in to PEBC (Certemy)",
       pharm_cta: "Register now",
       reg_eyebrow: "Start here", reg_title: "Register", reg_lead: "Takes about 5 minutes.",
@@ -1091,6 +1118,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["الظرف الثاني: من النقابة", "يندزّ من نقابة صيادلة العراق.", 1],
         ["الظرف الثالث: من الكلية", "يندزّ من كليتك.", 1]
       ],
+      mist_title: "أخطاء تأخّر ملفك", mist_sub: "وشلون تتجنبها.", mist_src: "المصدر: PEBC، التقديم على تقييم الوثائق.",
+      mist: [
+        ["تجيب كشف الدرجات وتدزّه إنت.", "الكلية تدزّه مباشرة لـ PEBC، وتاريخه ما يكون أقدم من شهر لمن يوصل."],
+        ["تدز هوية النقابة أو شهادة تسجيل.", "النقابة تدز Letter of good standing مباشرة، وعمرها أقل من 6 أشهر."],
+        ["نسخة من نسخة، أو صفحة بلا توقيع.", "نسخة من الأصل، وكل صفحة عليها توقيع المحامي ورقم إجازته."],
+        ["صورة قديمة أو مقصوصة من الجواز.", "صورة جديدة من آخر سنة. نفس الصورة تلزكها على الورقة وترفعها على Certemy."],
+        ["تنسى رقم NAPRA.", "اكتبه بالزاوية فوق على اليمين بورقة PEBC. واكتب اسمك و PEBC ID و NAPRA ID على الظرف."],
+        ["ترجمة من مكتب بالعراق، أو نسخة من الترجمة.", "مترجم معتمد بكندا، ووياها الورقة الأصلية بالعربي."],
+        ["تدز الأصل.", "دز نسخ مصدّقة، لأن PEBC ما ترجّع أي وثيقة."],
+        ["تتأخر.", "كمّل ملفك قبل موعد الامتحان بـ 8 أسابيع. بعد سنتين الملف الناقص ينسد."]
+      ],
       off_k: "روابط رسمية:", off_new: "سوّي حساب PEBC (Certemy)", off_login: "ادخل لحسابك بـ PEBC (Certemy)",
       pharm_cta: "سجّل هسه",
       reg_eyebrow: "ابدي من هنا", reg_title: "التسجيل", reg_lead: "ياخذ تقريباً 5 دقايق.",
@@ -1202,6 +1240,16 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       fillBidi(h, s[0]); fillBidi(p, s[1]);
       d.appendChild(h); d.appendChild(p); li.appendChild(d);
       ol.appendChild(li);
+    });
+  }
+
+  function renderMist() {
+    var ul = $("mist"); ul.textContent = "";
+    t("mist").forEach(function (m) {
+      var li = el("li"), b = el("div", "bad"), g = el("div", "good"), sb = el("span"), sg = el("span");
+      b.appendChild(el("i", null, "✕")); fillBidi(sb, m[0]); b.appendChild(sb);
+      g.appendChild(el("i", null, "✓")); fillBidi(sg, m[1]); g.appendChild(sg);
+      li.appendChild(b); li.appendChild(g); ul.appendChild(li);
     });
   }
 
@@ -1456,6 +1504,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     $("hero-title").innerHTML = t("hero_title");
     renderPath();
     renderSteps();
+    renderMist();
     renderLife();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
