@@ -296,10 +296,13 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .paynote::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--brass); transform: rotate(45deg); }
 #faq .paynote { margin-block-start: 32px; }
 #pharmacy .paynote { margin-block: 44px 24px; }
+#pharmacy .paynote:last-child { margin-block-end: 0; }
+#faq .shead + .paynote { margin-block: 0 24px; }
 #life .paynote { margin-block: 44px 0; }
 #register .paynote, #contact .paynote { margin-block: 0 24px; }
 
-.paynote strong { font-weight: 800; font-size: 1.08em; }
+.paynote strong { font-weight: 800; font-size: 1.08em; white-space: nowrap; }
+@media (max-width: 640px) { .paynote { flex-wrap: wrap; gap: 6px 12px; } .paynote span { flex: 1 1 100%; } }
 .hero-pay { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-block-start: 26px; padding: 10px 18px; border-radius: 999px; border: 1px solid rgba(212, 188, 124, .55); background: rgba(212, 188, 124, .12); color: var(--hero-ink); }
 .hero-pay strong { color: #e8d6a6; font-weight: 800; font-size: 1.1rem; }
 .hero-pay span { color: var(--hero-muted); font-size: .95rem; }
@@ -511,6 +514,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <a href="https://pebc.certemy.com/entry/login" target="_blank" rel="noopener" data-i18n="off_login"></a>
       </div>
       <p class="note travel" data-i18n="travel_note"></p>
+      <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
     </div>
   </section>
 
@@ -551,6 +555,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <p class="note" data-i18n="life_vid_note"></p>
         </div>
       </div>
+      <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <div class="cities">
         <h3 class="vids-h" data-i18n="cities_h"></h3>
         <p class="sub2" data-i18n="cities_sub"></p>
@@ -612,6 +617,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <p class="sub" data-i18n="faq_sub"></p>
         </div>
       </div>
+      <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <div class="faq" id="faq-list"></div>
       <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <figure class="fees" id="fees">
