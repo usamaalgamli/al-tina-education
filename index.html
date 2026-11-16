@@ -76,7 +76,8 @@ html[lang="ar"] .caps { font-size: .92rem; letter-spacing: 0; text-transform: no
 /* Header */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-block-end: 1px solid var(--line); }
 .top .wrap { display: flex; align-items: center; gap: 28px; padding-block: 12px; }
-.nav { display: flex; gap: 24px; margin-inline-start: auto; }
+.nav { display: flex; gap: 18px; margin-inline-start: auto; }
+@media (max-width: 1340px) { .top .wrap { gap: 20px; } .nav { gap: 14px; } }
 .nav a { color: var(--muted); text-decoration: none; white-space: nowrap; }
 .nav a:hover { color: var(--forest); }
 .nav a.hl { background: var(--forest-tint); color: var(--forest); padding: 2px 14px; margin-block: -2px; border-radius: 999px; box-shadow: 0 4px 12px -6px rgba(22, 63, 50, .35); }
@@ -271,6 +272,10 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .rsteps li.env .n { background: var(--brass); color: #0f2e24; }
 .rsteps h3 { font-size: 1.1rem; color: var(--forest); margin: 4px 0; }
 .rsteps bdi { white-space: nowrap; }
+.start-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.start .why { margin-block-start: 22px; padding: 20px 24px; border-radius: 14px; background: var(--forest); color: var(--on-forest); font-size: 1.05rem; line-height: 1.8; }
+.start .why strong { color: var(--brass); font-weight: 800; margin-inline-end: 6px; }
+@media (max-width: 1100px) { .start-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .rsteps p { margin: 0; color: var(--ink); font-size: .95rem; line-height: 1.7; }
 @media (max-width: 900px) { .rsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .rsteps { grid-template-columns: 1fr; } }
@@ -435,6 +440,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Al-Tina"><svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><defs><mask id="altgap" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><path d="M14 49V30A27 27 0 0 1 32.0 4.54A27 27 0 0 1 50 30V49" stroke="#000" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M20 49V32A18 18 0 0 1 32.0 15.03A18 18 0 0 1 44 32V49" stroke="#000" stroke-width=".8" fill="none" stroke-linecap="round"/><path d="M27.75 29.57H36.25V38.07H27.75Z" stroke="#000" stroke-width=".55" fill="none"/><path d="M32 27.81L38.01 33.82L32 39.83L25.99 33.82Z" stroke="#000" stroke-width=".55" fill="none"/></mask></defs><g mask="url(#altgap)"><path d="M14 49V30A27 27 0 0 1 32.0 4.54A27 27 0 0 1 50 30V49" stroke="currentColor" stroke-width="4.4" stroke-linecap="round"/><path d="M20 49V32A18 18 0 0 1 32.0 15.03A18 18 0 0 1 44 32V49" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g><path d="M9 50H55" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M12.5 54.5H51.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 59H48" style="stroke:var(--brass)" stroke-width="3" stroke-linecap="round"/><path d="M24.5 49V35A11.5 11.5 0 0 1 32.0 24.22A11.5 11.5 0 0 1 39.5 35V49Z" style="fill:var(--brass)"/><g mask="url(#altgap)"><path d="M27.75 29.57H36.25V38.07H27.75Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="miter"/><path d="M32 27.81L38.01 33.82L32 39.83L25.99 33.82Z" stroke="currentColor" stroke-width="1.55" stroke-linejoin="miter"/></g><g fill="currentColor" transform="translate(32 33.82) scale(0.135) translate(-20 -20)"><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(45 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(90 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(135 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(180 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(225 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(270 20 20)"/><ellipse cx="20" cy="9.5" rx="3.3" ry="6.6" transform="rotate(315 20 20)"/><circle cx="20" cy="20" r="3.8"/></g></svg><span class="wm"><span class="nm">Al-Tina<span>التينة</span></span><span class="sub" data-i18n="brand_sub"></span></span></a>
     <nav class="nav caps" aria-label="Main">
+      <a class="hl" href="#start" data-i18n="nav_start"></a>
       <a href="#pharmacy" data-i18n="nav_path"></a>
       <a href="#services" data-i18n="nav_services"></a>
       <a href="#life" data-i18n="nav_life"></a>
@@ -469,6 +475,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <span class="arch-rule" aria-hidden="true"></span>
         <a class="arch-item" href="#services"><span class="t" data-i18n="arch_s2"></span><span class="d" data-i18n="arch_s2d"></span></a>
       </aside>
+    </div>
+  </section>
+
+  <section class="block start" id="start">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="start_eyebrow"></span>
+          <h2 data-i18n="start_title"></h2>
+          <p class="sub" data-i18n="start_lead"></p>
+        </div>
+      </div>
+      <ol class="rsteps start-steps" id="start-steps"></ol>
+      <div class="why"><strong data-i18n="start_why_h"></strong> <span data-i18n="start_why"></span></div>
     </div>
   </section>
 
@@ -875,7 +895,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     en: {
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
-      nav_life: "Life in Canada", nav_test: "Test yourself",
+      nav_life: "Life in Canada", nav_test: "Test yourself", nav_start: "Start",
+      start_eyebrow: "Start here", start_title: "Where do I start?",
+      start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
+      start_steps: [
+        ["NAPRA and PEBC", "Register with both."],
+        ["Document evaluation", "Send your documents. PEBC evaluates them."],
+        ["MCQ exam", "Pass it online, from home."],
+        ["English", "IELTS or OET, with high scores."],
+        ["Immigration lawyer", "Hand them a strong file to work with.", 1]
+      ],
+      start_why_h: "Why this order?",
+      start_why: "The officer sees a pharmacist on the way to a licence: someone who will work and add to the community, not live on social assistance. That is what makes your case strong. Without these steps, what can your lawyer show?",
       fx_rate: "Today: 1 Canadian dollar ≈ {x} Iraqi dinars", fx_note: "Approximate market rate, updated daily · {d}", fx_to: "To get to Canada", fx_total: "Total",
       iqd_m: "IQD {x} million", iqd_k: "IQD {x}",
       life_eyebrow: "Life in Canada", life_title: "What a pharmacist's pay gives you", life_sub: "Example: a full-time pharmacist in Alberta (37.5 hours a week), 2026.",
@@ -1037,7 +1068,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     ar: {
       brand_sub: "الصيدلة بكندا",
       nav_path: "الطريق", nav_services: "خدماتنا", nav_faq: "أجوبة لأسئلتك", nav_register: "سجّل", nav_contact: "تواصل ويانا",
-      nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك",
+      nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك", nav_start: "منين أبدي؟",
+      start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
+      start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
+      start_steps: [
+        ["NAPRA و PEBC", "سجّل بالاثنين."],
+        ["تقييم الوثائق", "دز وثائقك، و PEBC تقيّمها."],
+        ["امتحان MCQ", "انجح بيه أونلاين من بيتك."],
+        ["الإنكليزي", "IELTS أو OET بدرجات عالية."],
+        ["محامي الهجرة", "سلّمه ملف قوي يشتغل عليه.", 1]
+      ],
+      start_why_h: "ليش بهالترتيب؟",
+      start_why: "الموظف يشوف صيدلي بطريقه للرخصة: واحد راح يشتغل ويفيد المجتمع، مو يعيش على المساعدات. هذا اللي يقوّي ملفك. وبدون هالخطوات، شنو يقدّم عنك المحامي؟",
       fx_rate: "سعر اليوم: 1 دولار كندي ≈ {x} دينار عراقي", fx_note: "سعر السوق تقريباً، يتحدّث كل يوم · {d}", fx_to: "لحد ما توصل كندا", fx_total: "المجموع الكلي",
       iqd_m: "{x} مليون دينار", iqd_k: "{x} ألف دينار",
       life_eyebrow: "الحياة بكندا", life_title: "شنو يوفّرلك راتب الصيدلي بكندا؟", life_sub: "مثال: صيدلي بدوام كامل بألبرتا (37.5 ساعة بالأسبوع)، 2026.",
@@ -1264,6 +1306,17 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   function renderSteps() {
     var ol = $("rsteps"); ol.textContent = "";
     t("rsteps").forEach(function (s, i) {
+      var li = el("li", s[2] ? "env" : null), d = el("div"), h = el("h3"), p = el("p");
+      li.appendChild(el("span", "n", num(i + 1)));
+      fillBidi(h, s[0]); fillBidi(p, s[1]);
+      d.appendChild(h); d.appendChild(p); li.appendChild(d);
+      ol.appendChild(li);
+    });
+  }
+
+  function renderStart() {
+    var ol = $("start-steps"); if (!ol) return; ol.textContent = "";
+    t("start_steps").forEach(function (s, i) {
       var li = el("li", s[2] ? "env" : null), d = el("div"), h = el("h3"), p = el("p");
       li.appendChild(el("span", "n", num(i + 1)));
       fillBidi(h, s[0]); fillBidi(p, s[1]);
@@ -1533,6 +1586,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     $("hero-title").innerHTML = t("hero_title");
     renderPath();
     renderSteps();
+    renderStart();
     renderMist();
     renderLife();
     renderFaq();
