@@ -272,6 +272,11 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .rsteps li.env .n { background: var(--brass); color: #0f2e24; }
 .rsteps h3 { font-size: 1.1rem; color: var(--forest); margin: 4px 0; }
 .rsteps bdi { white-space: nowrap; }
+.vgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 22px; }
+.vgrid .vtag { display: block; width: fit-content; margin-block-end: 6px; font-size: .78rem; font-weight: 700; color: var(--forest); background: var(--forest-tint); border-radius: 999px; padding: 2px 10px; }
+.vgrid .vd { display: block; margin-block-start: 4px; font-weight: 400; font-size: .93rem; line-height: 1.7; color: var(--ink); }
+@media (max-width: 1000px) { .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .vgrid { grid-template-columns: 1fr; } }
 .start-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .start .why { margin-block-start: 22px; padding: 20px 24px; border-radius: 14px; background: var(--forest); color: var(--on-forest); font-size: 1.05rem; line-height: 1.8; }
 .start .why strong { color: var(--brass); font-weight: 800; margin-inline-end: 6px; }
@@ -592,6 +597,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     </div>
   </section>
 
+  <section class="block" id="videos">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="vid_eyebrow"></span>
+          <h2 data-i18n="vid_title"></h2>
+          <p class="sub" data-i18n="vid_sub"></p>
+        </div>
+      </div>
+      <div class="vgrid" id="vgrid"></div>
+      <p class="mist-src" data-i18n="vid_note"></p>
+    </div>
+  </section>
+
   <section class="block" id="test">
     <div class="wrap">
       <div class="shead">
@@ -906,6 +925,15 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["Immigration lawyer", "Hand them a strong file to work with.", 1]
       ],
       start_why_h: "Why this order?",
+      vid_eyebrow: "Watch", vid_title: "Inside a Canadian pharmacy", vid_sub: "Public videos. Tap to play.",
+      vid_note: "Videos are on YouTube, by their owners. Not made by Al-Tina.",
+      pvids: [
+        ["yhBJQ2oTAZg", "Store tour · 19 min", "A Shoppers Drug Mart store", "Front store, cosmetics, the pharmacy, and Canada Post inside.", "Dave Nowes In Toronto"],
+        ["MZU1whO9FIs", "Workflow · 11 min", "How a prescription is filled", "From receiving the prescription to handing it to the patient.", "TELUS Health"],
+        ["q2tg-EnyKH4", "Workflow · 6 min", "Pharmacy software, step by step", "Intake, data entry, checks, and counselling, all on the computer. No internet, no dispensing.", "TELUS Health (Kroll)"],
+        ["L6GmRLu2O0s", "HealthWatch · 30 sec", "HealthWatch, 1993", "Shoppers' own pharmacy system. This ad is old; the system is still used today.", "The Tape Keeper"],
+        ["1Ht3fBUptJ4", "HealthWatch · 30 sec", "HealthWatch, 1997", "Another early ad for the same system.", "northbaysports"]
+      ],
       start_why: "The officer sees a pharmacist on the way to a licence: someone who will work and add to the community, not live on social assistance. That is what makes your case strong. Without these steps, what can your lawyer show?",
       fx_rate: "Today: 1 Canadian dollar ≈ {x} Iraqi dinars", fx_note: "Approximate market rate, updated daily · {d}", fx_to: "To get to Canada", fx_total: "Total",
       iqd_m: "IQD {x} million", iqd_k: "IQD {x}",
@@ -1079,6 +1107,15 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         ["محامي الهجرة", "سلّمه ملف قوي يشتغل عليه.", 1]
       ],
       start_why_h: "ليش بهالترتيب؟",
+      vid_eyebrow: "شوف بعينك", vid_title: "من داخل صيدلية كندية", vid_sub: "فيديوهات عامة. اضغط وشغّل.",
+      vid_note: "الفيديوهات على يوتيوب ولأصحابها. مو من إنتاج التينة.",
+      pvids: [
+        ["yhBJQ2oTAZg", "جولة · 19 دقيقة", "جولة بصيدلية Shoppers Drug Mart", "الواجهة، قسم التجميل، الصيدلية، وكندا بوست جوّه المحل.", "Dave Nowes In Toronto"],
+        ["MZU1whO9FIs", "طريقة الشغل · 11 دقيقة", "شلون تنصرف الوصفة", "من استلام الوصفة لحد ما توصل بيد المريض.", "TELUS Health"],
+        ["q2tg-EnyKH4", "طريقة الشغل · 6 دقايق", "برنامج الصيدلية خطوة بخطوة", "الاستلام، الإدخال، التدقيق، والإرشاد، كله على الحاسبة. بدون إنترنت ما نكدر نصرف.", "TELUS Health (Kroll)"],
+        ["L6GmRLu2O0s", "HealthWatch · 30 ثانية", "HealthWatch، سنة 1993", "نظام Shoppers الخاص بالصيدلية. الإعلان قديم، بس النظام لهسه يشتغلون بيه.", "The Tape Keeper"],
+        ["1Ht3fBUptJ4", "HealthWatch · 30 ثانية", "HealthWatch، سنة 1997", "إعلان قديم ثاني لنفس النظام.", "northbaysports"]
+      ],
       start_why: "الموظف يشوف صيدلي بطريقه للرخصة: واحد راح يشتغل ويفيد المجتمع، مو يعيش على المساعدات. هذا اللي يقوّي ملفك. وبدون هالخطوات، شنو يقدّم عنك المحامي؟",
       fx_rate: "سعر اليوم: 1 دولار كندي ≈ {x} دينار عراقي", fx_note: "سعر السوق تقريباً، يتحدّث كل يوم · {d}", fx_to: "لحد ما توصل كندا", fx_total: "المجموع الكلي",
       iqd_m: "{x} مليون دينار", iqd_k: "{x} ألف دينار",
@@ -1311,6 +1348,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       fillBidi(h, s[0]); fillBidi(p, s[1]);
       d.appendChild(h); d.appendChild(p); li.appendChild(d);
       ol.appendChild(li);
+    });
+  }
+
+  function renderVids() {
+    var g = $("vgrid"); if (!g) return; g.textContent = "";
+    t("pvids").forEach(function (v) {
+      var f = makeVid(v[0], "YouTube: " + v[4], false, true);
+      nameVid(f, v[2]);
+      var c = f.querySelector("figcaption"), tag = el("span", "vtag"), d = el("span", "vd");
+      fillBidi(tag, v[1]); fillBidi(d, v[3]);
+      c.insertBefore(tag, c.firstChild); c.insertBefore(d, c.querySelector("small"));
+      g.appendChild(f);
     });
   }
 
@@ -1587,6 +1636,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderPath();
     renderSteps();
     renderStart();
+    renderVids();
     renderMist();
     renderLife();
     renderFaq();
