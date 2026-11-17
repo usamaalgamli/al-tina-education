@@ -290,6 +290,14 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .verify .vf-steps li { counter-increment: vf; padding: 2px 10px; border-radius: 999px; background: rgba(255,255,255,.1); font-weight: 600; }
 .verify .vf-steps li::before { content: counter(vf); margin-inline-end: 6px; color: var(--brass); font-weight: 800; }
 .verify .vf-btn { display: inline-block; padding: 3px 12px; border-radius: 999px; background: var(--brass); color: var(--forest); font-weight: 800; text-decoration: none; white-space: nowrap; }
+.verify .vf-main { display: flex; gap: 18px; align-items: flex-start; margin-top: 10px; }
+.verify .vf-photo { width: 120px; height: 120px; border-radius: 14px; object-fit: cover; border: 3px solid var(--brass); flex: none; background: #fff; }
+.verify .vf-body { flex: 1; min-width: 0; }
+.verify .vf-body .vf-ids { margin-top: 0; }
+.verify .vf-docs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 12px; font-size: .9rem; }
+.verify .vf-docs a { display: inline-flex; align-items: center; gap: 8px; color: var(--on-forest); text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 4px 10px 4px 4px; font-weight: 600; }
+.verify .vf-docs img { height: 40px; width: auto; border-radius: 4px; background: #fff; }
+@media (max-width: 640px) { .verify .vf-main { flex-direction: column; align-items: center; } .verify .vf-body { width: 100%; } }
 .start .why { margin-block-start: 22px; padding: 20px 24px; border-radius: 14px; background: var(--forest); color: var(--on-forest); font-size: 1.05rem; line-height: 1.8; }
 .start .why strong { color: var(--brass); font-weight: 800; margin-inline-end: 6px; }
 @media (max-width: 1100px) { .start-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -476,6 +484,9 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   <section class="verify" id="verify">
     <div class="wrap">
       <div class="vf-head"><strong data-i18n="vf_title"></strong> <span data-i18n="vf_why"></span></div>
+      <div class="vf-main">
+      <img class="vf-photo" src="sam-photo.jpg" width="120" height="120" alt="Usama (Sam) Algamli" loading="eager">
+      <div class="vf-body">
       <dl class="vf-ids">
         <div><dt data-i18n="vf_name_l"></dt><dd><span lang="ar">أسامة مضر عبد الرضا</span> · <span lang="en" dir="ltr">Usama Algamli</span></dd></div>
         <div><dt data-i18n="vf_iq_l"></dt><dd dir="ltr">15181</dd></div>
@@ -484,6 +495,13 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       <div class="vf-how"><span data-i18n="vf_how"></span>
         <ol class="vf-steps"><li><bdi dir="ltr">abpharmacy.ca</bdi></li><li><bdi dir="ltr">Find a pharmacy professional</bdi></li><li><bdi dir="ltr">First name: Usama</bdi></li><li><bdi dir="ltr">Last name: Algamli</bdi></li><li><bdi dir="ltr">Title: Provisional Pharmacist</bdi></li><li><bdi dir="ltr">Search</bdi></li></ol>
         <a class="vf-btn" href="https://abpharmacy.ca/" target="_blank" rel="noopener" data-i18n="vf_btn"></a></div>
+      <div class="vf-docs"><span data-i18n="vf_docs"></span>
+        <a href="id-iraq-front.jpg" target="_blank" rel="noopener"><img src="id-iraq-front.jpg" alt="" loading="lazy"><span data-i18n="vf_doc_iq1"></span></a>
+        <a href="id-iraq-back.jpg" target="_blank" rel="noopener"><img src="id-iraq-back.jpg" alt="" loading="lazy"><span data-i18n="vf_doc_iq2"></span></a>
+        <a href="id-acp-permit.jpg" target="_blank" rel="noopener"><img src="id-acp-permit.jpg" alt="" loading="lazy"><span data-i18n="vf_doc_acp"></span></a>
+      </div>
+      </div>
+      </div>
     </div>
   </section>
 
@@ -941,6 +959,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
       nav_life: "Life in Canada", nav_test: "Test yourself", nav_start: "Start",
+      vf_docs: "Documents (tap to enlarge):", vf_doc_iq1: "Iraqi syndicate card, front", vf_doc_iq2: "Iraqi syndicate card, back", vf_doc_acp: "ACP practice permit",
       vf_title: "Check who I am.", vf_why: "Scams are everywhere, and you have every right to check who you are dealing with.",
       vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
       vf_how: "How to search:", vf_btn: "Search ACP",
@@ -1130,6 +1149,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "الصيدلة بكندا",
       nav_path: "الطريق", nav_services: "خدماتنا", nav_faq: "أجوبة لأسئلتك", nav_register: "سجّل", nav_contact: "تواصل ويانا",
       nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك", nav_start: "منين أبدي؟",
+      vf_docs: "الوثائق (اضغط للتكبير):", vf_doc_iq1: "هوية النقابة، الوجه", vf_doc_iq2: "هوية النقابة، الظهر", vf_doc_acp: "إجازة ممارسة ACP",
       vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
       vf_how: "شلون تبحث:", vf_btn: "ابحث بموقع ACP",
