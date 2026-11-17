@@ -278,6 +278,18 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 @media (max-width: 1000px) { .vgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .vgrid { grid-template-columns: 1fr; } }
 .start-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.verify { background: var(--forest); color: var(--on-forest); padding: 16px 0 18px; border-bottom: 3px solid var(--brass); }
+.verify .vf-head { font-size: 1.02rem; line-height: 1.7; }
+.verify .vf-head strong { color: var(--brass); font-weight: 800; margin-inline-end: 6px; }
+.verify .vf-ids { display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 10px 0; padding: 0; }
+.verify .vf-ids > div { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 6px 12px; }
+.verify dt { font-size: .8rem; opacity: .85; }
+.verify dd { margin: 0; font-weight: 800; font-size: 1.05rem; }
+.verify .vf-how { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: .95rem; }
+.verify .vf-steps { display: contents; counter-reset: vf; list-style: none; }
+.verify .vf-steps li { counter-increment: vf; padding: 2px 10px; border-radius: 999px; background: rgba(255,255,255,.1); font-weight: 600; }
+.verify .vf-steps li::before { content: counter(vf); margin-inline-end: 6px; color: var(--brass); font-weight: 800; }
+.verify .vf-btn { display: inline-block; padding: 3px 12px; border-radius: 999px; background: var(--brass); color: var(--forest); font-weight: 800; text-decoration: none; white-space: nowrap; }
 .start .why { margin-block-start: 22px; padding: 20px 24px; border-radius: 14px; background: var(--forest); color: var(--on-forest); font-size: 1.05rem; line-height: 1.8; }
 .start .why strong { color: var(--brass); font-weight: 800; margin-inline-end: 6px; }
 @media (max-width: 1100px) { .start-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -460,6 +472,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     </div>
   </div>
 </header>
+
+  <section class="verify" id="verify">
+    <div class="wrap">
+      <div class="vf-head"><strong data-i18n="vf_title"></strong> <span data-i18n="vf_why"></span></div>
+      <dl class="vf-ids">
+        <div><dt data-i18n="vf_name_l"></dt><dd><span lang="ar">أسامة مضر عبد الرضا</span> · <span lang="en" dir="ltr">Usama Algamli</span></dd></div>
+        <div><dt data-i18n="vf_iq_l"></dt><dd dir="ltr">15181</dd></div>
+        <div><dt data-i18n="vf_acp_l"></dt><dd dir="ltr">18950</dd></div>
+      </dl>
+      <div class="vf-how"><span data-i18n="vf_how"></span>
+        <ol class="vf-steps"><li><bdi dir="ltr">abpharmacy.ca</bdi></li><li><bdi dir="ltr">Find a pharmacy professional</bdi></li><li><bdi dir="ltr">First name: Usama</bdi></li><li><bdi dir="ltr">Last name: Algamli</bdi></li><li><bdi dir="ltr">Title: Provisional Pharmacist</bdi></li><li><bdi dir="ltr">Search</bdi></li></ol>
+        <a class="vf-btn" href="https://abpharmacy.ca/" target="_blank" rel="noopener" data-i18n="vf_btn"></a></div>
+    </div>
+  </section>
 
 <main id="top">
   <section class="hero">
@@ -915,6 +941,9 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
       nav_life: "Life in Canada", nav_test: "Test yourself", nav_start: "Start",
+      vf_title: "Check who I am.", vf_why: "Scams are everywhere, and you have every right to check who you are dealing with.",
+      vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
+      vf_how: "How to search:", vf_btn: "Search ACP",
       start_eyebrow: "Start here", start_title: "Where do I start?",
       start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
       start_steps: [
@@ -1101,6 +1130,9 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "الصيدلة بكندا",
       nav_path: "الطريق", nav_services: "خدماتنا", nav_faq: "أجوبة لأسئلتك", nav_register: "سجّل", nav_contact: "تواصل ويانا",
       nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك", nav_start: "منين أبدي؟",
+      vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
+      vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
+      vf_how: "شلون تبحث:", vf_btn: "ابحث بموقع ACP",
       start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
       start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
       start_steps: [
