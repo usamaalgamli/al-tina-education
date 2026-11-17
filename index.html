@@ -297,6 +297,13 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .verify .vf-docs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 12px; font-size: .9rem; }
 .verify .vf-docs a { display: inline-flex; align-items: center; gap: 8px; color: var(--on-forest); text-decoration: none; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 4px 10px 4px 4px; font-weight: 600; }
 .verify .vf-docs img { height: 40px; width: auto; border-radius: 4px; background: #fff; }
+.verify .vf-creds { margin-top: 14px; font-size: .92rem; }
+.verify .vf-creds > span { font-weight: 700; }
+.verify .vf-creds ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px 14px; }
+.verify .vf-creds li { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 6px 10px; }
+.verify .vf-creds li bdi { opacity: .85; font-size: .85rem; white-space: nowrap; }
+.verify .vf-crlinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.verify .vf-crlinks a { color: var(--on-forest); font-weight: 600; font-size: .85rem; }
 @media (max-width: 640px) { .verify .vf-main { flex-direction: column; align-items: center; } .verify .vf-body { width: 100%; } }
 .start .why { margin-block-start: 22px; padding: 20px 24px; border-radius: 14px; background: var(--forest); color: var(--on-forest); font-size: 1.05rem; line-height: 1.8; }
 .start .why strong { color: var(--brass); font-weight: 800; margin-inline-end: 6px; }
@@ -499,6 +506,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         <a href="id-iraq-front.jpg" target="_blank" rel="noopener"><img src="id-iraq-front.jpg" alt="" loading="lazy"><span data-i18n="vf_doc_iq1"></span></a>
         <a href="id-iraq-back.jpg" target="_blank" rel="noopener"><img src="id-iraq-back.jpg" alt="" loading="lazy"><span data-i18n="vf_doc_iq2"></span></a>
         <a href="id-acp-permit.jpg" target="_blank" rel="noopener"><img src="id-acp-permit.jpg" alt="" loading="lazy"><span data-i18n="vf_doc_acp"></span></a>
+      </div>
+      <div class="vf-creds"><span data-i18n="vf_creds"></span>
+        <ul>
+          <li><b><bdi dir="ltr">BCOP</bdi></b> <span data-i18n="cr_bcop"></span> <bdi dir="ltr">#5153406 · 2025–2032</bdi></li>
+          <li><b><bdi dir="ltr">BCPP</bdi></b> <span data-i18n="cr_bcpp"></span> <bdi dir="ltr">#4151097 · 2025–2032</bdi></li>
+          <li><b><bdi dir="ltr">BPS</bdi></b> <span data-i18n="cr_bps"></span> <bdi dir="ltr">ID IND-997781</bdi></li>
+          <li><b><bdi dir="ltr">PMP®</bdi></b> <span data-i18n="cr_pmp"></span> <bdi dir="ltr">#4497797 · 2026–2029</bdi></li>
+          <li><b><bdi dir="ltr">RAC-Drugs</bdi></b> <span data-i18n="cr_rac"></span> <bdi dir="ltr">2026</bdi></li>
+          <li><b><bdi dir="ltr">ICH GCP E6(R3)</bdi></b> <span data-i18n="cr_gcp"></span> <bdi dir="ltr">2026–2028</bdi></li>
+          <li><b><bdi dir="ltr">TCPS 2: CORE</bdi></b> <span data-i18n="cr_tcps"></span> <bdi dir="ltr">#0001580477 · 2026</bdi></li>
+        </ul>
+        <div class="vf-crlinks"><a href="https://www.bpsweb.org/" target="_blank" rel="noopener" data-i18n="cr_v_bps"></a><a href="https://www.pmi.org/" target="_blank" rel="noopener" data-i18n="cr_v_pmi"></a></div>
       </div>
       </div>
       </div>
@@ -959,6 +978,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "Pharmacy in Canada",
       nav_path: "The path", nav_services: "Services", nav_faq: "Your questions", nav_register: "Register", nav_contact: "Contact",
       nav_life: "Life in Canada", nav_test: "Test yourself", nav_start: "Start",
+      vf_creds: "Credentials:", cr_bcop: "Board Certified Oncology Pharmacist", cr_bcpp: "Board Certified Psychiatric Pharmacist", cr_bps: "Board of Pharmacy Specialties · Ambassador 2027–2028", cr_pmp: "Project Management Professional (PMI)", cr_rac: "Regulatory Affairs Certification (RAPS)", cr_gcp: "Good Clinical Practice", cr_tcps: "Research ethics (Canada)", cr_v_bps: "Verify BCOP/BCPP at BPS", cr_v_pmi: "Verify PMP at PMI",
       vf_docs: "Documents (tap to enlarge):", vf_doc_iq1: "Iraqi syndicate card, front", vf_doc_iq2: "Iraqi syndicate card, back", vf_doc_acp: "ACP practice permit",
       vf_title: "Check who I am.", vf_why: "Scams are everywhere, and you have every right to check who you are dealing with.",
       vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
@@ -1149,6 +1169,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "الصيدلة بكندا",
       nav_path: "الطريق", nav_services: "خدماتنا", nav_faq: "أجوبة لأسئلتك", nav_register: "سجّل", nav_contact: "تواصل ويانا",
       nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك", nav_start: "منين أبدي؟",
+      vf_creds: "الشهادات:", cr_bcop: "صيدلاني أورام معتمد من البورد", cr_bcpp: "صيدلاني نفسي معتمد من البورد", cr_bps: "مجلس التخصصات الصيدلانية الأمريكي · سفير 2027–2028", cr_pmp: "إدارة مشاريع محترف (PMI)", cr_rac: "شهادة الشؤون التنظيمية للأدوية (RAPS)", cr_gcp: "الممارسة السريرية الجيدة", cr_tcps: "أخلاقيات البحث (كندا)", cr_v_bps: "تأكد من BCOP/BCPP بموقع BPS", cr_v_pmi: "تأكد من PMP بموقع PMI",
       vf_docs: "الوثائق (اضغط للتكبير):", vf_doc_iq1: "هوية النقابة، الوجه", vf_doc_iq2: "هوية النقابة، الظهر", vf_doc_acp: "إجازة ممارسة ACP",
       vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
