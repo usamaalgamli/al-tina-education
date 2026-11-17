@@ -301,7 +301,8 @@ html[lang="ar"] .vids-h { font-weight: 600; }
 .verify .vf-creds > span { font-weight: 700; }
 .verify .vf-creds ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px 14px; }
 .verify .vf-creds li { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 6px 10px; }
-.verify .vf-creds li bdi { opacity: .85; font-size: .85rem; white-space: nowrap; }
+.verify .vf-creds .cr-yr { unicode-bidi: isolate; display: inline-block; }
+.verify .vf-creds li > bdi, .verify .vf-creds .cr-yr { opacity: .85; font-size: .85rem; white-space: nowrap; }
 .verify .vf-crlinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .verify .vf-crlinks a { color: var(--on-forest); font-weight: 600; font-size: .85rem; }
 @media (max-width: 640px) { .verify .vf-main { flex-direction: column; align-items: center; } .verify .vf-body { width: 100%; } }
@@ -509,13 +510,13 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       </div>
       <div class="vf-creds"><span data-i18n="vf_creds"></span>
         <ul>
-          <li><b><bdi dir="ltr">BCOP</bdi></b> <span data-i18n="cr_bcop"></span> <bdi dir="ltr">#5153406 · 2025–2032</bdi></li>
-          <li><b><bdi dir="ltr">BCPP</bdi></b> <span data-i18n="cr_bcpp"></span> <bdi dir="ltr">#4151097 · 2025–2032</bdi></li>
+          <li><b><bdi dir="ltr">BCOP</bdi></b> <span data-i18n="cr_bcop"></span> <bdi dir="ltr">#5153406</bdi> · <span class="cr-yr">2025–2032</span></li>
+          <li><b><bdi dir="ltr">BCPP</bdi></b> <span data-i18n="cr_bcpp"></span> <bdi dir="ltr">#4151097</bdi> · <span class="cr-yr">2025–2032</span></li>
           <li><b><bdi dir="ltr">BPS</bdi></b> <span data-i18n="cr_bps"></span> <bdi dir="ltr">ID IND-997781</bdi></li>
-          <li><b><bdi dir="ltr">PMP®</bdi></b> <span data-i18n="cr_pmp"></span> <bdi dir="ltr">#4497797 · 2026–2029</bdi></li>
-          <li><b><bdi dir="ltr">RAC-Drugs</bdi></b> <span data-i18n="cr_rac"></span> <bdi dir="ltr">2026</bdi></li>
-          <li><b><bdi dir="ltr">ICH GCP E6(R3)</bdi></b> <span data-i18n="cr_gcp"></span> <bdi dir="ltr">2026–2028</bdi></li>
-          <li><b><bdi dir="ltr">TCPS 2: CORE</bdi></b> <span data-i18n="cr_tcps"></span> <bdi dir="ltr">#0001580477 · 2026</bdi></li>
+          <li><b><bdi dir="ltr">PMP®</bdi></b> <span data-i18n="cr_pmp"></span> <bdi dir="ltr">#4497797</bdi> · <span class="cr-yr">2026–2029</span></li>
+          <li><b><bdi dir="ltr">RAC-Drugs</bdi></b> <span data-i18n="cr_rac"></span> <span class="cr-yr">2026</span></li>
+          <li><b><bdi dir="ltr">ICH GCP E6(R3)</bdi></b> <span data-i18n="cr_gcp"></span> <span class="cr-yr">2026–2028</span></li>
+          <li><b><bdi dir="ltr">TCPS 2: CORE</bdi></b> <span data-i18n="cr_tcps"></span> <bdi dir="ltr">#0001580477</bdi> · <span class="cr-yr">2026</span></li>
         </ul>
         <div class="vf-crlinks"><a href="https://www.bpsweb.org/" target="_blank" rel="noopener" data-i18n="cr_v_bps"></a><a href="https://www.pmi.org/" target="_blank" rel="noopener" data-i18n="cr_v_pmi"></a></div>
       </div>
@@ -1169,7 +1170,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       brand_sub: "الصيدلة بكندا",
       nav_path: "الطريق", nav_services: "خدماتنا", nav_faq: "أجوبة لأسئلتك", nav_register: "سجّل", nav_contact: "تواصل ويانا",
       nav_life: "حياة الصيدلي بكندا", nav_test: "جرّب نفسك", nav_start: "منين أبدي؟",
-      vf_creds: "الشهادات:", cr_bcop: "صيدلاني اختصاص أورام، معتمد من البورد الأمريكي", cr_bcpp: "صيدلاني اختصاص نفسية، معتمد من البورد الأمريكي", cr_bps: "مجلس التخصصات الصيدلانية الأمريكي · سفير 2027–2028", cr_pmp: "إدارة مشاريع محترف (PMI)", cr_rac: "شهادة الشؤون التنظيمية للأدوية (RAPS)", cr_gcp: "الممارسة السريرية الجيدة", cr_tcps: "أخلاقيات البحث (كندا)", cr_v_bps: "تأكد من BCOP/BCPP بموقع BPS", cr_v_pmi: "تأكد من PMP بموقع PMI",
+      vf_creds: "الشهادات:", cr_bcop: "صيدلاني اختصاص أورام، معتمد من البورد الأمريكي", cr_bcpp: "صيدلاني اختصاص نفسية، معتمد من البورد الأمريكي", cr_bps: "مجلس التخصصات الصيدلانية الأمريكي · سفير 2027–2028", cr_pmp: "أخصائي إدارة مشاريع (PMI)", cr_rac: "شهادة الشؤون التنظيمية للأدوية (RAPS)", cr_gcp: "الممارسة السريرية الجيدة", cr_tcps: "أخلاقيات البحث (كندا)", cr_v_bps: "تأكد من BCOP/BCPP بموقع BPS", cr_v_pmi: "تأكد من PMP بموقع PMI",
       vf_docs: "الوثائق (اضغط للتكبير):", vf_doc_iq1: "هوية النقابة، الوجه", vf_doc_iq2: "هوية النقابة، الظهر", vf_doc_acp: "إجازة ممارسة ACP",
       vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
