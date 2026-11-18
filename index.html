@@ -451,6 +451,40 @@ footer .tiny { font-size: .66rem; letter-spacing: .04em; opacity: .75; }
 footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-block-start: 22px; display: grid; gap: 6px; color: #a9b8ae; font-size: .85rem; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } .btn:hover, .cbox:hover, .dcard:hover { transform: none; } }
+
+/* Baghdad vs Canada comparison */
+.cmp { margin-top: 36px; }
+.cmp-h { font-size: 1.7rem; color: var(--forest); }
+.cmp-sub { color: var(--muted); margin: 6px 0 16px; }
+.cmp-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; margin-bottom: 18px; }
+.cmp-card h4 { margin: 0; font-size: 1.15rem; color: var(--forest); }
+.cmp-card .q { color: var(--muted); margin: 2px 0 12px; font-size: .95rem; }
+.cmp .cad { display: inline-block; background: var(--brass); color: var(--forest); font-weight: 800; padding: 3px 12px; border-radius: 8px; margin-bottom: 10px; }
+.cmp-row { display: grid; grid-template-columns: 130px 1fr; gap: 12px; align-items: center; margin: 10px 0; }
+.cmp-row.avg { border-top: 1px dashed var(--line); padding-top: 12px; }
+.cmp-city b { display: block; }
+.cmp-city small { display: block; color: var(--brass-deep); font-weight: 600; font-size: .8rem; line-height: 1.3; }
+.ip-row { display: grid; grid-template-columns: 130px 1fr 92px; gap: 12px; align-items: center; margin: 8px 0; }
+.ip-track { background: var(--paper-2); border-radius: 999px; height: 20px; overflow: hidden; }
+.ip-fill { height: 100%; border-radius: 999px; background: var(--brass); }
+.ip-row.iq .ip-fill { background: #c0533a; }
+.ip-row.avg .ip-fill { background: var(--forest); }
+.ip-val { font-weight: 800; }
+.ip-val small { font-weight: 400; color: var(--muted); }
+.cmp-track { position: relative; }
+.cmp-stack { display: flex; height: 44px; border-radius: 8px; overflow: hidden; }
+.cmp-stack span { display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.15; font-size: .74rem; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; white-space: nowrap; }
+.cmp-stack em { font-style: normal; font-weight: 600; font-size: .68rem; opacity: .9; }
+.c-tax { background: #9b4a3a; } .c-rent { background: #163f32; } .c-food { background: #4f8a6e; } .c-car { background: #b08a3e; }
+.c-power { background: #d9c48f; color: #3b3420 !important; } .c-left { background: #e7efe9; color: var(--forest) !important; }
+.c-short { background: repeating-linear-gradient(135deg, #c0533a 0 6px, #a8432c 6px 12px); }
+.cmp-line { position: absolute; top: -6px; bottom: -6px; border-inline-start: 2px dashed var(--ink); }
+.cmp-line i { position: absolute; top: -18px; inset-inline-start: -2px; font-style: normal; font-size: .7rem; font-weight: 700; white-space: nowrap; transform: translateX(50%); }
+[dir=ltr] .cmp-line i { transform: translateX(-50%); }
+.cmp-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 4px 0 18px; font-size: .85rem; }
+.cmp-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-inline-end: 6px; vertical-align: -1px; }
+.cmp-take { background: var(--paper-2); border-radius: 12px; padding: 10px 14px; margin: 14px 0 8px; }
+@media (max-width: 640px) { .cmp-row, .ip-row { grid-template-columns: 1fr; gap: 4px; } .ip-row { grid-template-columns: 1fr 80px; } .ip-row .cmp-city { grid-column: 1 / -1; } .cmp-stack { height: 40px; } .cmp-stack em { display: none; } }
 </style>
 </head>
 <body>
@@ -642,6 +676,26 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
           <h3 class="vids-h" data-i18n="life_vids"></h3>
           <div class="vids" id="vids"></div>
           <p class="note" data-i18n="life_vid_note"></p>
+        </div>
+      </div>
+      <div class="cmp" id="cmp">
+        <h3 class="cmp-h" data-i18n="cmp_title"></h3>
+        <p class="cmp-sub" data-i18n="cmp_sub"></p>
+        <div class="cmp-card">
+          <h4 data-i18n="cmp_ip_h"></h4>
+          <p class="q" id="cmp-ip-q"></p>
+          <div id="cmp-ip"></div>
+          <p class="src" id="cmp-ip-src"></p>
+        </div>
+        <div class="cmp-card">
+          <h4 data-i18n="cmp_pay_h"></h4>
+          <p class="q" data-i18n="cmp_pay_q"></p>
+          <mark class="cad" data-i18n="cmp_cad"></mark>
+          <div class="cmp-legend" id="cmp-legend"></div>
+          <div id="cmp-pay"></div>
+          <p class="cmp-take" data-i18n="cmp_take"></p>
+          <p class="src" id="cmp-assume"></p>
+          <p class="src" id="cmp-src"></p>
         </div>
       </div>
       <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
@@ -1014,6 +1068,15 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       life_intern: "Intern pay: $23.40 to $30.72 an hour", life_intern_d: "About $3,800 to $5,000 a month before taxes, full time. You work as an intern until you finish training and get your full licence, then ≈ $55 an hour. Example: a Walmart job ad in Calgary (11/2026).",
       life_car: "New 2026 Toyota Corolla: from $24,520", life_car_d: "≈ $500 a month, with $500 down or nothing down. Our advice: buy new, not used. The warranty covers repairs.",
       life_src: "Sources: Job Bank (2023–2024) and CRA (1/2026) for pay after tax · Walmart job ad (11/2026) for intern pay · currency-api (daily) for the dinar rate · CMHC (10/2025) for rent · CREB (10/2026) for the apartment price · nesto (11/2026) for mortgage rates · Canada's Food Price Report 2026 for food · Auto123 (9/2025) for the car. Rounded numbers; they change with the city and your lifestyle.",
+      cmp_title: "Baghdad vs Canada: where does a pharmacist's pay go?", cmp_sub: "Example: a full-time pharmacist, family of four, 2026.",
+      cmp_ip_h: "📱 The iPhone index", cmp_ip_q: "How many working days does a pharmacist need to buy an {p} ($1,899)?", cmp_days: "days", cmp_ip_src: "Sources: Job Bank and WorkBC (Canadian pay, 7.5-hour days) · Apple Canada (price, same price assumed in Baghdad). Baghdad: government job plus an evening pharmacy job, 26 days a month, 1,620 dinars to the US dollar.",
+      cmp_pay_h: "💰 Where does your pay go?", cmp_pay_q: "Each bar = 100% of the pharmacist's monthly pay before tax (the number under the city).", cmp_cad: "All amounts are in Canadian dollars 🇨🇦",
+      cmp_salary: "Salary", cmp_short: "Short", cmp_month: "a month", cmp_avg: "Canada average",
+      cmp_legend: ["Tax and deductions", "Rent", "Food", "Car (payment + insurance + gas)", "Electricity (in Iraq, the generator)", "Left over"],
+      cmp_cities: ["Baghdad", "Toronto", "Vancouver", "Montreal", "Calgary"],
+      cmp_take: "In Baghdad, the basics cost more than the salary. In Canada, about a quarter of the pay is left after tax and the basics.",
+      cmp_assume: "Assumptions: family of four; 2-bedroom apartment; a new Toyota Corolla on a 5-year loan (20% interest in Iraq); 100 litres of gas a month; 1,000 kWh of electricity in Canada; 5 generator amps in Baghdad. Baghdad salary: a government job (1,000,000 dinars) plus 6 hours a day in a pharmacy at 5,000 dinars an hour, 26 days a month; 1,620 dinars to the US dollar, 1.43 Canadian dollars to the US dollar. Iraqi tax: married with 2 children; retirement 10% of half the salary.",
+      cmp_src: "Sources: Job Bank and WorkBC (pay) · KPMG 2026 tax brackets · Iraq's General Commission for Taxes · CMHC (rent, fall 2025) · Canada's Food Price Report 2026 · Iraq's Central Statistical Organization (household food spending 2017–18, adjusted for inflation) · Statistics Canada (gas, October 2026) · GlobalPetrolPrices (Baghdad gas) · BrokerLink (car insurance) · Hydro-Quebec (electricity, 2025) · Apple Canada (iPhone price). Rounded numbers.",
       life_vids: "See life in Alberta and Canada", life_vid_note: "Official videos. They play here on the page.",
       mcq_h: "What is the MCQ?", mcq_lead: "PEBC's first exam: multiple-choice questions on a computer. You pick the best answer.",
       mcq_s1: "questions in total", mcq_s2: "count toward your score", mcq_s3: "trial questions, not scored", mcq_s4: "minutes, about 1.3 per question",
@@ -1205,6 +1268,15 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       life_intern: "راتب الصيدلي المتدرّب (Intern): من $23.40 لـ $30.72 بالساعة", life_intern_d: "يعني تقريباً من $3,800 لـ $5,000 بالشهر قبل الضرائب بدوام كامل. تبقى Intern لحد ما تخلّص التدريب وتاخذ الرخصة الكاملة، وبعدها ≈ $55 بالساعة. مثال: إعلان شغل لـ Walmart بكالكري (11/2026).",
       life_car: "سيارة Toyota Corolla 2026 جديدة: من $24,520", life_car_d: "قسط ≈ $500 بالشهر، بمقدّم $500 أو بلا مقدّم. نصيحتنا: اشتري جديدة مو مستعملة، الضمان (warranty) يغطي التصليح.",
       life_src: "المصادر: Job Bank (2023–2024) و CRA (1/2026) للراتب بعد الضريبة · إعلان Walmart (11/2026) لراتب الـ Intern · currency-api (يومي) لسعر الدينار · CMHC (10/2025) للإيجار · CREB (10/2026) لسعر الشقة · nesto (11/2026) لفائدة القرض · Canada's Food Price Report 2026 للأكل · Auto123 (9/2025) لسعر السيارة. الأرقام تقريبية وتتغير حسب المدينة وشلون تعيش.",
+      cmp_title: "بغداد مقابل كندا: راتب الصيدلاني وين يروح؟", cmp_sub: "مثال: صيدلاني بدوام كامل، عائلة من 4 أشخاص، 2026.",
+      cmp_ip_h: "📱 مؤشر الآيفون", cmp_ip_q: "كم يوم شغل لازم يشتغل الصيدلاني حتى يشتري {p} ($1,899)؟", cmp_days: "يوم", cmp_ip_src: "المصادر: Job Bank و WorkBC (رواتب كندا، يوم الشغل 7.5 ساعات) · Apple كندا (السعر، ونفس السعر ببغداد). بغداد: وظيفة حكومية + صيدلية مسائية، 26 يوم بالشهر، 1,620 دينار للدولار.",
+      cmp_pay_h: "💰 راتبك وين يروح؟", cmp_pay_q: "كل خط = 100% من راتب الصيدلاني الشهري قبل الضريبة (الرقم تحت اسم المدينة)، حتى تشوف الضريبة وين تروح هم.", cmp_cad: "كل المبالغ بالدولار الكندي 🇨🇦",
+      cmp_salary: "الراتب", cmp_short: "عجز", cmp_month: "بالشهر", cmp_avg: "معدل كندا",
+      cmp_legend: ["ضريبة واستقطاعات", "إيجار", "أكل", "السيارة (قسط + تأمين + بانزين)", "كهرباء (وبالعراق المولدة)", "يبقالك"],
+      cmp_cities: ["بغداد", "تورنتو", "فانكوفر", "مونتريال", "كالكري"],
+      cmp_take: "ببغداد، الأساسيات تكلف أكثر من الراتب. بكندا يبقالك تقريباً ربع راتبك بعد الضريبة والأساسيات.",
+      cmp_assume: "الافتراضات: عائلة من 4، شقة غرفتين، تويوتا كورولا جديدة بالأقساط 5 سنين (بالعراق فائدة 20%)، 100 لتر بانزين بالشهر، 1,000 كيلوواط كهرباء بكندا، 5 أمبير مولدة ببغداد. راتب بغداد: وظيفة حكومية (مليون دينار) + 6 ساعات يومياً بصيدلية بـ 5,000 دينار للساعة، 26 يوم بالشهر. الصرف: 1,620 دينار للدولار الأمريكي، والدولار الأمريكي = 1.43 دولار كندي. الضريبة العراقية: متزوج وعنده طفلين، والتقاعد 10% من نص الراتب.",
+      cmp_src: "المصادر: Job Bank و WorkBC (الرواتب) · KPMG (ضرائب كندا 2026) · الهيئة العامة للضرائب العراقية · CMHC (الإيجار، خريف 2025) · Canada's Food Price Report 2026 · الجهاز المركزي للإحصاء العراقي (إنفاق الأسرة على الأكل 2017–2018 معدّل حسب التضخم) · Statistics Canada (البانزين، 10/2026) · GlobalPetrolPrices (بانزين بغداد) · BrokerLink (تأمين السيارة) · Hydro-Quebec (الكهرباء، 2025) · Apple كندا (سعر الآيفون). الأرقام تقريبية.",
       life_vids: "شوف الحياة بألبرتا وكندا", life_vid_note: "فيديوهات رسمية، تشتغل هنا بالصفحة.",
       mcq_h: "شنو هو الـ MCQ؟", mcq_lead: "أول امتحان من امتحانات PEBC: أسئلة اختيار من متعدد على الكمبيوتر، تختار أحسن جواب.",
       mcq_s1: "سؤال بالمجموع", mcq_s2: "تنحسب بالدرجة", mcq_s3: "تجريبية ما تنحسب", mcq_s4: "دقيقة، يعني 1.3 دقيقة للسؤال",
@@ -1703,6 +1775,77 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     CODES.forEach(function (c) { var o = el("option", null, (lang === "ar" ? c[1] : c[2]) + " \u200E+" + c[0]); o.value = c[0]; sel.appendChild(o); });
     sel.value = cur;
   }
+  var CMP = { // monthly, Canadian dollars
+    iq: { g: 1572, tax: 70, rent: 883, food: 380, car: 725, power: 88, days: 26 },
+    ca: [
+      { g: 8538, tax: 2226, rent: 2034, food: 1464, car: 871, power: 156 },
+      { g: 8450, tax: 2085, rent: 2363, food: 1464, car: 855, power: 126 },
+      { g: 9912, tax: 3119, rent: 1346, food: 1464, car: 785, power: 83 },
+      { g: 9017, tax: 2337, rent: 1914, food: 1464, car: 920, power: 229 }
+    ],
+    iphone: 1899, caDays: 21.67
+  };
+  var CMP_KEYS = ["tax", "rent", "food", "car", "power"];
+  function money(v) { return "$" + Math.round(v).toLocaleString("en-US"); }
+  function renderCmp() {
+    if (!$("cmp")) return;
+    var names = t("cmp_cities"), rows = [];
+    rows.push({ name: names[0], d: CMP.iq, iq: true });
+    CMP.ca.forEach(function (d, i) { rows.push({ name: names[i + 1], d: d }); });
+    var avg = { g: 0 }; CMP_KEYS.forEach(function (k) { avg[k] = 0; });
+    CMP.ca.forEach(function (d) { avg.g += d.g / 4; CMP_KEYS.forEach(function (k) { avg[k] += d[k] / 4; }); });
+    rows.push({ name: t("cmp_avg"), d: avg, avg: true });
+    function cityCell(r) {
+      var c = el("div", "cmp-city"); c.appendChild(el("b", null, r.name));
+      var sm = el("small"); var b = el("bdi", null, "≈ " + money(r.d.g)); b.dir = "ltr"; sm.appendChild(b); sm.appendChild(document.createTextNode(" " + t("cmp_month"))); c.appendChild(sm);
+      return c;
+    }
+    // iPhone index
+    var ip = $("cmp-ip"); ip.textContent = "";
+    var q = $("cmp-ip-q"); q.textContent = "";
+    var parts = t("cmp_ip_q").split("{p}"); fillBidi(q, parts[0]); var pn = el("bdi", null, "iPhone 18 Pro Max"); pn.dir = "ltr"; q.appendChild(pn); var tail = el("span"); fillBidi(tail, parts[1]); q.appendChild(tail);
+    var dd = rows.map(function (r) { return CMP.iphone / (r.d.g / (r.iq ? CMP.iq.days : CMP.caDays)); });
+    var mx = Math.max.apply(null, dd);
+    rows.forEach(function (r, i) {
+      var row = el("div", "ip-row" + (r.iq ? " iq" : "") + (r.avg ? " avg" : ""));
+      row.appendChild(cityCell(r));
+      var tr = el("div", "ip-track"), f = el("div", "ip-fill"); f.style.width = (dd[i] / mx * 100) + "%"; tr.appendChild(f); row.appendChild(tr);
+      var v = el("div", "ip-val", (Math.round(dd[i] * 10) / 10) + " "); v.appendChild(el("small", null, t("cmp_days"))); row.appendChild(v);
+      ip.appendChild(row);
+    });
+    // legend
+    var lg = $("cmp-legend"); lg.textContent = "";
+    var cls = ["c-tax", "c-rent", "c-food", "c-car", "c-power", "c-left"];
+    t("cmp_legend").forEach(function (x, i) { var s = el("span"); s.appendChild(el("i", cls[i])); s.appendChild(document.createTextNode(x)); lg.appendChild(s); });
+    var sh = el("span"); sh.appendChild(el("i", "c-short")); sh.appendChild(document.createTextNode(t("cmp_short"))); lg.appendChild(sh);
+    // pay bars
+    var pay = $("cmp-pay"); pay.textContent = "";
+    var totals = rows.map(function (r) { var s = 0; CMP_KEYS.forEach(function (k) { s += r.d[k]; }); return s / r.d.g * 100; });
+    var scale = Math.max(100, Math.max.apply(null, totals));
+    rows.forEach(function (r, i) {
+      var row = el("div", "cmp-row" + (r.avg ? " avg" : ""));
+      row.appendChild(cityCell(r));
+      var track = el("div", "cmp-track"), st = el("div", "cmp-stack");
+      var tot = Math.max(100, totals[i]); st.style.width = (tot / scale * 100) + "%";
+      var segs = CMP_KEYS.map(function (k, j) { return [cls[j], r.d[k]]; });
+      var left = r.d.g - segs.reduce(function (a, s) { return a + s[1]; }, 0);
+      if (left >= 0) segs.push(["c-left", left]); else segs.push(["c-short", left]);
+      segs.forEach(function (s) {
+        var pct = Math.abs(s[1]) / r.d.g * 100, pr = Math.round(pct) * (s[1] < 0 ? -1 : 1);
+        var sp = el("span", s[0]); sp.style.width = (pct / tot * 100) + "%"; sp.title = money(Math.abs(s[1])) + (s[1] < 0 ? " −" : "");
+        var lab = el("bdi", null, pr + "%"); lab.dir = "ltr"; sp.appendChild(lab);
+        if (pct >= 6) { var m = el("em"); var mb = el("bdi", null, (s[1] < 0 ? "−" : "") + money(Math.abs(s[1]))); mb.dir = "ltr"; m.appendChild(mb); sp.appendChild(m); }
+        st.appendChild(sp);
+      });
+      track.appendChild(st);
+      if (scale > 100) { var ln = el("div", "cmp-line"); ln.style.insetInlineStart = (100 / scale * 100) + "%"; if (r.iq) ln.appendChild(el("i", null, t("cmp_salary"))); track.appendChild(ln); }
+      row.appendChild(track);
+      pay.appendChild(row);
+    });
+    fillBidi($("cmp-ip-src"), t("cmp_ip_src"));
+    fillBidi($("cmp-assume"), t("cmp_assume"));
+    fillBidi($("cmp-src"), t("cmp_src"));
+  }
   function syncPhonePh() { $("f-phone").placeholder = $("f-cc").value === "964" ? "7XX XXX XXXX" : ""; }
 
   function applyLang(next) {
@@ -1721,6 +1864,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderVids();
     renderMist();
     renderLife();
+    renderCmp();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
