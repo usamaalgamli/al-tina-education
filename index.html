@@ -503,6 +503,11 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 .fc-ar { flex: 0 0 30px; display: grid; place-items: center; color: var(--brass-deep); }
 .fc-ar svg { width: 26px; height: 16px; }
 [dir=rtl] .fc-ar svg { transform: scaleX(-1); }
+.fc-grp { flex: 2.2 1 0; min-width: 0; display: flex; flex-direction: column; }
+.fc-grp-lab { text-align: center; font-weight: 800; font-size: .85rem; color: #5a4100; background: #f3e2b0; border: 2px solid var(--brass-deep); border-bottom: 0; border-radius: 12px 12px 0 0; padding: 4px 8px; }
+.fc-grp-in { flex: 1; display: flex; align-items: stretch; border: 2px solid var(--brass-deep); border-radius: 0 0 14px 14px; padding: 8px; background: #fbf3dc; }
+.fc-plus { flex: 0 0 30px; display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: var(--brass-deep); }
+.fc-box.pair { border-color: var(--brass-deep); background: #fffaf0; }
 .fc-tot { text-align: end; font-weight: 700; color: var(--forest); margin: 8px 0 0; }
 .fc-down { display: flex; flex-direction: column; align-items: center; color: var(--brass-deep); margin: 10px 0; font-weight: 700; }
 .fc-down svg { width: 16px; height: 34px; }
@@ -510,6 +515,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 @media (max-width: 860px) {
   .fc-row { flex-direction: column; }
   .fc-box { flex: none; }
+  .fc-grp { flex: none; }
+  .fc-grp-in { flex-direction: column; }
   .fc-ar { flex: none; height: 30px; }
   .fc-ar svg, [dir=rtl] .fc-ar svg { transform: rotate(90deg); }
 }
@@ -1073,7 +1080,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
       vf_how: "How to search:", vf_btn: "Search ACP",
       fc_title: "Where do I start?", fc_sub: "Follow the arrows. Official fees, Manitoba 2027, in Canadian dollars.",
-      fc_start: "Start here", fc_iq: "From Iraq", fc_ca: "In Canada", fc_move: "Move to Canada with an immigration consultant", fc_paid: "Paid as an intern", fc_end: "Licensed pharmacist",
+      fc_start: "Start here", fc_iq: "From Iraq", fc_ca: "In Canada", fc_move: "Move to Canada with an immigration consultant", fc_paid: "Paid as an intern", fc_pair: "Same step: pay both together ($1,105)", fc_end: "Licensed pharmacist",
       fc_row1: [["Register with NAPRA, PEBC and Pharmacists' Gateway Canada", "Open your files online", "$390"], ["Document evaluation", "Your college sends your papers to PEBC", "$715"], ["MCQ exam", "Online from home", "$870"], ["English test", "IELTS or OET", "$550"], ["Apply to the province", "Pharmacy college (PRA)", "$1,185"]],
       fc_row2: [["OSCE exam", "The only exam in Canada", "$1,950"], ["Practical training", "600+ hours", "paid"], ["Jurisprudence exam", "Pharmacy laws", "$374"], ["Licence", "Registration", "$1,170"]],
       fc_tot1: "Total from Iraq: $3,710", fc_tot2: "Total in Canada: $3,494", fc_all: ["Total official fees", "$7,204"],
@@ -1280,7 +1287,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
       vf_how: "شلون تبحث:", vf_btn: "ابحث بموقع ACP",
       fc_title: "منين أبدي؟", fc_sub: "امشي ويا الأسهم. رسوم رسمية، مانيتوبا 2027، بالدولار الكندي.",
-      fc_start: "ابدي من هنا", fc_iq: "من العراق", fc_ca: "بكندا", fc_move: "تسافر لكندا ويا مستشار هجرة", fc_paid: "تاخذ راتب كمتدرب", fc_end: "صيدلي مرخّص",
+      fc_start: "ابدي من هنا", fc_iq: "من العراق", fc_ca: "بكندا", fc_move: "تسافر لكندا ويا مستشار هجرة", fc_paid: "تاخذ راتب كمتدرب", fc_pair: "نفس الخطوة: تدفعهم سوا ($1,105)", fc_end: "صيدلي مرخّص",
       fc_row1: [["التسجيل في NAPRA و PEBC و Pharmacists' Gateway Canada", "تفتح ملفاتك أونلاين", "$390"], ["تقييم الوثائق", "الكلية تدز أوراقك لـ PEBC", "$715"], ["امتحان MCQ", "أونلاين من البيت", "$870"], ["امتحان اللغة", "IELTS أو OET", "$550"], ["التقديم للمقاطعة", "هيئة الصيدلة (PRA)", "$1,185"]],
       fc_row2: [["امتحان OSCE", "الامتحان الوحيد بكندا", "$1,950"], ["التدريب العملي", "أكثر من 600 ساعة", "paid"], ["امتحان القوانين", "قوانين الصيدلة", "$374"], ["الرخصة", "التسجيل", "$1,170"]],
       fc_tot1: "المجموع من العراق: $3,710", fc_tot2: "المجموع بكندا: $3,494", fc_all: ["مجموع الرسوم الرسمية", "$7,204"],
@@ -1575,16 +1582,22 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       return b;
     }
     function arrow() { var a = el("div", "fc-ar"); a.innerHTML = AR; return a; }
-    function row(label, first, items, last, tot) {
+    function row(label, first, items, last, tot, pair) {
       var lb = el("p", "fc-lab"); fillBidi(lb, t(label)); body.appendChild(lb);
       var r = el("div", "fc-row");
       if (first) { r.appendChild(first); r.appendChild(arrow()); }
-      t(items).forEach(function (x, i) { if (i) r.appendChild(arrow()); r.appendChild(box("", x[0], x[1], x[2])); });
+      var grp = null;
+      t(items).forEach(function (x, i) {
+        var b = box(pair && i < 2 ? "pair" : "", x[0], x[1], x[2]);
+        if (pair && i === 0) { grp = el("div", "fc-grp"); var gl = el("div", "fc-grp-lab"); fillBidi(gl, t("fc_pair")); grp.appendChild(gl); var gi = el("div", "fc-grp-in"); grp.appendChild(gi); gi.appendChild(b); r.appendChild(grp); return; }
+        if (pair && i === 1) { var gi2 = grp.lastChild; gi2.appendChild(el("div", "fc-plus", "+")); gi2.appendChild(b); return; }
+        if (i || first) { if (!(pair && i === 0)) r.appendChild(arrow()); } r.appendChild(b);
+      });
       if (last) { r.appendChild(arrow()); r.appendChild(last); }
       body.appendChild(r);
       var tt = el("p", "fc-tot"); fillBidi(tt, t(tot)); body.appendChild(tt);
     }
-    row("fc_iq", box("start", t("fc_start")), "fc_row1", null, "fc_tot1");
+    row("fc_iq", box("start", t("fc_start")), "fc_row1", null, "fc_tot1", true);
     var d = el("div", "fc-down"), ds = el("span"); fillBidi(ds, t("fc_move")); d.appendChild(ds);
     d.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 16 34" aria-hidden="true"><path d="M8 1v30M2 24l6 8 6-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     body.appendChild(d);
