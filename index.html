@@ -486,48 +486,32 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 .cmp-take { background: var(--paper-2); border-radius: 12px; padding: 10px 14px; margin: 14px 0 8px; }
 @media (max-width: 640px) { .cmp-row, .ip-row { grid-template-columns: 1fr; gap: 4px; } .ip-row { grid-template-columns: 1fr 80px; } .ip-row .cmp-city { grid-column: 1 / -1; } .cmp-stack { height: 40px; } .cmp-stack em { display: none; } }
 
-/* Kid-simple staircase */
-.kid { margin-block-start: 56px; background: linear-gradient(#f4fbf6, #fffaf0); border: 1px solid var(--line); border-radius: 28px; padding: clamp(20px, 4vw, 44px); overflow: hidden; }
-.kid-h { text-align: center; font-size: clamp(1.7rem, 4vw, 2.4rem); color: var(--forest); margin: 0; }
-.kid-sub { text-align: center; color: var(--muted); font-size: 1.05rem; margin: 6px auto 30px; max-width: 34em; }
-.stairs { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); column-gap: 4px; align-items: end; }
-.st { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
-.st-ico { font-size: 2rem; line-height: 1; margin-bottom: 4px; }
-.st-t { font-weight: 800; color: var(--forest); font-size: .95rem; line-height: 1.25; min-height: 2.5em; display: flex; align-items: flex-end; justify-content: center; }
-.st-coin { margin: 6px 0 6px; background: #ffd95a; color: #5a4100; font-weight: 800; border-radius: 999px; padding: 2px 9px; border: 2px solid #e8b923; font-size: .82rem; white-space: nowrap; }
-.st-coin.pay { background: #c9f0d5; border-color: #5fbf7f; color: #135a2c; }
-.st-blk { width: 100%; border-radius: 10px 10px 0 0; display: flex; justify-content: center; padding-top: 8px; color: #fff; font-weight: 800; font-size: 1.1rem; box-shadow: inset 0 -6px 0 rgba(0,0,0,.12); }
-.st.iq .st-blk { background: #2e7d5b; }
-.st.ca .st-blk { background: #c2902f; }
-.st.go .st-blk { background: #e85d3f; }
-.st.plane .st-ico { font-size: 2.3rem; }
-.st.plane .st-t { color: #2f6fb3; }
-.st.plane .st-blk { background: repeating-linear-gradient(90deg, #bfe0ff 0 8px, #e5f2ff 8px 16px); color: #2f6fb3; }
-.st.win .st-ico { font-size: 2.8rem; }
-.st.win .st-blk { background: #ffd95a; color: #5a4100; }
-.st-start { grid-column: 1; grid-row: 1; justify-self: center; align-self: start; display: flex; flex-direction: column; align-items: center; color: #e85d3f; font-weight: 800; font-size: 1.05rem; white-space: nowrap; }
-.st-start svg { width: 20px; height: 34px; animation: flowbob 1.6s ease-in-out infinite; }
-@keyframes flowbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-@media (prefers-reduced-motion: reduce) { .st-start svg { animation: none; } }
-.st-grp { grid-row: 3; text-align: center; font-weight: 800; color: var(--forest); padding-top: 8px; border-top: 4px solid; margin-top: 0; }
-.st-grp.iq { grid-column: 1 / 6; border-color: #2e7d5b; }
-.st-grp.ca { grid-column: 7 / 11; border-color: #c2902f; }
-.kid-bank { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; margin-top: 30px; background: #fff; border: 3px dashed var(--brass); border-radius: 22px; padding: 16px 20px; }
-.kid-bank b { font-size: 1.15rem; color: var(--forest); }
-.kid-coins { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-.kid-coins span { background: #fff4c2; border: 2px solid #e8b923; border-radius: 14px; padding: 6px 12px; font-weight: 700; color: #5a4100; }
-.kid-coins span.all { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
-@media (max-width: 760px) {
-  .stairs { grid-template-columns: 1fr; row-gap: 8px; }
-  .st-start { grid-column: 1; grid-row: auto; flex-direction: row; gap: 6px; justify-self: start; }
-  .st-start svg { transform: rotate(0); }
-  .st { grid-column: 1 !important; grid-row: auto !important; display: grid; grid-template-columns: 40px 1fr auto; align-items: center; text-align: start; column-gap: 10px; background: #fff; border-radius: 14px; padding: 8px 10px; border-inline-start: 0; position: relative; overflow: hidden; }
-  .st-ico { margin: 0; font-size: 1.7rem; grid-row: 1; }
-  .st-t { min-height: 0; justify-content: flex-start; font-size: 1rem; }
-  .st-coin { margin: 0; }
-  .st-blk { position: absolute; inset-block: 0; inset-inline-start: 0; height: auto !important; width: var(--w) !important; border-radius: 0; padding: 0; opacity: .14; box-shadow: none; z-index: 0; font-size: 0; }
-  .st > :not(.st-blk) { position: relative; z-index: 1; }
-  .st-grp { grid-column: 1 !important; grid-row: auto; text-align: start; border-top: 0; border-inline-start: 4px solid; padding: 2px 10px; }
+/* Simple flow chart */
+.fc { margin-block-start: 56px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 4vw, 40px); }
+.fc-h { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--forest); margin: 0; }
+.fc-sub { color: var(--muted); margin: 4px 0 24px; }
+.fc-lab { font-weight: 800; color: var(--forest); margin: 0 0 10px; font-size: 1.05rem; }
+.fc-row { display: flex; align-items: stretch; }
+.fc-box { flex: 1 1 0; min-width: 0; background: #fff; border: 2px solid var(--forest); border-radius: 12px; padding: 12px 10px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+.fc-box b { color: var(--forest); font-size: 1rem; line-height: 1.3; }
+.fc-box small { color: var(--muted); font-size: .82rem; line-height: 1.35; margin-top: 3px; }
+.fc-box .fc-pay { margin-top: 8px; font-weight: 800; color: var(--ink); font-size: 1rem; }
+.fc-box.start { background: var(--forest); }
+.fc-box.start b { color: var(--on-forest); font-size: 1.2rem; }
+.fc-box.end { background: var(--brass); border-color: var(--brass-deep); }
+.fc-box.end b { font-size: 1.1rem; }
+.fc-ar { flex: 0 0 30px; display: grid; place-items: center; color: var(--brass-deep); }
+.fc-ar svg { width: 26px; height: 16px; }
+[dir=rtl] .fc-ar svg { transform: scaleX(-1); }
+.fc-tot { text-align: end; font-weight: 700; color: var(--forest); margin: 8px 0 0; }
+.fc-down { display: flex; flex-direction: column; align-items: center; color: var(--brass-deep); margin: 10px 0; font-weight: 700; }
+.fc-down svg { width: 16px; height: 34px; }
+.fc-all { margin-top: 18px; background: var(--forest); color: var(--on-forest); border-radius: 12px; padding: 12px 16px; display: flex; justify-content: space-between; gap: 12px; font-weight: 800; font-size: 1.1rem; }
+@media (max-width: 860px) {
+  .fc-row { flex-direction: column; }
+  .fc-box { flex: none; }
+  .fc-ar { flex: none; height: 30px; }
+  .fc-ar svg, [dir=rtl] .fc-ar svg { transform: rotate(90deg); }
 }
 </style>
 </head>
@@ -649,12 +633,11 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <ol class="path" id="path"></ol>
-      <div class="kid" id="kid">
-        <h3 class="kid-h" data-i18n="kid_title"></h3>
-        <p class="kid-sub" data-i18n="kid_sub"></p>
-        <div class="stairs" id="stairs"></div>
-        <div class="kid-bank"><b data-i18n="kid_bank_h"></b><div class="kid-coins" id="kid-coins"></div></div>
-        <p class="note" data-i18n="kid_note"></p>
+      <div class="fc" id="fc">
+        <h3 class="fc-h" data-i18n="fc_title"></h3>
+        <p class="fc-sub" data-i18n="fc_sub"></p>
+        <div id="fc-body"></div>
+        <p class="note" data-i18n="fc_note"></p>
       </div>
       <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <div class="svc" id="services">
@@ -1089,12 +1072,12 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_title: "Check who I am.", vf_why: "Scams are everywhere, and you have every right to check who you are dealing with.",
       vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
       vf_how: "How to search:", vf_btn: "Search ACP",
-      kid_title: "How do you become a pharmacist in Canada? 🗺️", kid_sub: "Climb one step at a time until you reach the trophy 🏆",
-      kid_start: "🏁 Start here", kid_home: "🇮🇶 From your home", kid_ca: "🇨🇦 In Canada", kid_plane: ["✈️ Fly to Canada", "with an immigration lawyer"], kid_win: ["🏆 You did it!", "You're a pharmacist in Canada"],
-      kid_steps1: [["📝", "Sign up", "Open an account on Gateway", "$390"], ["📦", "Send your papers", "Your college mails them to PEBC", "$715"], ["💻", "Test from home", "MCQ: pick the right answer", "$870"], ["🗣️", "English test", "IELTS or OET, at the same time", "$550"], ["📨", "Ask for your licence", "Apply to the province (PRA)", "$1,185"]],
-      kid_steps2: [["🩺", "Hands-on test", "OSCE: like a real patient", "$1,950"], ["🏥", "Train and work", "And you get paid!", "pay"], ["⚖️", "Rules test", "Pharmacy laws", "$374"], ["🪪", "Get your licence", "Your name on the list!", "$1,170"]],
-      kid_paid: "You get paid", kid_bank_h: "💵 How much should you save?", kid_bank: [["From Iraq", "$3,710"], ["In Canada", "$3,494"], ["All together", "$7,204", 1]],
-      kid_note: "Official fees only (Manitoba 2027, Canadian dollars), one try per exam. You pay each one when you reach it, not all at once. Our service fee is not included.",
+      fc_title: "Where do I start?", fc_sub: "Follow the arrows. Official fees, Manitoba 2027, in Canadian dollars.",
+      fc_start: "Start here", fc_iq: "From Iraq", fc_ca: "In Canada", fc_move: "Move to Canada", fc_paid: "Paid as an intern", fc_end: "Licensed pharmacist",
+      fc_row1: [["Register with Pharmacists' Gateway Canada", "Open your file online", "$390"], ["Document evaluation", "Your college sends your papers to PEBC", "$715"], ["MCQ exam", "Online from home", "$870"], ["English test", "IELTS or OET", "$550"], ["Apply to the province", "Pharmacy college (PRA)", "$1,185"]],
+      fc_row2: [["OSCE exam", "The only exam in Canada", "$1,950"], ["Practical training", "600+ hours", "paid"], ["Jurisprudence exam", "Pharmacy laws", "$374"], ["Licence", "Registration", "$1,170"]],
+      fc_tot1: "Total from Iraq: $3,710", fc_tot2: "Total in Canada: $3,494", fc_all: ["Total official fees", "$7,204"],
+      fc_note: "Official fees only, one attempt per exam. You pay each fee when you reach that step. Our service fee is not included.",
       start_eyebrow: "Start here", start_title: "Where do I start?",
       start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
       start_steps: [
@@ -1296,12 +1279,12 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
       vf_how: "شلون تبحث:", vf_btn: "ابحث بموقع ACP",
-      kid_title: "شلون تصير صيدلي بكندا؟ 🗺️", kid_sub: "اصعد درجة درجة لحد ما توصل للكأس 🏆",
-      kid_start: "🏁 ابدي من هنا", kid_home: "🇮🇶 من بيتك", kid_ca: "🇨🇦 بكندا", kid_plane: ["✈️ سافر لكندا", "ويا محامي هجرة"], kid_win: ["🏆 مبروك!", "صرت صيدلي بكندا"],
-      kid_steps1: [["📝", "سجّل اسمك", "تفتح حساب بموقع Gateway", "$390"], ["📦", "دز شهاداتك", "كليتك تدزها لـ PEBC", "$715"], ["💻", "امتحان من البيت", "MCQ: تختار الجواب الصح", "$870"], ["🗣️", "امتحان إنكليزي", "IELTS أو OET، بنفس الوقت", "$550"], ["📨", "اطلب رخصتك", "تقدّم للمقاطعة (PRA)", "$1,185"]],
-      kid_steps2: [["🩺", "امتحان عملي", "OSCE: مثل مريض حقيقي", "$1,950"], ["🏥", "تدرّب واشتغل", "وتاخذ راتب!", "pay"], ["⚖️", "امتحان القوانين", "قوانين الصيدلة", "$374"], ["🪪", "تاخذ الرخصة", "اسمك ينكتب بالقائمة!", "$1,170"]],
-      kid_paid: "تاخذ راتب", kid_bank_h: "💵 شكد لازم تجمع؟", kid_bank: [["من العراق", "$3,710"], ["بكندا", "$3,494"], ["الكل سوا", "$7,204", 1]],
-      kid_note: "رسوم رسمية بس (مانيتوبا 2027، بالدولار الكندي)، محاولة وحدة لكل امتحان. تدفع كل وحدة لمن توصلها، مو كلها مرة وحدة. أجور خدمتنا مو مشمولة.",
+      fc_title: "منين أبدي؟", fc_sub: "امشي ويا الأسهم. رسوم رسمية، مانيتوبا 2027، بالدولار الكندي.",
+      fc_start: "ابدي من هنا", fc_iq: "من العراق", fc_ca: "بكندا", fc_move: "تسافر لكندا", fc_paid: "تاخذ راتب كمتدرب", fc_end: "صيدلي مرخّص",
+      fc_row1: [["التسجيل في Pharmacists' Gateway Canada", "تفتح ملفك أونلاين", "$390"], ["تقييم الوثائق", "الكلية تدز أوراقك لـ PEBC", "$715"], ["امتحان MCQ", "أونلاين من البيت", "$870"], ["امتحان اللغة", "IELTS أو OET", "$550"], ["التقديم للمقاطعة", "هيئة الصيدلة (PRA)", "$1,185"]],
+      fc_row2: [["امتحان OSCE", "الامتحان الوحيد بكندا", "$1,950"], ["التدريب العملي", "أكثر من 600 ساعة", "paid"], ["امتحان القوانين", "قوانين الصيدلة", "$374"], ["الرخصة", "التسجيل", "$1,170"]],
+      fc_tot1: "المجموع من العراق: $3,710", fc_tot2: "المجموع بكندا: $3,494", fc_all: ["مجموع الرسوم الرسمية", "$7,204"],
+      fc_note: "رسوم رسمية بس، محاولة وحدة لكل امتحان. تدفع كل رسم لمن توصل لخطوته. أجور خدمتنا مو مشمولة.",
       start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
       start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
       start_steps: [
@@ -1582,37 +1565,31 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     });
   }
 
-  function renderKid() {
-    var box = $("stairs"); if (!box) return; box.textContent = "";
-    var steps = [];
-    t("kid_steps1").forEach(function (x) { steps.push({ k: "iq", ico: x[0], t: x[1], c: x[3] }); });
-    var pl = t("kid_plane"); steps.push({ k: "plane", ico: "✈️", t: pl[0].replace("✈️ ", ""), c: null });
-    t("kid_steps2").forEach(function (x) { steps.push({ k: "ca", ico: x[0], t: x[1], c: x[3] }); });
-    var w = t("kid_win"); steps.push({ k: "win", ico: "🏆", t: w[1], c: null });
-    var n = 0, N = steps.length;
-    steps.forEach(function (s, i) {
-      var col = el("div", "st " + s.k + (i === 0 ? " go" : ""));
-      col.style.gridColumn = String(i + 1); col.style.gridRow = "2";
-      col.appendChild(el("div", "st-ico", s.ico));
-      var tt = el("div", "st-t"); fillBidi(tt, s.t); col.appendChild(tt);
-      if (s.c) {
-        var coin = el("div", "st-coin" + (s.c === "pay" ? " pay" : ""));
-        if (s.c === "pay") coin.textContent = "💰 " + t("kid_paid"); else { var bd = el("bdi", null, s.c); bd.dir = "ltr"; coin.appendChild(bd); }
-        col.appendChild(coin);
-      }
-      var blk = el("div", "st-blk"); blk.style.height = (34 + i * 22) + "px"; blk.style.setProperty("--w", Math.round(18 + (i / (N - 1)) * 82) + "%");
-      if (s.k === "iq" || s.k === "ca") { n++; blk.textContent = num(n); }
-      col.appendChild(blk);
-      box.appendChild(col);
-    });
-    var go = el("div", "st-start"); go.appendChild(el("span", null, t("kid_start").replace("🏁 ", "")));
-    go.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M12 2v32M4 26l8 10 8-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-    box.insertBefore(go, box.firstChild);
-    var g1 = el("div", "st-grp iq"); fillBidi(g1, t("kid_home")); box.appendChild(g1);
-    var g2 = el("div", "st-grp ca"); fillBidi(g2, t("kid_ca")); box.appendChild(g2);
-    if (window.matchMedia("(max-width: 760px)").matches) { box.insertBefore(g1, box.children[1]); box.insertBefore(g2, box.querySelector(".st.plane").nextSibling); }
-    var coins = $("kid-coins"); coins.textContent = "";
-    t("kid_bank").forEach(function (r) { var sp = el("span", r[2] ? "all" : null); fillBidi(sp, r[0] + ": "); var bd = el("bdi", null, r[1]); bd.dir = "ltr"; sp.appendChild(bd); coins.appendChild(sp); });
+  function renderFc() {
+    var body = $("fc-body"); if (!body) return; body.textContent = "";
+    var AR = '<svg viewBox="0 0 26 16" aria-hidden="true"><path d="M1 8h22M16 2l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    function box(cls, title, sub, pay) {
+      var b = el("div", "fc-box" + (cls ? " " + cls : "")), h = el("b"); fillBidi(h, title); b.appendChild(h);
+      if (sub) { var s = el("small"); fillBidi(s, sub); b.appendChild(s); }
+      if (pay) { var p = el("div", "fc-pay"); if (pay === "paid") fillBidi(p, t("fc_paid")); else { var bd = el("bdi", null, pay); bd.dir = "ltr"; p.appendChild(bd); } b.appendChild(p); }
+      return b;
+    }
+    function arrow() { var a = el("div", "fc-ar"); a.innerHTML = AR; return a; }
+    function row(label, first, items, last, tot) {
+      var lb = el("p", "fc-lab"); fillBidi(lb, t(label)); body.appendChild(lb);
+      var r = el("div", "fc-row");
+      if (first) { r.appendChild(first); r.appendChild(arrow()); }
+      t(items).forEach(function (x, i) { if (i) r.appendChild(arrow()); r.appendChild(box("", x[0], x[1], x[2])); });
+      if (last) { r.appendChild(arrow()); r.appendChild(last); }
+      body.appendChild(r);
+      var tt = el("p", "fc-tot"); fillBidi(tt, t(tot)); body.appendChild(tt);
+    }
+    row("fc_iq", box("start", t("fc_start")), "fc_row1", null, "fc_tot1");
+    var d = el("div", "fc-down"), ds = el("span"); fillBidi(ds, t("fc_move")); d.appendChild(ds);
+    d.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 16 34" aria-hidden="true"><path d="M8 1v30M2 24l6 8 6-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    body.appendChild(d);
+    row("fc_ca", null, "fc_row2", box("end", t("fc_end")), "fc_tot2");
+    var all = el("div", "fc-all"), a1 = el("span"); fillBidi(a1, t("fc_all")[0]); var a2 = el("bdi", null, t("fc_all")[1]); a2.dir = "ltr"; all.appendChild(a1); all.appendChild(a2); body.appendChild(all);
   }
   function renderStart() {
     var ol = $("start-steps"); if (!ol) return; ol.textContent = "";
@@ -1963,7 +1940,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderMist();
     renderLife();
     renderCmp();
-    renderKid();
+    renderFc();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
