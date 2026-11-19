@@ -486,44 +486,48 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 .cmp-take { background: var(--paper-2); border-radius: 12px; padding: 10px 14px; margin: 14px 0 8px; }
 @media (max-width: 640px) { .cmp-row, .ip-row { grid-template-columns: 1fr; gap: 4px; } .ip-row { grid-template-columns: 1fr 80px; } .ip-row .cmp-city { grid-column: 1 / -1; } .cmp-stack { height: 40px; } .cmp-stack em { display: none; } }
 
-/* Kid-simple road map */
+/* Kid-simple staircase */
 .kid { margin-block-start: 56px; background: linear-gradient(#f4fbf6, #fffaf0); border: 1px solid var(--line); border-radius: 28px; padding: clamp(20px, 4vw, 44px); overflow: hidden; }
 .kid-h { text-align: center; font-size: clamp(1.7rem, 4vw, 2.4rem); color: var(--forest); margin: 0; }
-.kid-sub { text-align: center; color: var(--muted); font-size: 1.05rem; margin: 6px auto 26px; max-width: 34em; }
-.kid-road { position: relative; display: grid; gap: 14px; padding-block: 6px; }
-.kid-road::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 34px; transform: translateX(-50%); border-radius: 17px; background: #4a514d; }
-.kid-road::after { content: ""; position: absolute; top: 10px; bottom: 10px; left: 50%; width: 4px; transform: translateX(-50%); background: repeating-linear-gradient(#fff 0 14px, transparent 14px 28px); }
-.kid-stop { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 84px 1fr; align-items: center; }
-.kid-dot { grid-column: 2; justify-self: center; width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; font-size: 2.1rem; background: #fff; border: 5px solid var(--forest); box-shadow: 0 4px 0 rgba(0,0,0,.12); position: relative; }
-.kid-dot i { position: absolute; top: -8px; inset-inline-end: -8px; width: 28px; height: 28px; border-radius: 50%; background: var(--brass); color: var(--forest); font-style: normal; font-weight: 800; font-size: .95rem; display: grid; place-items: center; }
-.kid-card { grid-row: 1; border-radius: 20px; padding: 14px 18px; border: 3px solid; box-shadow: 0 5px 0 rgba(0,0,0,.08); max-width: 330px; }
-.kid-stop.l .kid-card { grid-column: 1; justify-self: end; margin-inline-end: 6px; }
-.kid-stop.r .kid-card { grid-column: 3; justify-self: start; margin-inline-start: 6px; }
-.kid-card b { display: block; font-size: 1.25rem; color: var(--forest); line-height: 1.3; }
-.kid-card span { display: block; color: var(--ink); opacity: .8; font-size: .95rem; margin-top: 2px; }
-.kid-coin { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; background: #ffd95a; color: #5a4100; font-weight: 800; border-radius: 999px; padding: 4px 12px; border: 2px solid #e8b923; font-size: 1rem; }
-.kid-coin.pay { background: #c9f0d5; border-color: #5fbf7f; color: #135a2c; }
-.kid-sign { position: relative; z-index: 1; justify-self: center; text-align: center; background: var(--forest); color: var(--on-forest); font-weight: 800; font-size: 1.1rem; border-radius: 14px; padding: 10px 22px; border: 3px solid var(--brass); box-shadow: 0 5px 0 rgba(0,0,0,.12); }
-.kid-sign.start { background: #e85d3f; border-color: #ffd95a; font-size: 1.35rem; }
-.kid-sign.plane { background: #2f6fb3; border-color: #bfe0ff; }
-.kid-sign.win { background: #ffd95a; color: #5a4100; border-color: #e8b923; font-size: 1.4rem; padding: 14px 26px; }
-.kid-sign small { display: block; font-weight: 600; opacity: .85; font-size: .85rem; }
-.kid-bank { display: flex; align-items: center; gap: 16px; margin-top: 28px; background: #fff; border: 3px dashed #f2a7b8; border-radius: 22px; padding: 16px 20px; }
-.kid-pig { font-size: 3.2rem; line-height: 1; }
-.kid-bank-in b { font-size: 1.2rem; color: var(--forest); }
-.kid-coins { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.kid-sub { text-align: center; color: var(--muted); font-size: 1.05rem; margin: 6px auto 30px; max-width: 34em; }
+.stairs { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); column-gap: 4px; align-items: end; }
+.st { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.st-ico { font-size: 2rem; line-height: 1; margin-bottom: 4px; }
+.st-t { font-weight: 800; color: var(--forest); font-size: .95rem; line-height: 1.25; min-height: 2.5em; display: flex; align-items: flex-end; justify-content: center; }
+.st-coin { margin: 6px 0 6px; background: #ffd95a; color: #5a4100; font-weight: 800; border-radius: 999px; padding: 2px 9px; border: 2px solid #e8b923; font-size: .82rem; white-space: nowrap; }
+.st-coin.pay { background: #c9f0d5; border-color: #5fbf7f; color: #135a2c; }
+.st-blk { width: 100%; border-radius: 10px 10px 0 0; display: flex; justify-content: center; padding-top: 8px; color: #fff; font-weight: 800; font-size: 1.1rem; box-shadow: inset 0 -6px 0 rgba(0,0,0,.12); }
+.st.iq .st-blk { background: #2e7d5b; }
+.st.ca .st-blk { background: #c2902f; }
+.st.go .st-blk { background: #e85d3f; }
+.st.plane .st-ico { font-size: 2.3rem; }
+.st.plane .st-t { color: #2f6fb3; }
+.st.plane .st-blk { background: repeating-linear-gradient(90deg, #bfe0ff 0 8px, #e5f2ff 8px 16px); color: #2f6fb3; }
+.st.win .st-ico { font-size: 2.8rem; }
+.st.win .st-blk { background: #ffd95a; color: #5a4100; }
+.st-start { grid-column: 1; grid-row: 1; justify-self: center; align-self: start; display: flex; flex-direction: column; align-items: center; color: #e85d3f; font-weight: 800; font-size: 1.05rem; white-space: nowrap; }
+.st-start svg { width: 20px; height: 34px; animation: flowbob 1.6s ease-in-out infinite; }
+@keyframes flowbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .st-start svg { animation: none; } }
+.st-grp { grid-row: 3; text-align: center; font-weight: 800; color: var(--forest); padding-top: 8px; border-top: 4px solid; margin-top: 0; }
+.st-grp.iq { grid-column: 1 / 6; border-color: #2e7d5b; }
+.st-grp.ca { grid-column: 7 / 11; border-color: #c2902f; }
+.kid-bank { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; margin-top: 30px; background: #fff; border: 3px dashed var(--brass); border-radius: 22px; padding: 16px 20px; }
+.kid-bank b { font-size: 1.15rem; color: var(--forest); }
+.kid-coins { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .kid-coins span { background: #fff4c2; border: 2px solid #e8b923; border-radius: 14px; padding: 6px 12px; font-weight: 700; color: #5a4100; }
 .kid-coins span.all { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
-@media (max-width: 640px) {
-  .kid-road::before, .kid-road::after { left: 30px; }
-  .kid-stop { grid-template-columns: 60px 1fr; }
-  .kid-dot { grid-column: 1; width: 56px; height: 56px; font-size: 1.6rem; border-width: 4px; }
-  .kid-stop.l .kid-card, .kid-stop.r .kid-card { grid-column: 2; justify-self: stretch; margin: 0 0 0 10px; max-width: none; }
-  [dir=rtl] .kid-road::before, [dir=rtl] .kid-road::after { left: auto; right: 30px; transform: translateX(50%); }
-  [dir=rtl] .kid-stop.l .kid-card, [dir=rtl] .kid-stop.r .kid-card { margin: 0 10px 0 0; }
-  .kid-sign { justify-self: start; margin-inline-start: 0; }
-  .kid-bank { flex-direction: column; text-align: center; }
-  .kid-coins { justify-content: center; }
+@media (max-width: 760px) {
+  .stairs { grid-template-columns: 1fr; row-gap: 8px; }
+  .st-start { grid-column: 1; grid-row: auto; flex-direction: row; gap: 6px; justify-self: start; }
+  .st-start svg { transform: rotate(0); }
+  .st { grid-column: 1 !important; grid-row: auto !important; display: grid; grid-template-columns: 40px 1fr auto; align-items: center; text-align: start; column-gap: 10px; background: #fff; border-radius: 14px; padding: 8px 10px; border-inline-start: 0; position: relative; overflow: hidden; }
+  .st-ico { margin: 0; font-size: 1.7rem; grid-row: 1; }
+  .st-t { min-height: 0; justify-content: flex-start; font-size: 1rem; }
+  .st-coin { margin: 0; }
+  .st-blk { position: absolute; inset-block: 0; inset-inline-start: 0; height: auto !important; width: var(--w) !important; border-radius: 0; padding: 0; opacity: .14; box-shadow: none; z-index: 0; font-size: 0; }
+  .st > :not(.st-blk) { position: relative; z-index: 1; }
+  .st-grp { grid-column: 1 !important; grid-row: auto; text-align: start; border-top: 0; border-inline-start: 4px solid; padding: 2px 10px; }
 }
 </style>
 </head>
@@ -648,11 +652,8 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       <div class="kid" id="kid">
         <h3 class="kid-h" data-i18n="kid_title"></h3>
         <p class="kid-sub" data-i18n="kid_sub"></p>
-        <div class="kid-road" id="kid-road"></div>
-        <div class="kid-bank">
-          <div class="kid-pig" aria-hidden="true">🐷</div>
-          <div class="kid-bank-in"><b data-i18n="kid_bank_h"></b><div class="kid-coins" id="kid-coins"></div></div>
-        </div>
+        <div class="stairs" id="stairs"></div>
+        <div class="kid-bank"><b data-i18n="kid_bank_h"></b><div class="kid-coins" id="kid-coins"></div></div>
         <p class="note" data-i18n="kid_note"></p>
       </div>
       <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
@@ -1088,11 +1089,11 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_title: "Check who I am.", vf_why: "Scams are everywhere, and you have every right to check who you are dealing with.",
       vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
       vf_how: "How to search:", vf_btn: "Search ACP",
-      kid_title: "How do you become a pharmacist in Canada? 🗺️", kid_sub: "It's like a board game: walk the road one stop at a time until you win 🏆",
+      kid_title: "How do you become a pharmacist in Canada? 🗺️", kid_sub: "Climb one step at a time until you reach the trophy 🏆",
       kid_start: "🏁 Start here", kid_home: "🇮🇶 From your home", kid_ca: "🇨🇦 In Canada", kid_plane: ["✈️ Fly to Canada", "with an immigration lawyer"], kid_win: ["🏆 You did it!", "You're a pharmacist in Canada"],
       kid_steps1: [["📝", "Sign up", "Open an account on Gateway", "$390"], ["📦", "Send your papers", "Your college mails them to PEBC", "$715"], ["💻", "Test from home", "MCQ: pick the right answer", "$870"], ["🗣️", "English test", "IELTS or OET, at the same time", "$550"], ["📨", "Ask for your licence", "Apply to the province (PRA)", "$1,185"]],
       kid_steps2: [["🩺", "Hands-on test", "OSCE: like a real patient", "$1,950"], ["🏥", "Train and work", "And you get paid!", "pay"], ["⚖️", "Rules test", "Pharmacy laws", "$374"], ["🪪", "Get your licence", "Your name on the list!", "$1,170"]],
-      kid_paid: "You get paid", kid_bank_h: "How much should you save?", kid_bank: [["From Iraq", "$3,710"], ["In Canada", "$3,494"], ["All together", "$7,204", 1]],
+      kid_paid: "You get paid", kid_bank_h: "💵 How much should you save?", kid_bank: [["From Iraq", "$3,710"], ["In Canada", "$3,494"], ["All together", "$7,204", 1]],
       kid_note: "Official fees only (Manitoba 2027, Canadian dollars), one try per exam. You pay each one when you reach it, not all at once. Our service fee is not included.",
       start_eyebrow: "Start here", start_title: "Where do I start?",
       start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
@@ -1295,11 +1296,11 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
       vf_how: "شلون تبحث:", vf_btn: "ابحث بموقع ACP",
-      kid_title: "شلون تصير صيدلي بكندا؟ 🗺️", kid_sub: "مثل لعبة: تمشي على الطريق محطة محطة لحد ما توصل وتربح 🏆",
+      kid_title: "شلون تصير صيدلي بكندا؟ 🗺️", kid_sub: "اصعد درجة درجة لحد ما توصل للكأس 🏆",
       kid_start: "🏁 ابدي من هنا", kid_home: "🇮🇶 من بيتك", kid_ca: "🇨🇦 بكندا", kid_plane: ["✈️ سافر لكندا", "ويا محامي هجرة"], kid_win: ["🏆 مبروك!", "صرت صيدلي بكندا"],
       kid_steps1: [["📝", "سجّل اسمك", "تفتح حساب بموقع Gateway", "$390"], ["📦", "دز شهاداتك", "كليتك تدزها لـ PEBC", "$715"], ["💻", "امتحان من البيت", "MCQ: تختار الجواب الصح", "$870"], ["🗣️", "امتحان إنكليزي", "IELTS أو OET، بنفس الوقت", "$550"], ["📨", "اطلب رخصتك", "تقدّم للمقاطعة (PRA)", "$1,185"]],
       kid_steps2: [["🩺", "امتحان عملي", "OSCE: مثل مريض حقيقي", "$1,950"], ["🏥", "تدرّب واشتغل", "وتاخذ راتب!", "pay"], ["⚖️", "امتحان القوانين", "قوانين الصيدلة", "$374"], ["🪪", "تاخذ الرخصة", "اسمك ينكتب بالقائمة!", "$1,170"]],
-      kid_paid: "تاخذ راتب", kid_bank_h: "شكد لازم تجمع؟", kid_bank: [["من العراق", "$3,710"], ["بكندا", "$3,494"], ["الكل سوا", "$7,204", 1]],
+      kid_paid: "تاخذ راتب", kid_bank_h: "💵 شكد لازم تجمع؟", kid_bank: [["من العراق", "$3,710"], ["بكندا", "$3,494"], ["الكل سوا", "$7,204", 1]],
       kid_note: "رسوم رسمية بس (مانيتوبا 2027، بالدولار الكندي)، محاولة وحدة لكل امتحان. تدفع كل وحدة لمن توصلها، مو كلها مرة وحدة. أجور خدمتنا مو مشمولة.",
       start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
       start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
@@ -1582,27 +1583,34 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   }
 
   function renderKid() {
-    var road = $("kid-road"); if (!road) return; road.textContent = "";
-    function sign(cls, txt, sub) { var d = el("div", "kid-sign " + cls); fillBidi(d, txt); if (sub) { var sm = el("small"); fillBidi(sm, sub); d.appendChild(sm); } road.appendChild(d); }
-    var n = 0, side = 0;
-    function stop(s) {
-      n++; var st = el("div", "kid-stop " + (side++ % 2 ? "r" : "l"));
-      var dot = el("div", "kid-dot", s[0]); dot.appendChild(el("i", null, num(n))); st.appendChild(dot);
-      var c = el("div", "kid-card"), b = el("b"), sp = el("span"); fillBidi(b, s[1]); fillBidi(sp, s[2]); c.appendChild(b); c.appendChild(sp);
-      var coin = el("div", "kid-coin" + (s[3] === "pay" ? " pay" : ""));
-      if (s[3] === "pay") coin.textContent = "💰 " + t("kid_paid"); else { coin.appendChild(document.createTextNode("🪙 ")); var bd = el("bdi", null, s[3]); bd.dir = "ltr"; coin.appendChild(bd); }
-      c.appendChild(coin); st.appendChild(c);
-      var cols = ["#e3f4e8|#5fbf7f", "#fff1d6|#f0b44c", "#e5efff|#6f9ee8", "#fde6ef|#ec8fb0", "#efe7ff|#a78bea"];
-      var cc = cols[(n - 1) % cols.length].split("|"); c.style.background = cc[0]; c.style.borderColor = cc[1];
-      road.appendChild(st);
-    }
-    sign("start", t("kid_start"));
-    sign("", t("kid_home"));
-    t("kid_steps1").forEach(stop);
-    var pl = t("kid_plane"); sign("plane", pl[0], pl[1]);
-    sign("", t("kid_ca"));
-    t("kid_steps2").forEach(stop);
-    var w = t("kid_win"); sign("win", w[0], w[1]);
+    var box = $("stairs"); if (!box) return; box.textContent = "";
+    var steps = [];
+    t("kid_steps1").forEach(function (x) { steps.push({ k: "iq", ico: x[0], t: x[1], c: x[3] }); });
+    var pl = t("kid_plane"); steps.push({ k: "plane", ico: "✈️", t: pl[0].replace("✈️ ", ""), c: null });
+    t("kid_steps2").forEach(function (x) { steps.push({ k: "ca", ico: x[0], t: x[1], c: x[3] }); });
+    var w = t("kid_win"); steps.push({ k: "win", ico: "🏆", t: w[1], c: null });
+    var n = 0, N = steps.length;
+    steps.forEach(function (s, i) {
+      var col = el("div", "st " + s.k + (i === 0 ? " go" : ""));
+      col.style.gridColumn = String(i + 1); col.style.gridRow = "2";
+      col.appendChild(el("div", "st-ico", s.ico));
+      var tt = el("div", "st-t"); fillBidi(tt, s.t); col.appendChild(tt);
+      if (s.c) {
+        var coin = el("div", "st-coin" + (s.c === "pay" ? " pay" : ""));
+        if (s.c === "pay") coin.textContent = "💰 " + t("kid_paid"); else { var bd = el("bdi", null, s.c); bd.dir = "ltr"; coin.appendChild(bd); }
+        col.appendChild(coin);
+      }
+      var blk = el("div", "st-blk"); blk.style.height = (34 + i * 22) + "px"; blk.style.setProperty("--w", Math.round(18 + (i / (N - 1)) * 82) + "%");
+      if (s.k === "iq" || s.k === "ca") { n++; blk.textContent = num(n); }
+      col.appendChild(blk);
+      box.appendChild(col);
+    });
+    var go = el("div", "st-start"); go.appendChild(el("span", null, t("kid_start").replace("🏁 ", "")));
+    go.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M12 2v32M4 26l8 10 8-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    box.insertBefore(go, box.firstChild);
+    var g1 = el("div", "st-grp iq"); fillBidi(g1, t("kid_home")); box.appendChild(g1);
+    var g2 = el("div", "st-grp ca"); fillBidi(g2, t("kid_ca")); box.appendChild(g2);
+    if (window.matchMedia("(max-width: 760px)").matches) { box.insertBefore(g1, box.children[1]); box.insertBefore(g2, box.querySelector(".st.plane").nextSibling); }
     var coins = $("kid-coins"); coins.textContent = "";
     t("kid_bank").forEach(function (r) { var sp = el("span", r[2] ? "all" : null); fillBidi(sp, r[0] + ": "); var bd = el("bdi", null, r[1]); bd.dir = "ltr"; sp.appendChild(bd); coins.appendChild(sp); });
   }
