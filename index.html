@@ -485,6 +485,48 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 .cmp-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-inline-end: 6px; vertical-align: -1px; }
 .cmp-take { background: var(--paper-2); border-radius: 12px; padding: 10px 14px; margin: 14px 0 8px; }
 @media (max-width: 640px) { .cmp-row, .ip-row { grid-template-columns: 1fr; gap: 4px; } .ip-row { grid-template-columns: 1fr 80px; } .ip-row .cmp-city { grid-column: 1 / -1; } .cmp-stack { height: 40px; } .cmp-stack em { display: none; } }
+
+/* Step-by-step scheme */
+.flow { margin-block-start: 56px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 4vw, 40px); }
+.flow-head h3 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--forest); margin: 0; }
+.flow-head p { color: var(--muted); margin: 4px 0 0; }
+.flow-start { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 26px auto 6px; color: var(--forest); }
+.flow-start span { background: var(--forest); color: var(--on-forest); font-weight: 800; font-size: 1.15rem; padding: 10px 26px; border-radius: 999px; box-shadow: 0 0 0 6px rgba(212, 188, 124, .35); }
+.flow-start svg { width: 22px; height: 38px; color: var(--brass-deep); animation: flowbob 1.6s ease-in-out infinite; }
+@keyframes flowbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .flow-start svg { animation: none; } }
+.flow-phase { border: 2px dashed var(--line); border-radius: 18px; padding: 18px clamp(12px, 3vw, 24px) 8px; margin: 10px 0; position: relative; }
+.flow-phase.ca { border-color: rgba(212, 188, 124, .9); background: rgba(212, 188, 124, .07); }
+.flow-tag { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; color: var(--forest); background: var(--paper-2); border-radius: 999px; padding: 4px 14px; margin-bottom: 8px; }
+.flow-phase.ca .flow-tag { background: var(--brass); }
+.flow-list { list-style: none; margin: 0; padding: 0; }
+.flow-step { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; }
+.flow-step .n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--forest); color: var(--on-forest); font-weight: 800; font-size: 1.15rem; }
+.flow-phase.ca .flow-step .n { background: var(--brass-deep); }
+.flow-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; box-shadow: 0 1px 0 rgba(0,0,0,.03); }
+.flow-card h4 { margin: 0; font-size: 1.08rem; color: var(--forest); }
+.flow-card p { margin: 2px 0 8px; color: var(--muted); font-size: .92rem; }
+.flow-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.flow-chips span { font-size: .8rem; font-weight: 700; border-radius: 999px; padding: 3px 10px; background: var(--paper-2); color: var(--ink); }
+.flow-chips .c-pay { background: var(--forest); color: var(--on-forest); }
+.flow-chips .c-paid { background: #e3efe6; color: #1f5a3e; }
+.flow-arrow { display: grid; grid-template-columns: 48px 1fr; height: 30px; }
+.flow-arrow i { justify-self: center; width: 2px; background: var(--brass-deep); position: relative; }
+.flow-arrow i::after { content: ""; position: absolute; bottom: -1px; left: 50%; width: 10px; height: 10px; border-right: 2px solid var(--brass-deep); border-bottom: 2px solid var(--brass-deep); transform: translateX(-50%) rotate(45deg); }
+.flow-side { margin: 8px 0 0; padding: 10px 14px; border: 2px dashed var(--brass); border-radius: 12px; background: rgba(212, 188, 124, .1); }
+.flow-side b { color: var(--forest); }
+.flow-side .flow-chips { margin-top: 6px; }
+.flow-sub { text-align: end; font-weight: 700; color: var(--forest); margin: 6px 0 4px; font-size: .95rem; }
+.flow-gap { display: flex; flex-direction: column; align-items: center; margin: 4px 0; color: var(--brass-deep); font-weight: 700; font-size: .9rem; text-align: center; }
+.flow-gap svg { width: 22px; height: 34px; }
+.flow-end { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 6px auto 0; background: var(--brass); color: var(--forest); border-radius: 999px; padding: 12px 26px; width: fit-content; font-size: 1.15rem; box-shadow: 0 0 0 6px rgba(212, 188, 124, .3); }
+.flow-cap { font-size: 1.5rem; }
+.flow-sum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
+.flow-sum div { background: var(--paper-2); border-radius: 12px; padding: 10px 14px; }
+.flow-sum div:last-child { background: var(--forest); color: var(--on-forest); }
+.flow-sum small { display: block; font-size: .8rem; opacity: .85; }
+.flow-sum b { font-size: 1.35rem; }
+@media (max-width: 640px) { .flow-sum { grid-template-columns: 1fr; } .flow-step, .flow-arrow { grid-template-columns: 38px 1fr; gap: 10px; } .flow-step .n { width: 36px; height: 36px; font-size: 1rem; } }
 </style>
 </head>
 <body>
@@ -605,6 +647,18 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
         </div>
       </div>
       <ol class="path" id="path"></ol>
+      <div class="flow" id="flow">
+        <div class="flow-head">
+          <h3 data-i18n="flow_title"></h3>
+          <p data-i18n="flow_sub"></p>
+        </div>
+        <div class="flow-start"><span data-i18n="flow_start"></span><svg viewBox="0 0 24 40" aria-hidden="true"><path d="M12 2v32M4 26l8 10 8-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div id="flow-body"></div>
+        <div class="flow-gap"><svg viewBox="0 0 24 40" aria-hidden="true"><path d="M12 2v32M4 26l8 10 8-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="flow-end"><span class="flow-cap">🎓</span><b data-i18n="flow_end"></b></div>
+        <div class="flow-sum" id="flow-sum"></div>
+        <p class="note" data-i18n="flow_note"></p>
+      </div>
       <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
       <div class="svc" id="services">
         <div class="svc-card">
@@ -1038,6 +1092,25 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_title: "Check who I am.", vf_why: "Scams are everywhere, and you have every right to check who you are dealing with.",
       vf_name_l: "Name", vf_iq_l: "Iraqi Pharmacists Syndicate, reg. no.", vf_acp_l: "Alberta College of Pharmacy (ACP), reg. no.",
       vf_how: "How to search:", vf_btn: "Search ACP",
+      flow_title: "Your path, step by step", flow_sub: "Where to start, what to do, and what you pay. Official fees only, Manitoba 2027, in Canadian dollars.",
+      flow_start: "Start here", flow_end: "Licensed pharmacist in Canada",
+      flow_iq: "From your home in Iraq", flow_ca: "In Canada", flow_move: "Immigration with a lawyer, then you come to Canada",
+      flow_steps_iq: [
+        ["Register with Pharmacists' Gateway Canada", "Open your file online.", "$390", "1 day"],
+        ["Document evaluation (PEBC)", "Your college sends your documents to PEBC by DHL.", "$715", "≈ 2 months"],
+        ["MCQ exam (Part I)", "Online from home. No exam centre needed.", "$870", "1 day"],
+        ["Apply to the provincial college (PRA)", "Open your licence file with the province.", "$1,185", "1 day"]
+      ],
+      flow_side: ["At the same time: English test", "IELTS Academic or OET. Start early; you can retake it.", "$550", "≈ 1 month"],
+      flow_steps_ca: [
+        ["OSCE exam (Part II)", "The only exam you must take in Canada.", "$1,950", "1 day"],
+        ["Practical training", "600+ hours. You are paid as an intern.", "paid", "≈ 6 months"],
+        ["Jurisprudence exam", "The province's pharmacy laws.", "$374", "1 day"],
+        ["Licence and registration", "You are a licensed pharmacist.", "$1,170", "1 week"]
+      ],
+      flow_paid: "You get paid", flow_sub_iq: "Subtotal from Iraq: $3,710", flow_sub_ca: "Subtotal in Canada: $3,494",
+      flow_sum: [["From Iraq", "$3,710"], ["In Canada", "$3,494"], ["Total official fees", "$7,204"]],
+      flow_note: "Official fees only (PEBC, Pharmacists' Gateway Canada, language test, College of Pharmacists of Manitoba). You pay each fee when you reach that step, not all at once. Our service fee is not included. Fees change; one attempt per exam.",
       start_eyebrow: "Start here", start_title: "Where do I start?",
       start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
       start_steps: [
@@ -1239,6 +1312,25 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       vf_title: "تأكّد منّي.", vf_why: "النصب والاحتيال كلش زايد، ومن حقك تتأكد من هوية اللي تتعامل وياه.",
       vf_name_l: "الاسم", vf_iq_l: "رقم التسجيل بنقابة صيادلة العراق", vf_acp_l: "رقم التسجيل بكلية صيادلة ألبرتا (ACP)",
       vf_how: "شلون تبحث:", vf_btn: "ابحث بموقع ACP",
+      flow_title: "طريقك خطوة بخطوة", flow_sub: "منين تبدي، شنو تسوي، وشكد تدفع. رسوم رسمية بس، مانيتوبا 2027، بالدولار الكندي.",
+      flow_start: "ابدي من هنا", flow_end: "صيدلي مرخّص بكندا",
+      flow_iq: "من بيتك بالعراق", flow_ca: "بكندا", flow_move: "الهجرة ويا محامي هجرة، وبعدها توصل كندا",
+      flow_steps_iq: [
+        ["التسجيل في Pharmacists' Gateway Canada", "تفتح ملفك أونلاين.", "$390", "يوم واحد"],
+        ["تقييم الوثائق في PEBC", "الكلية تدز وثائقك لـ PEBC بالـ DHL.", "$715", "حوالي شهرين"],
+        ["امتحان MCQ (الجزء الأول)", "أونلاين من البيت، ما تحتاج مركز امتحان.", "$870", "يوم واحد"],
+        ["التقديم لهيئة الصيدلة بالمقاطعة (PRA)", "تفتح ملف الرخصة ويا المقاطعة.", "$1,185", "يوم واحد"]
+      ],
+      flow_side: ["بنفس الوقت: امتحان اللغة", "IELTS Academic أو OET. ابدي بيه بوقت مبكر، وتكدر تعيده.", "$550", "حوالي شهر"],
+      flow_steps_ca: [
+        ["امتحان OSCE (الجزء الثاني)", "الامتحان الوحيد اللي لازم تسويه بكندا.", "$1,950", "يوم واحد"],
+        ["التدريب العملي", "أكثر من 600 ساعة، وتاخذ راتب كمتدرب.", "paid", "حوالي 6 أشهر"],
+        ["امتحان القوانين", "قوانين الصيدلة بالمقاطعة.", "$374", "يوم واحد"],
+        ["الرخصة والتسجيل", "تصير صيدلي مرخّص.", "$1,170", "أسبوع واحد"]
+      ],
+      flow_paid: "تاخذ راتب", flow_sub_iq: "المجموع من العراق: $3,710", flow_sub_ca: "المجموع بكندا: $3,494",
+      flow_sum: [["من العراق", "$3,710"], ["بكندا", "$3,494"], ["مجموع الرسوم الرسمية", "$7,204"]],
+      flow_note: "رسوم رسمية بس (PEBC، Pharmacists' Gateway Canada، امتحان اللغة، هيئة صيادلة مانيتوبا). تدفع كل رسم لمن توصل لخطوته، مو كلها مرة وحدة. أجور خدمتنا مو مشمولة. الرسوم تتغير، والسعر لمحاولة وحدة لكل امتحان.",
       start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
       start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
       start_steps: [
@@ -1519,6 +1611,40 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     });
   }
 
+  function renderFlow() {
+    var body = $("flow-body"); if (!body) return; body.textContent = "";
+    function chips(cost, time) {
+      var c = el("div", "flow-chips");
+      var a = el("span", cost === "paid" ? "c-paid" : "c-pay"); var bd = el("bdi", null, cost === "paid" ? "💰 " + t("flow_paid") : "💵 " + cost); if (cost !== "paid") bd.dir = "ltr"; a.appendChild(bd); c.appendChild(a);
+      var tm = el("span"); fillBidi(tm, "⏱ " + time); c.appendChild(tm);
+      return c;
+    }
+    function arrow() { var a = el("div", "flow-arrow"); a.appendChild(el("i")); return a; }
+    var n = 0;
+    function phase(cls, tagTxt, flag, steps, subTxt, side) {
+      var ph = el("div", "flow-phase " + cls), tg = el("div", "flow-tag"); tg.appendChild(document.createTextNode(flag + " " + t(tagTxt))); ph.appendChild(tg);
+      var ol = el("ol", "flow-list");
+      t(steps).forEach(function (s, i) {
+        if (i) ol.appendChild(arrow());
+        n++;
+        var li = el("li", "flow-step"); li.appendChild(el("span", "n", num(n)));
+        var card = el("div", "flow-card"), h = el("h4"), p = el("p"); fillBidi(h, s[0]); fillBidi(p, s[1]);
+        card.appendChild(h); card.appendChild(p); card.appendChild(chips(s[2], s[3]));
+        if (side && i === 2) { var sd = el("div", "flow-side"), sb = el("b"), sp = el("p"); fillBidi(sb, "＋ " + t("flow_side")[0]); fillBidi(sp, t("flow_side")[1]); sp.style.margin = "2px 0 0"; sd.appendChild(sb); sd.appendChild(sp); sd.appendChild(chips(t("flow_side")[2], t("flow_side")[3])); card.appendChild(sd); }
+        li.appendChild(card); ol.appendChild(li);
+      });
+      ph.appendChild(ol);
+      var st = el("p", "flow-sub"); fillBidi(st, t(subTxt)); ph.appendChild(st);
+      return ph;
+    }
+    body.appendChild(phase("iq", "flow_iq", "🇮🇶", "flow_steps_iq", "flow_sub_iq", true));
+    var gap = el("div", "flow-gap"), gs = el("span"); fillBidi(gs, "✈️ " + t("flow_move")); gap.appendChild(gs);
+    gap.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 40" aria-hidden="true"><path d="M12 2v32M4 26l8 10 8-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    body.appendChild(gap);
+    body.appendChild(phase("ca", "flow_ca", "🇨🇦", "flow_steps_ca", "flow_sub_ca", false));
+    var sum = $("flow-sum"); sum.textContent = "";
+    t("flow_sum").forEach(function (r) { var d = el("div"), sm = el("small"); fillBidi(sm, r[0]); var b = el("b"), bd = el("bdi", null, r[1]); bd.dir = "ltr"; b.appendChild(bd); d.appendChild(sm); d.appendChild(b); sum.appendChild(d); });
+  }
   function renderStart() {
     var ol = $("start-steps"); if (!ol) return; ol.textContent = "";
     t("start_steps").forEach(function (s, i) {
@@ -1868,6 +1994,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderMist();
     renderLife();
     renderCmp();
+    renderFlow();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
     renderTicks("svc-reg", t("svc_reg")); renderTicks("svc-exam", t("svc_exam")); renderTicks("docs", t("docs"));
