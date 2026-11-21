@@ -556,6 +556,39 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   .env-arrow, .env-row .env-arrow { flex: none; padding: 6px 0; flex-direction: row; gap: 8px; margin-top: 0; align-self: center; }
   .env-arrow svg, [dir=rtl] .env-arrow svg { transform: rotate(90deg); }
 }
+
+/* Language tests: licence vs immigration */
+.lng-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.lng-card { background: #fff; border: 2px solid var(--forest); border-radius: 16px; padding: 18px 20px; }
+.lng-card h3 { margin: 0; color: var(--forest); font-size: 1.25rem; }
+.lng-who { color: var(--muted); margin: 4px 0 14px; font-size: .95rem; }
+.lng-tbl table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.lng-tbl th, .lng-tbl td { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: center; }
+.lng-tbl th { color: var(--muted); font-weight: 600; font-size: .85rem; }
+.lng-tbl td:first-child, .lng-tbl th:first-child { text-align: start; font-weight: 700; color: var(--forest); }
+.lng-tbl td b { font-size: 1.05rem; }
+.lng-notes { margin: 12px 0 0; padding-inline-start: 18px; font-size: .9rem; }
+.lng-notes li { margin: 5px 0; }
+.lng-min > div { display: flex; justify-content: space-between; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding: 8px 0; }
+.lng-min > div:last-child { border-bottom: 0; }
+.lng-min span { font-size: .95rem; }
+.lng-min b { white-space: nowrap; background: var(--paper-2); border-radius: 8px; padding: 2px 10px; color: var(--forest); font-size: .9rem; }
+.lng-min > div.you b { background: var(--forest); color: var(--on-forest); }
+.lng-crs { margin-top: 18px; border-color: var(--brass-deep); }
+.lng-bar { display: grid; grid-template-columns: 70px 1fr 230px; align-items: center; gap: 12px; margin: 10px 0; }
+.lng-bar .lv { font-weight: 800; color: var(--forest); white-space: nowrap; }
+.lng-bar .tr { background: var(--paper-2); border-radius: 999px; height: 30px; overflow: hidden; }
+.lng-bar .fl { height: 100%; border-radius: 999px; background: var(--brass); display: flex; align-items: center; justify-content: flex-end; padding-inline-end: 10px; font-weight: 800; color: var(--forest); font-size: .95rem; white-space: nowrap; }
+.lng-bar.top .fl { background: var(--forest); color: var(--on-forest); }
+.lng-bar .ie { font-size: .82rem; color: var(--muted); }
+.lng-bonus { margin: 14px 0 0; background: var(--paper-2); border-radius: 12px; padding: 10px 14px; font-weight: 600; }
+@media (max-width: 760px) {
+  .lng-grid { grid-template-columns: 1fr; }
+  .lng-bar { grid-template-columns: 70px 1fr; }
+  .lng-min > div { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .lng-min b { white-space: normal; }
+  .lng-bar .ie { grid-column: 1 / -1; margin-top: -6px; }
+}
 </style>
 </head>
 <body>
@@ -581,6 +614,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       <a class="hl" href="#start" data-i18n="nav_start"></a>
       <a href="#pharmacy" data-i18n="nav_path"></a>
       <a href="#envelopes" data-i18n="nav_env"></a>
+      <a href="#language" data-i18n="nav_lang"></a>
       <a href="#services" data-i18n="nav_services"></a>
       <a href="#life" data-i18n="nav_life"></a>
       <a href="#test" data-i18n="nav_test"></a>
@@ -732,6 +766,39 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       <div class="env-reg" id="env-reg"></div>
       <h3 class="env-part"><span>2</span><b data-i18n="env_p2"></b></h3>
       <div class="env-row" id="env-row"></div>
+    </div>
+  </section>
+
+  <section class="block" id="language">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="lang_eyebrow"></span>
+          <h2 data-i18n="lang_title"></h2>
+          <p class="sub" data-i18n="lang_sub"></p>
+        </div>
+      </div>
+      <div class="lng-grid">
+        <div class="lng-card">
+          <h3 data-i18n="lang_lic_h"></h3>
+          <p class="lng-who" data-i18n="lang_lic_who"></p>
+          <div class="lng-tbl" id="lng-lic"></div>
+          <ul class="lng-notes" id="lng-lic-notes"></ul>
+        </div>
+        <div class="lng-card">
+          <h3 data-i18n="lang_imm_h"></h3>
+          <p class="lng-who" data-i18n="lang_imm_who"></p>
+          <div class="lng-min" id="lng-min"></div>
+          <ul class="lng-notes" id="lng-imm-notes"></ul>
+        </div>
+      </div>
+      <div class="lng-card lng-crs">
+        <h3 data-i18n="lang_crs_h"></h3>
+        <p class="lng-who" data-i18n="lang_crs_sub"></p>
+        <div id="lng-bars"></div>
+        <p class="lng-bonus" data-i18n="lang_crs_bonus"></p>
+      </div>
+      <p class="note" id="lng-src"></p>
     </div>
   </section>
 
@@ -1147,6 +1214,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       env_after: "after PEBC approves",
       env2: ["Envelope 2", "From the syndicate", "Start it only after PEBC approves envelope 1."],
       env3: ["Envelope 3", "From your college", "Your college sends it."],
+      nav_lang: "Language",
+      lang_eyebrow: "Language test", lang_title: "What scores do you need?", lang_sub: "Two different goals: one test for your pharmacy licence, one for immigration. For immigration, the higher your score, the more points you get.",
+      lang_lic_h: "For the pharmacy licence", lang_lic_who: "NAPRA's national minimum, used by the provinces.",
+      lang_cols: ["Test", "Reading", "Listening", "Speaking", "Writing"],
+      lang_lic_rows: [["IELTS Academic", "7.0", "7.0", "7.0", "6.5"], ["OET", "B", "B", "B", "C+"]],
+      lang_lic_notes: ["Alberta accepts only IELTS Academic or OET.", "Ontario also accepts CELPIP-General (reading 10, listening 10, speaking 10, writing 9) and IELTS General Training (reading 8, listening 8.5, speaking 7.5, writing 7).", "Results are valid for 2 years."],
+      lang_imm_h: "For immigration (Express Entry)", lang_imm_who: "Minimum level, by program. Pharmacists are TEER 1.",
+      lang_min: [["Federal Skilled Worker", "CLB 7 in all 4", 1], ["Canadian Experience Class (TEER 0 or 1)", "CLB 7 in all 4", 1], ["Canadian Experience Class (TEER 2 or 3)", "CLB 5"], ["Federal Skilled Trades", "CLB 5 speaking and listening, CLB 4 reading and writing"], ["Provincial nominee programs", "Each province sets its own"]],
+      lang_imm_notes: ["Accepted tests: IELTS General Training, CELPIP-General or PTE Core (English); TEF Canada or TCF Canada (French).", "IELTS Academic is not accepted for immigration.", "Results must be less than 2 years old."],
+      lang_crs_h: "The higher your score, the more points you get", lang_crs_sub: "Express Entry (CRS) points for language, all 4 abilities at the same level, applicant without a spouse. The IELTS General Training scores for each level are on the side.",
+      lang_bars: [["CLB 7", 68, "IELTS: 6.0 in all 4"], ["CLB 8", 92, "IELTS: L 7.5, R 6.5, W 6.5, S 6.5"], ["CLB 9", 124, "IELTS: L 8.0, R 7.0, W 7.0, S 7.0"], ["CLB 10+", 136, "IELTS: L 8.5, R 8.0, W 7.5, S 7.5"]],
+      lang_pts: "points",
+      lang_crs_bonus: "CLB 9 or higher in all 4 abilities also doubles your extra points: up to 50 more with your university degree, and up to 50 more with your work experience outside Canada.",
+      lang_src: "Sources: NAPRA Language Proficiency Requirement Policy (2024); Alberta College of Pharmacy; Ontario College of Pharmacists (scores from January 1, 2026); IRCC: Express Entry language test results and Comprehensive Ranking System criteria (checked November 2026).",
       start_eyebrow: "Start here", start_title: "Where do I start?",
       start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
       start_steps: [
@@ -1363,6 +1444,20 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       env_after: "بعد موافقة PEBC",
       env2: ["الظرف الثاني", "من النقابة", "تبدي بيه بس بعد ما PEBC توافق على الظرف الأول."],
       env3: ["الظرف الثالث", "من الكلية", "الكلية تدزه."],
+      nav_lang: "اللغة",
+      lang_eyebrow: "امتحان اللغة", lang_title: "شكد لازم تجيب باللغة؟", lang_sub: "هدفين مختلفين: امتحان للرخصة، وامتحان للهجرة. وبالهجرة: كل ما ترفع درجتك، تزيد نقاطك.",
+      lang_lic_h: "للرخصة (الصيدلة)", lang_lic_who: "الحد الأدنى الوطني من NAPRA، واللي تمشي عليه المقاطعات.",
+      lang_cols: ["الامتحان", "قراءة", "استماع", "محادثة", "كتابة"],
+      lang_lic_rows: [["IELTS Academic", "7.0", "7.0", "7.0", "6.5"], ["OET", "B", "B", "B", "C+"]],
+      lang_lic_notes: ["ألبرتا تقبل بس IELTS Academic أو OET.", "أونتاريو تقبل هم CELPIP-General (قراءة 10، استماع 10، محادثة 10، كتابة 9) و IELTS General Training (قراءة 8، استماع 8.5، محادثة 7.5، كتابة 7).", "النتيجة صالحة سنتين."],
+      lang_imm_h: "للهجرة (Express Entry)", lang_imm_who: "الحد الأدنى حسب نوع البرنامج. الصيدلي من فئة TEER 1.",
+      lang_min: [["العمال المهرة الفيدرالي (FSW)", "CLB 7 بكل المهارات", 1], ["الخبرة الكندية (CEC) لـ TEER 0 أو 1", "CLB 7 بكل المهارات", 1], ["الخبرة الكندية (CEC) لـ TEER 2 أو 3", "CLB 5"], ["الحرف الماهرة (FST)", "CLB 5 محادثة واستماع، CLB 4 قراءة وكتابة"], ["برامج المقاطعات (PNP)", "كل مقاطعة إلها شروطها"]],
+      lang_imm_notes: ["الامتحانات المقبولة: IELTS General Training أو CELPIP-General أو PTE Core (إنكليزي)، و TEF Canada أو TCF Canada (فرنسي).", "IELTS Academic ما ينقبل للهجرة.", "النتيجة لازم يكون عمرها أقل من سنتين."],
+      lang_crs_h: "كل ما ترفع درجتك، تزيد نقاطك", lang_crs_sub: "نقاط اللغة بالـ Express Entry (CRS) إذا جبت نفس المستوى بالمهارات الأربعة، لشخص بدون زوج أو زوجة. درجات IELTS General Training لكل مستوى مكتوبة على الجنب.",
+      lang_bars: [["CLB 7", 68, "IELTS: 6.0 بالأربعة"], ["CLB 8", 92, "IELTS: استماع 7.5، قراءة 6.5، كتابة 6.5، محادثة 6.5"], ["CLB 9", 124, "IELTS: استماع 8.0، قراءة 7.0، كتابة 7.0، محادثة 7.0"], ["CLB 10+", 136, "IELTS: استماع 8.5، قراءة 8.0، كتابة 7.5، محادثة 7.5"]],
+      lang_pts: "نقطة",
+      lang_crs_bonus: "وإذا جبت CLB 9 أو أكثر بالمهارات الأربعة، تتضاعف نقاطك الإضافية: لحد 50 نقطة ويا شهادتك الجامعية، ولحد 50 نقطة ويا خبرة شغلك برا كندا.",
+      lang_src: "المصادر: سياسة NAPRA لإتقان اللغة (2024)؛ هيئة صيادلة ألبرتا؛ هيئة صيادلة أونتاريو (الدرجات من 1/1/2026)؛ IRCC: نتائج امتحان اللغة للـ Express Entry ومعايير نظام النقاط CRS (تم التحقق 11/2026).",
       start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
       start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
       start_steps: [
@@ -1701,6 +1796,27 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       if (i) row.appendChild(arrow(t("env_then")));
       var d = t(k[0]), e = env(k[1]); e.appendChild(bidiTxt("h4", null, d[0])); e.appendChild(bidiTxt("div", "from", d[1])); e.appendChild(bidiTxt("p", null, d[2])); row.appendChild(e);
     });
+  }
+  function renderLang() {
+    var lic = $("lng-lic"); if (!lic) return;
+    function txt(tag, cls, v) { var e = el(tag, cls); fillBidi(e, String(v)); return e; }
+    lic.textContent = ""; var tb = el("table"), th = el("tr");
+    t("lang_cols").forEach(function (c) { th.appendChild(txt("th", null, c)); }); tb.appendChild(th);
+    t("lang_lic_rows").forEach(function (r) { var tr = el("tr"); r.forEach(function (c, i) { var td = el("td"); if (i) { var b = el("b"); var bd = el("bdi", null, c); bd.dir = "ltr"; b.appendChild(bd); td.appendChild(b); } else fillBidi(td, c); tr.appendChild(td); }); tb.appendChild(tr); });
+    lic.appendChild(tb);
+    function notes(id, key) { var u = $(id); u.textContent = ""; t(key).forEach(function (n) { u.appendChild(txt("li", null, n)); }); }
+    notes("lng-lic-notes", "lang_lic_notes"); notes("lng-imm-notes", "lang_imm_notes");
+    var mn = $("lng-min"); mn.textContent = "";
+    t("lang_min").forEach(function (r) { var d = el("div", r[2] ? "you" : null); d.appendChild(txt("span", null, r[0])); d.appendChild(txt("b", null, r[1])); mn.appendChild(d); });
+    var bars = $("lng-bars"); bars.textContent = "";
+    var B = t("lang_bars"), mx = B[B.length - 1][1];
+    B.forEach(function (r, i) {
+      var row = el("div", "lng-bar" + (i === B.length - 1 ? " top" : ""));
+      var lv = el("div", "lv"), lb = el("bdi", null, r[0]); lb.dir = "ltr"; lv.appendChild(lb); row.appendChild(lv);
+      var tr = el("div", "tr"), fl = el("div", "fl"); fl.style.width = Math.round(r[1] / mx * 100) + "%"; fillBidi(fl, r[1] + " " + t("lang_pts")); tr.appendChild(fl); row.appendChild(tr);
+      row.appendChild(txt("div", "ie", r[2])); bars.appendChild(row);
+    });
+    fillBidi($("lng-src"), t("lang_src"));
   }
   function renderStart() {
     var ol = $("start-steps"); if (!ol) return; ol.textContent = "";
@@ -2051,6 +2167,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderMist();
     renderLife();
     renderCmp();
+    renderLang();
     renderEnv();
     renderFc();
     renderFaq();
