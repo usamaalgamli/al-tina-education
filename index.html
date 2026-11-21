@@ -520,6 +520,42 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
   .fc-ar { flex: none; height: 30px; }
   .fc-ar svg, [dir=rtl] .fc-ar svg { transform: rotate(90deg); }
 }
+
+/* Registration and the three envelopes */
+.env-part { display: flex; align-items: center; gap: 10px; margin: 26px 0 12px; font-size: 1.25rem; color: var(--forest); }
+.env-part span { width: 34px; height: 34px; border-radius: 50%; background: var(--forest); color: var(--on-forest); display: grid; place-items: center; font-size: 1rem; }
+.env-reg { display: flex; align-items: stretch; }
+.env-row { display: flex; align-items: flex-start; }
+.env-row .env-arrow { align-self: flex-start; margin-top: 96px; }
+.env-box { flex: 1 1 0; min-width: 0; background: #fff; border: 2px solid var(--forest); border-radius: 14px; padding: 14px 16px; }
+.env-box h4 { margin: 0 0 4px; color: var(--forest); font-size: 1.1rem; }
+.env-box p { margin: 0; color: var(--muted); font-size: .93rem; }
+.env-fee { display: inline-block; margin-top: 10px; font-weight: 800; color: var(--ink); }
+.env-id { display: inline-block; margin-top: 10px; margin-inline-start: 8px; background: var(--forest); color: var(--on-forest); border-radius: 8px; padding: 3px 10px; font-weight: 700; font-size: .9rem; }
+.env-arrow { flex: 0 0 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--brass-deep); font-size: .74rem; font-weight: 700; text-align: center; line-height: 1.2; }
+.env-arrow svg { width: 26px; height: 16px; }
+[dir=rtl] .env-arrow svg { transform: scaleX(-1); }
+.env { flex: 1 1 0; min-width: 0; position: relative; background: #fffaf0; border: 2px solid var(--brass-deep); border-radius: 6px 6px 14px 14px; padding: 58px 16px 16px; overflow: hidden; }
+.env::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 46px; background: linear-gradient(to bottom right, transparent 49.5%, var(--brass-deep) 49.5%, var(--brass-deep) 51%, transparent 51%) left / 50% 100% no-repeat, linear-gradient(to bottom left, transparent 49.5%, var(--brass-deep) 49.5%, var(--brass-deep) 51%, transparent 51%) right / 50% 100% no-repeat, #f3e2b0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.env-n { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; border-radius: 50%; background: var(--forest); color: var(--on-forest); display: grid; place-items: center; font-weight: 800; z-index: 1; }
+.env h4 { margin: 0; color: var(--forest); font-size: 1.12rem; text-align: center; }
+.env .from { text-align: center; color: var(--brass-deep); font-weight: 700; font-size: .88rem; margin: 2px 0 10px; }
+.env ul { margin: 0; padding-inline-start: 18px; font-size: .92rem; }
+.env li { margin: 4px 0; }
+.env p { margin: 0; font-size: .92rem; color: var(--ink); text-align: center; }
+.env-label { margin-top: 12px; border: 2px dashed var(--forest); border-radius: 10px; padding: 8px 12px; background: #fff; font-size: .88rem; }
+.env-label b { display: block; color: var(--forest); margin-bottom: 4px; }
+.env-label div { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 3px 0; }
+.env-label div:last-child { border-bottom: 0; }
+.env-label div span:last-child { color: var(--muted); }
+.env-wait { margin-top: 12px; background: var(--forest); color: var(--on-forest); border-radius: 10px; padding: 8px 12px; font-weight: 700; font-size: .9rem; text-align: center; }
+.env.one { flex: 1.5 1 0; }
+@media (max-width: 860px) {
+  .env-reg, .env-row { flex-direction: column; align-items: stretch; }
+  .env-box, .env, .env.one { flex: none; }
+  .env-arrow, .env-row .env-arrow { flex: none; padding: 6px 0; flex-direction: row; gap: 8px; margin-top: 0; align-self: center; }
+  .env-arrow svg, [dir=rtl] .env-arrow svg { transform: rotate(90deg); }
+}
 </style>
 </head>
 <body>
@@ -544,6 +580,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     <nav class="nav caps" aria-label="Main">
       <a class="hl" href="#start" data-i18n="nav_start"></a>
       <a href="#pharmacy" data-i18n="nav_path"></a>
+      <a href="#envelopes" data-i18n="nav_env"></a>
       <a href="#services" data-i18n="nav_services"></a>
       <a href="#life" data-i18n="nav_life"></a>
       <a href="#test" data-i18n="nav_test"></a>
@@ -679,6 +716,22 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       </div>
       <p class="note travel" data-i18n="travel_note"></p>
       <p class="paynote"><strong data-i18n="pay_b"></strong> <span data-i18n="pay_note"></span></p>
+    </div>
+  </section>
+
+  <section class="block" id="envelopes">
+    <div class="wrap">
+      <div class="shead">
+        <div>
+          <span class="eyebrow caps" data-i18n="env_eyebrow"></span>
+          <h2 data-i18n="env_title"></h2>
+          <p class="sub" data-i18n="env_sub"></p>
+        </div>
+      </div>
+      <h3 class="env-part"><span>1</span><b data-i18n="env_p1"></b></h3>
+      <div class="env-reg" id="env-reg"></div>
+      <h3 class="env-part"><span>2</span><b data-i18n="env_p2"></b></h3>
+      <div class="env-row" id="env-row"></div>
     </div>
   </section>
 
@@ -1085,6 +1138,15 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       fc_row2: [["OSCE exam", "The only exam in Canada", "$1,950"], ["Practical training", "600+ hours", "paid"], ["Jurisprudence exam", "Pharmacy laws", "$374"], ["Licence", "Registration", "$1,170"]],
       fc_tot1: "Total from Iraq: $3,710", fc_tot2: "Total in Canada: $3,494", fc_all: ["Total official fees", "$7,204"],
       fc_note: "Official fees only, one attempt per exam. You pay each fee when you reach that step. Our service fee is not included.",
+      nav_env: "Documents",
+      env_eyebrow: "Your file, step by step", env_title: "How to register and send your documents", env_sub: "Two online registrations first, then three envelopes by mail, in this order.",
+      env_p1: "Register online", env_p2: "The three envelopes",
+      env_reg: [["Register with NAPRA", "Pay the fee online.", "$390", "You get your NAPRA ID"], ["Register with PEBC", "Pay the fee online, then wait about a week.", "$715", "You get your PEBC ID"]],
+      env_then: "then",
+      env1: ["Envelope 1", "From you", ["Registration form: print it from your account and stick your photo on it", "Your passport", "Your degree certificate (the framed diploma)", "A lawyer signs all of them"], "Write on the envelope", [["Your name", "full name"], ["PEBC ID", "from registration"], ["NAPRA ID", "from registration"]], "Send it, then wait until PEBC approves it"],
+      env_after: "after PEBC approves",
+      env2: ["Envelope 2", "From the syndicate", "Start it only after PEBC approves envelope 1."],
+      env3: ["Envelope 3", "From your college", "Your college sends it."],
       start_eyebrow: "Start here", start_title: "Where do I start?",
       start_lead: "Want to come to Canada? You will need an immigration lawyer. But the lawyer needs something strong to work with: you, a pharmacist on the way to a Canadian licence.",
       start_steps: [
@@ -1292,6 +1354,15 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       fc_row2: [["امتحان OSCE", "الامتحان الوحيد بكندا", "$1,950"], ["التدريب العملي", "أكثر من 600 ساعة", "paid"], ["امتحان القوانين", "قوانين الصيدلة", "$374"], ["الرخصة", "التسجيل", "$1,170"]],
       fc_tot1: "المجموع من العراق: $3,710", fc_tot2: "المجموع بكندا: $3,494", fc_all: ["مجموع الرسوم الرسمية", "$7,204"],
       fc_note: "رسوم رسمية بس، محاولة وحدة لكل امتحان. تدفع كل رسم لمن توصل لخطوته. أجور خدمتنا مو مشمولة.",
+      nav_env: "الوثائق",
+      env_eyebrow: "ملفك خطوة بخطوة", env_title: "شلون تسجّل وتدز وثائقك", env_sub: "أول شي تسجيلين أونلاين، وبعدها 3 ظروف بالبريد، بهذا الترتيب.",
+      env_p1: "التسجيل أونلاين", env_p2: "الظروف الثلاثة",
+      env_reg: [["سجّل في NAPRA", "تدفع الرسوم أونلاين.", "$390", "يطلعلك NAPRA ID"], ["سجّل في PEBC", "تدفع الرسوم أونلاين، وتنتظر حوالي أسبوع.", "$715", "يطلعلك PEBC ID"]],
+      env_then: "بعدها",
+      env1: ["الظرف الأول", "منك", ["استمارة التسجيل: تطبعها من حسابك بالموقع وتلزك عليها صورتك", "جوازك", "الجدارية", "كلهن يوقّعهن المحامي"], "تكتب على الظرف", [["اسمك", "الاسم الكامل"], ["PEBC ID", "من التسجيل"], ["NAPRA ID", "من التسجيل"]], "تدزه، وتنتظر لحد ما PEBC توافق عليه"],
+      env_after: "بعد موافقة PEBC",
+      env2: ["الظرف الثاني", "من النقابة", "تبدي بيه بس بعد ما PEBC توافق على الظرف الأول."],
+      env3: ["الظرف الثالث", "من الكلية", "الكلية تدزه."],
       start_eyebrow: "ابدي من هنا", start_title: "منين أبدي؟",
       start_lead: "تريد تجي لكندا؟ تحتاج محامي هجرة. بس المحامي يحتاج شي قوي يشتغل بيه: إنت، صيدلي بطريقك للرخصة الكندية.",
       start_steps: [
@@ -1603,6 +1674,33 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     body.appendChild(d);
     row("fc_ca", null, "fc_row2", box("end", t("fc_end")), "fc_tot2");
     var all = el("div", "fc-all"), a1 = el("span"); fillBidi(a1, t("fc_all")[0]); var a2 = el("bdi", null, t("fc_all")[1]); a2.dir = "ltr"; all.appendChild(a1); all.appendChild(a2); body.appendChild(all);
+  }
+  function renderEnv() {
+    var reg = $("env-reg"); if (!reg) return; reg.textContent = "";
+    document.querySelectorAll("#envelopes .env-part span").forEach(function (sp, i) { sp.textContent = num(i + 1); });
+    var AR = '<svg viewBox="0 0 26 16" aria-hidden="true"><path d="M1 8h22M16 2l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    function arrow(txt) { var a = el("div", "env-arrow"); if (txt) { var s = el("span"); fillBidi(s, txt); a.appendChild(s); } a.insertAdjacentHTML("beforeend", AR); return a; }
+    function bidiTxt(tag, cls, txt) { var e = el(tag, cls); fillBidi(e, txt); return e; }
+    t("env_reg").forEach(function (r, i) {
+      if (i) reg.appendChild(arrow(t("env_then")));
+      var b = el("div", "env-box"); b.appendChild(bidiTxt("h4", null, r[0])); b.appendChild(bidiTxt("p", null, r[1]));
+      var f = el("span", "env-fee"), fb = el("bdi", null, r[2]); fb.dir = "ltr"; f.appendChild(fb); b.appendChild(f);
+      b.appendChild(bidiTxt("span", "env-id", r[3])); reg.appendChild(b);
+    });
+    var row = $("env-row"); row.textContent = "";
+    function env(n, cls) { var e = el("div", "env" + (cls ? " " + cls : "")); e.appendChild(el("span", "env-n", num(n))); return e; }
+    var d1 = t("env1"), e1 = env(1, "one");
+    e1.appendChild(bidiTxt("h4", null, d1[0])); e1.appendChild(bidiTxt("div", "from", d1[1]));
+    var ul = el("ul"); d1[2].forEach(function (x) { ul.appendChild(bidiTxt("li", null, x)); }); e1.appendChild(ul);
+    var lb = el("div", "env-label"); lb.appendChild(bidiTxt("b", null, d1[3]));
+    d1[4].forEach(function (x) { var r = el("div"); var k = el("span"); fillBidi(k, x[0]); var v = el("span"); fillBidi(v, x[1]); r.appendChild(k); r.appendChild(v); lb.appendChild(r); });
+    e1.appendChild(lb); e1.appendChild(bidiTxt("div", "env-wait", d1[5]));
+    row.appendChild(e1);
+    row.appendChild(arrow(t("env_after")));
+    [["env2", 2], ["env3", 3]].forEach(function (k, i) {
+      if (i) row.appendChild(arrow(t("env_then")));
+      var d = t(k[0]), e = env(k[1]); e.appendChild(bidiTxt("h4", null, d[0])); e.appendChild(bidiTxt("div", "from", d[1])); e.appendChild(bidiTxt("p", null, d[2])); row.appendChild(e);
+    });
   }
   function renderStart() {
     var ol = $("start-steps"); if (!ol) return; ol.textContent = "";
@@ -1953,6 +2051,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
     renderMist();
     renderLife();
     renderCmp();
+    renderEnv();
     renderFc();
     renderFaq();
     var fi = document.querySelector("#fees img"); if (fi) { fi.src = t("fees_img"); fi.parentNode.href = t("fees_img"); }
