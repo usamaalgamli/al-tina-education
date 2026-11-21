@@ -535,24 +535,24 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
 .env-arrow { flex: 0 0 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: var(--brass-deep); font-size: .74rem; font-weight: 700; text-align: center; line-height: 1.2; }
 .env-arrow svg { width: 26px; height: 16px; }
 [dir=rtl] .env-arrow svg { transform: scaleX(-1); }
-.env { flex: 1 1 0; min-width: 0; position: relative; background: #fffaf0; border: 2px solid var(--brass-deep); border-radius: 6px 6px 14px 14px; padding: 58px 16px 16px; overflow: hidden; }
-.env::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 46px; background: linear-gradient(to bottom right, transparent 49.5%, var(--brass-deep) 49.5%, var(--brass-deep) 51%, transparent 51%) left / 50% 100% no-repeat, linear-gradient(to bottom left, transparent 49.5%, var(--brass-deep) 49.5%, var(--brass-deep) 51%, transparent 51%) right / 50% 100% no-repeat, #f3e2b0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.envl { flex: 1 1 0; min-width: 0; position: relative; background: #fffaf0; border: 2px solid var(--brass-deep); border-radius: 6px 6px 14px 14px; padding: 58px 16px 16px; overflow: hidden; }
+.envl::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 46px; background: linear-gradient(to bottom right, transparent 49.5%, var(--brass-deep) 49.5%, var(--brass-deep) 51%, transparent 51%) left / 50% 100% no-repeat, linear-gradient(to bottom left, transparent 49.5%, var(--brass-deep) 49.5%, var(--brass-deep) 51%, transparent 51%) right / 50% 100% no-repeat, #f3e2b0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
 .env-n { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; border-radius: 50%; background: var(--forest); color: var(--on-forest); display: grid; place-items: center; font-weight: 800; z-index: 1; }
-.env h4 { margin: 0; color: var(--forest); font-size: 1.12rem; text-align: center; }
-.env .from { text-align: center; color: var(--brass-deep); font-weight: 700; font-size: .88rem; margin: 2px 0 10px; }
-.env ul { margin: 0; padding-inline-start: 18px; font-size: .92rem; }
-.env li { margin: 4px 0; }
-.env p { margin: 0; font-size: .92rem; color: var(--ink); text-align: center; }
+.envl h4 { margin: 0; color: var(--forest); font-size: 1.12rem; text-align: center; }
+.envl .from { text-align: center; color: var(--brass-deep); font-weight: 700; font-size: .88rem; margin: 2px 0 10px; }
+.envl ul { margin: 0; padding-inline-start: 18px; font-size: .92rem; }
+.envl li { margin: 4px 0; }
+.envl p { margin: 0; font-size: .92rem; color: var(--ink); text-align: center; }
 .env-label { margin-top: 12px; border: 2px dashed var(--forest); border-radius: 10px; padding: 8px 12px; background: #fff; font-size: .88rem; }
 .env-label b { display: block; color: var(--forest); margin-bottom: 4px; }
 .env-label div { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 3px 0; }
 .env-label div:last-child { border-bottom: 0; }
 .env-label div span:last-child { color: var(--muted); }
 .env-wait { margin-top: 12px; background: var(--forest); color: var(--on-forest); border-radius: 10px; padding: 8px 12px; font-weight: 700; font-size: .9rem; text-align: center; }
-.env.one { flex: 1.5 1 0; }
+.envl.one { flex: 1.5 1 0; }
 @media (max-width: 860px) {
   .env-reg, .env-row { flex-direction: column; align-items: stretch; }
-  .env-box, .env, .env.one { flex: none; }
+  .env-box, .envl, .envl.one { flex: none; }
   .env-arrow, .env-row .env-arrow { flex: none; padding: 6px 0; flex-direction: row; gap: 8px; margin-top: 0; align-self: center; }
   .env-arrow svg, [dir=rtl] .env-arrow svg { transform: rotate(90deg); }
 }
@@ -1210,7 +1210,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       env_p1: "Register online", env_p2: "The three envelopes",
       env_reg: [["Register with NAPRA", "Pay the fee online.", "$390", "You get your NAPRA ID"], ["Register with PEBC", "Pay the fee online, then wait about a week.", "$715", "You get your PEBC ID"]],
       env_then: "then",
-      env1: ["Envelope 1", "From you", ["Registration form: print it from your account and stick your photo on it", "Your passport", "Your degree certificate (the framed diploma)", "A lawyer signs all of them"], "Write on the envelope", [["Your name", "full name"], ["PEBC ID", "from registration"], ["NAPRA ID", "from registration"]], "Send it, then wait until PEBC approves it"],
+      env1: ["Envelope 1", "From you", ["Registration form: print it from your Certemy account and stick your photo on it", "Your passport", "Your degree certificate (the framed diploma)", "A lawyer signs all of them"], "Write on the envelope", [["Your name", "full name"], ["PEBC ID", "from registration"], ["NAPRA ID", "from registration"]], "Send it, then wait until PEBC approves it"],
       env_after: "after PEBC approves",
       env2: ["Envelope 2", "From the syndicate", "Start it only after PEBC approves envelope 1."],
       env3: ["Envelope 3", "From your college", "Your college sends it."],
@@ -1440,7 +1440,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       env_p1: "التسجيل أونلاين", env_p2: "الظروف الثلاثة",
       env_reg: [["سجّل في NAPRA", "تدفع الرسوم أونلاين.", "$390", "يطلعلك NAPRA ID"], ["سجّل في PEBC", "تدفع الرسوم أونلاين، وتنتظر حوالي أسبوع.", "$715", "يطلعلك PEBC ID"]],
       env_then: "بعدها",
-      env1: ["الظرف الأول", "منك", ["استمارة التسجيل: تطبعها من حسابك بالموقع وتلزك عليها صورتك", "جوازك", "الجدارية", "كلهن يوقّعهن المحامي"], "تكتب على الظرف", [["اسمك", "الاسم الكامل"], ["PEBC ID", "من التسجيل"], ["NAPRA ID", "من التسجيل"]], "تدزه، وتنتظر لحد ما PEBC توافق عليه"],
+      env1: ["الظرف الأول", "منك", ["استمارة التسجيل: تطبعها من حسابك بـ Certemy وتلزك عليها صورتك", "جوازك", "الجدارية", "كلهن يوقّعهن المحامي"], "تكتب على الظرف", [["اسمك", "الاسم الكامل"], ["PEBC ID", "من التسجيل"], ["NAPRA ID", "من التسجيل"]], "تدزه، وتنتظر لحد ما PEBC توافق عليه"],
       env_after: "بعد موافقة PEBC",
       env2: ["الظرف الثاني", "من النقابة", "تبدي بيه بس بعد ما PEBC توافق على الظرف الأول."],
       env3: ["الظرف الثالث", "من الكلية", "الكلية تدزه."],
@@ -1783,7 +1783,7 @@ footer .fine { border-block-start: 1px solid rgba(250, 248, 243, .14); padding-b
       b.appendChild(bidiTxt("span", "env-id", r[3])); reg.appendChild(b);
     });
     var row = $("env-row"); row.textContent = "";
-    function env(n, cls) { var e = el("div", "env" + (cls ? " " + cls : "")); e.appendChild(el("span", "env-n", num(n))); return e; }
+    function env(n, cls) { var e = el("div", "envl" + (cls ? " " + cls : "")); e.appendChild(el("span", "env-n", num(n))); return e; }
     var d1 = t("env1"), e1 = env(1, "one");
     e1.appendChild(bidiTxt("h4", null, d1[0])); e1.appendChild(bidiTxt("div", "from", d1[1]));
     var ul = el("ul"); d1[2].forEach(function (x) { ul.appendChild(bidiTxt("li", null, x)); }); e1.appendChild(ul);
